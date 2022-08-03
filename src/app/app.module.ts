@@ -7,6 +7,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChatboxComponent } from './chatbox/chatbox.component';
 import { ChannelListComponent } from './channel-list/channel-list.component';
 import { ChannelComponent } from './channel/channel.component';
+import { ThreadComponent } from './thread/thread.component';
+import { DialogChannelInfoComponent } from './dialog-channel-info/dialog-channel-info.component';
+import { DirectMessagesComponent } from './direct-messages/direct-messages.component';
+import { DialogCreateNewChannelComponent } from './dialog-create-new-channel/dialog-create-new-channel.component';
+import { DialogCreateNewMessageComponent } from './dialog-create-new-message/dialog-create-new-message.component';
+
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
@@ -19,11 +25,11 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { ThreadComponent } from './thread/thread.component';
-import { DialogChannelInfoComponent } from './dialog-channel-info/dialog-channel-info.component';
-import { DirectMessagesComponent } from './direct-messages/direct-messages.component';
-import { DialogCreateNewChannelComponent } from './dialog-create-new-channel/dialog-create-new-channel.component';
-import { DialogCreateNewMessageComponent } from './dialog-create-new-message/dialog-create-new-message.component';
+import {MatFormFieldModule} from '@angular/material/form-field'; 
+import {MatInputModule} from '@angular/material/input'; 
+import { AutosizeModule } from 'ngx-autosize';
+
+
 
 
 @NgModule({
@@ -45,6 +51,9 @@ import { DialogCreateNewMessageComponent } from './dialog-create-new-message/dia
     MatIconModule,
     MatButtonModule,
     MatSidenavModule,
+    MatInputModule,
+    MatFormFieldModule,
+    AutosizeModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

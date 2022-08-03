@@ -1,7 +1,42 @@
-<!-- input field for channel component-->
+<!--
+    
+    input field for channel component
+
+status:
+Responsive muss angepasst werden, sobald es in der richtigen Komponente eingebunden ist.
+
+Hover-Effekte müssen noch eingebunden werden
+
+Aktiv und nicht Aktiv ebenso.
+
+noch keine Funktion 
+
+
+-->
 
 <mat-card>
-<div class="styling"></div>
-<div class="input"></div>
-<div class="operate"></div>
+    <div class="styling">
+        <mat-icon>format_bold</mat-icon>
+        <mat-icon>format_italic</mat-icon>
+        <mat-icon>format_strikethrough</mat-icon><span>|</span>
+        <mat-icon>link</mat-icon><span>|</span>
+        <mat-icon>format_list_numbered</mat-icon>
+        <mat-icon>format_list_bulleted</mat-icon><span>|</span>
+        <mat-icon>code</mat-icon>
+    </div>
+    <div class="input">
+        <mat-form-field class="full-width" appearance="fill" color="accent">
+            <mat-label>Nachricht an CHANNEL</mat-label>
+            <textarea autosize matInput placeholder="Write something..." class="text-area" rows="3"></textarea>
+        </mat-form-field>
+    </div>
+    <div class="operate">
+        <div>
+            <mat-icon>add</mat-icon>
+            <mat-icon>format_size</mat-icon>
+        </div>
+        <div>
+            <mat-icon>send</mat-icon>
+        </div>
+    </div>
 </mat-card>

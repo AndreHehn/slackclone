@@ -1,0 +1,36 @@
+mat-card{margin:0;}
+
+
+.styling {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 16px;
+    padding-bottom: 16px;
+
+    span {
+        font-size: 18px;
+    }
+}
+
+.full-width {
+    width: 100%;
+
+    textarea {
+        resize: none;
+    }
+}
+
+.operate {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    div:first-child {
+        display: flex;
+        gap: 16px;
+    }
+}
