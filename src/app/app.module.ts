@@ -19,6 +19,11 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { ThreadComponent } from './thread/thread.component';
+import { DialogChannelInfoComponent } from './dialog-channel-info/dialog-channel-info.component';
+import { DirectMessagesComponent } from './direct-messages/direct-messages.component';
+import { DialogCreateNewChannelComponent } from './dialog-create-new-channel/dialog-create-new-channel.component';
+import { DialogCreateNewMessageComponent } from './dialog-create-new-message/dialog-create-new-message.component';
 
 
 @NgModule({
@@ -26,7 +31,12 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     AppComponent,
     ChatboxComponent,
     ChannelListComponent,
-    ChannelComponent
+    ChannelComponent,
+    ThreadComponent,
+    DialogChannelInfoComponent,
+    DirectMessagesComponent,
+    DialogCreateNewChannelComponent,
+    DialogCreateNewMessageComponent
   ],
   imports: [
     MatToolbarModule,
