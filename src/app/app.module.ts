@@ -28,6 +28,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import {MatFormFieldModule} from '@angular/material/form-field'; 
 import {MatInputModule} from '@angular/material/input'; 
 import { AutosizeModule } from 'ngx-autosize';
+import { DialogBigPictureComponent } from './dialog-big-picture/dialog-big-picture.component';
+import { DialogChannelInfoEditDescriptionComponent } from './dialog-channel-info-edit-description/dialog-channel-info-edit-description.component';
 
 
 
@@ -42,7 +44,9 @@ import { AutosizeModule } from 'ngx-autosize';
     DialogChannelInfoComponent,
     DirectMessagesComponent,
     DialogCreateNewChannelComponent,
-    DialogCreateNewMessageComponent
+    DialogCreateNewMessageComponent,
+    DialogBigPictureComponent,
+    DialogChannelInfoEditDescriptionComponent
   ],
   imports: [
     MatToolbarModule,

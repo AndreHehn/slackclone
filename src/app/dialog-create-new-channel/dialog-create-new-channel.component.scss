@@ -1,0 +1,39 @@
+.dialog-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.headline {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+.subhead-wrap{
+    display:flex;
+    align-items: baseline;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.info {
+    color: orange;
+    margin-left: 8px;
+}
+
+.question{
+    margin-top: -12px;
+    font-size: smaller;
+    color:#C1C1C1;
+
+}
+
+.button-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}

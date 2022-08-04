@@ -1,7 +1,51 @@
-<p>dialog-channel-info works!</p>
 <!-- info about 
 
 who is in this channel
 
 and info about channel
 -->
+
+<!-- 
+    Dialog für die Erstellung eines neuen Channels
+
+    Status: nicht responsive
+    keine Funktion 
+    
+    André-->
+
+
+<div class="dialog-container">
+    <div class="headline">
+        <h1 mat-dialog-title>Channelname</h1>
+        <mat-icon>close</mat-icon>
+    </div>
+    <div mat-dialog-content>
+        <mat-card>
+            <h2>Info</h2>
+            <table>
+                <tr>
+                    <td>Beschreibung:</td>
+                    <td>Eine Beschreibung hinzufügen</td>
+                    <td><button mat-button color="accent">bearbeiten</button></td>
+                </tr>
+                <tr>
+                    <td>Erstellt von:</td>
+                    <td>Ersteller</td>
+                </tr>
+            </table>
+
+        </mat-card>
+        <mat-card>
+            <h2>Mitglieder (1)</h2>
+<table>
+    <tr>
+        <td><img src=""></td>
+        <td>Max Mustermann</td>
+        <td><button mat-button color="accent">entfernen</button></td>
+    </tr>
+</table>
+<button mat-button color="warn">Channel verlassen</button>
+        </mat-card>
+
+    </div>
+</div>

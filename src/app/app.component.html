@@ -1,8 +1,7 @@
 <mat-drawer-container class="mat-drawer-container" autosize (backdropClick)="drawer.toggle()" *ngIf="connected">
   <mat-drawer #drawer class="sidenav" mode="over" [opened]="false">
 
-    <div class="logo-container"><img src="" routerLink=""
-        routerLinkActive="router-link-active">
+    <div class="logo-container"><img src="" routerLink="" routerLinkActive="router-link-active">
     </div>
     <ul>
       <li class="no-cursor"></li>
@@ -35,7 +34,20 @@
       </mat-toolbar-row>
     </mat-toolbar>
     <div class="router-container">
-      <router-outlet></router-outlet>
+
+
+<app-dialog-channel-info></app-dialog-channel-info>
+
+     <!--<router-outlet></router-outlet>--> 
+
+
+
+
+
+
+
+
+
     </div>
   </div>
 </mat-drawer-container>
@@ -45,24 +57,25 @@
     <div class="displayTable">
       <div class="displayTableCell">
         <div class="authBlock">
-          
+
           <h3>Sign In</h3>
-        <div class="formGroup">
-          <input type="text" class="formControl" placeholder="Username" #userName required>
-        </div>
-        <div class="formGroup">
-          <input type="password" class="formControl" placeholder="Password" #userPassword required>
-        </div>-->
+          <div class="formGroup">
+            <input type="text" class="formControl" placeholder="Username" #userName required>
+          </div>
+          <div class="formGroup">
+            <input type="password" class="formControl" placeholder="Password" #userPassword required>
+          </div>-->
           <!-- Calling SignIn Api from AuthService -->
 
-          
-        <div class="formGroup">
-          <input type="button" class="btn btnPrimary" value="Log in" (click)="authService.SignIn(userName.value, userPassword.value)">
-        </div>
-        <div class="formGroup">
-          <span class="or"><span class="orInner">Or</span></span>
-        </div>
-      
+
+          <div class="formGroup">
+            <input type="button" class="btn btnPrimary" value="Log in"
+              (click)="authService.SignIn(userName.value, userPassword.value)">
+          </div>
+          <div class="formGroup">
+            <span class="or"><span class="orInner">Or</span></span>
+          </div>
+
           <!-- Calling GoogleAuth Api from AuthService -->
           <div class="formGroup">
             <button color="accent" mat-button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()">
@@ -77,67 +90,51 @@
               Or log in as guest
             </button>
           </div>
-          
+
           <div class="forgotPassword">
             <span routerLink="/forgot-password">Forgot Password?</span>
           </div>
-        
+
         </div>
-        
+
         <div class="redirectToLogin">
-          <span>Don't have an account?<span class="redirect" routerLink="/register-user"> Sign Up</span></span>
+          <span>Don't have an account?</span><span class="redirect" routerLink="/register-user">Sign Up</span>
         </div>
-      
+
       </div>
     </div>
-    
+
     <div class="displayTable">
       <div class="displayTableCell">
         <div class="authBlock">
           ng <h3>Sign Up</h3>
-        <div class="formGroup">
-          <input
-            type="email"
-            class="formControl"
-            placeholder="Email Address"
-            #userEmail
-            required
-          />
+          <div class="formGroup">
+            <input type="email" class="formControl" placeholder="Email Address" #userEmail required />
+          </div>
+          <div class="formGroup">
+            <input type="password" class="formControl" placeholder="Password" #userPwd required />
+          </div>
+          <div class="formGroup">
+            <input type="button" class="btn btnPrimary" value="Sign Up"
+              (click)="authService.SignUp(userEmail.value, userPwd.value)" />
+          </div>
+          <div class="formGroup">
+            <span class="or"><span class="orInner">Or</span></span>
+          </div>
+          <!-- Continue with Google -->
+
+          <div class="formGroup">
+            <button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()">
+              <i class="fab fa-google-plus-g"></i>
+              Continue with Google
+            </button>
+          </div>
         </div>
-        <div class="formGroup">
-          <input
-            type="password"
-            class="formControl"
-            placeholder="Password"
-            #userPwd
-            required
-          />
-        </div>
-        <div class="formGroup">
-          <input
-            type="button"
-            class="btn btnPrimary"
-            value="Sign Up"
-            (click)="authService.SignUp(userEmail.value, userPwd.value)"
-          />
-        </div>
-        <div class="formGroup">
-          <span class="or"><span class="orInner">Or</span></span>
-        </div> 
-    <!-- Continue with Google -->
-    
-        <div class="formGroup">
-          <button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()">
-            <i class="fab fa-google-plus-g"></i>
-            Continue with Google
-          </button>
+        <div class="redirectToLogin">
+          <span>Already have an account?
+            <span class="redirect" routerLink="/sign-in">Log In</span></span>
         </div>
       </div>
-      <div class="redirectToLogin">
-        <span>Already have an account?
-          <span class="redirect" routerLink="/sign-in">Log In</span></span>
-      </div>
-        </div>
-        </div>
+    </div>
   </mat-card>
 </div>
