@@ -116,6 +116,7 @@ mat-toolbar-row {
         .login-title {
             font-size: 3em;
             font-weight: bold;
+            margin-bottom: 40px;
         }
 
         .input {
@@ -134,8 +135,24 @@ mat-toolbar-row {
             border: 0;
             border-radius: 4px;
             background-color: indigo;
-            margin-bottom: 32px;
             cursor: pointer;
+            transition: 225ms ease-in-out;
+
+            &:hover {
+                filter: brightness(120%);
+            }
+        }
+
+        .forgotPassword {
+            margin-bottom: 32px;
+            color: grey;
+            cursor: pointer;
+            transition: 225ms ease-in-out;
+
+
+            &:hover {
+                color: white;
+            }
         }
 
         .orCont {
