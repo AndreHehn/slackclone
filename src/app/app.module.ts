@@ -30,6 +30,7 @@ import {MatInputModule} from '@angular/material/input';
 import { AutosizeModule } from 'ngx-autosize';
 import { DialogBigPictureComponent } from './dialog-big-picture/dialog-big-picture.component';
 import { DialogChannelInfoEditDescriptionComponent } from './dialog-channel-info-edit-description/dialog-channel-info-edit-description.component';
+import { QuillModule } from 'ngx-quill';
 
 
 
@@ -51,6 +52,7 @@ import { DialogChannelInfoEditDescriptionComponent } from './dialog-channel-info
   imports: [
     MatToolbarModule,
     MatCardModule,
+    QuillModule,
     MatMenuModule,
     MatIconModule,
     MatButtonModule,
