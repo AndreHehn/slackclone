@@ -76,8 +76,9 @@
 
 
           <div class="formGroup">
-            <input type="button" class="btn-login" value="Log in"
+            <button type="button" class="btn-login" value="Log in"
               (click)="authService.SignIn(userName.value, userPassword.value)">
+            </button>
           </div>
 
           <div class="forgotPassword">
@@ -113,7 +114,7 @@
       </div>
     </div>
 
-    <div class="displayTable center">
+    <!-- <div class="displayTable center">
       <div class="displayTableCell">
         <div class="authBlock">
           ng <h3>Sign Up</h3>
@@ -130,7 +131,7 @@
           <div class="formGroup">
             <span class="or"><span class="orInner">Or</span></span>
           </div>
-          <!-- Continue with Google -->
+          Continue with Google
 
           <div class="formGroup">
             <button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()">
@@ -144,6 +145,6 @@
             <span class="redirect" routerLink="/sign-in">Log In</span></span>
         </div>
       </div>
-    </div>
+    </div> -->
   </mat-card>
 </div>
