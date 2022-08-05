@@ -41,7 +41,7 @@
 
 
 
-<router-outlet></router-outlet>
+      <router-outlet></router-outlet>
 
 
 
@@ -59,37 +59,41 @@
   <mat-card class="log-in">
     <div class="displayTable">
       <div class="displayTableCell">
-        <div class="authBlock">
+        <div class="authBlock center">
 
-          <h3>Sign In</h3>
+          <h1 class="login-title">Welcom to our slack-clone</h1>
+
+          <h3>Enter your email address and passwort</h3>
+
           <div class="formGroup">
-            <input type="text" class="formControl" placeholder="Username" #userName required>
+            <input class="input" type="text" placeholder="Email address" #userName required>
           </div>
           <div class="formGroup">
-            <input type="password" class="formControl" placeholder="Password" #userPassword required>
-          </div>-->
+            <input class="input" matInput type="password" placeholder="Passwort" name="passwort" #userPassword required>
+          </div>
           <!-- Calling SignIn Api from AuthService -->
 
 
           <div class="formGroup">
-            <input type="button" class="btn btnPrimary" value="Log in"
+            <input type="button" class="btn-login" value="Log in"
               (click)="authService.SignIn(userName.value, userPassword.value)">
           </div>
-          <div class="formGroup">
-            <span class="or"><span class="orInner">Or</span></span>
+          <div class="orCont">
+            <hr>
+            <span class="or"><span class="orInner">OR</span></span>
+            <hr>
           </div>
 
           <!-- Calling GoogleAuth Api from AuthService -->
-          <div class="formGroup">
-            <button color="accent" mat-button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()">
-              <i class="fab fa-google-plus-g"></i>
+
+          <div class="login-btns">
+            <button class="login-btn" mat-button type="button" (click)="authService.GoogleAuth()">
+              <!-- <i class="fab fa-google-plus-g"></i> -->
+              <img class="googleIcon" src="assets/icons/googleIcon.png">
               Log in with Google
             </button>
-          </div>
-          <div class="formGroup">
-            <button color="accent" mat-button type="button" class="btn googleBtn"
-              (click)="authService.SignIn('guestuser@andrehehn.de', 'TestUser')">
-              <i class="fab fa-google-plus-g"></i>
+            <button class="login-btn" mat-button type="button" (click)="authService.SignIn('guestuser@andrehehn.de', 'TestUser')">
+              <!-- <i class="fab fa-google-plus-g"></i> -->
               Or log in as guest
             </button>
           </div>
