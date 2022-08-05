@@ -13,39 +13,12 @@ noch keine Funktion
 
 André
 
-
--->
-<!--
-<mat-card>
-    <div class="styling">
-        <mat-icon>format_bold</mat-icon>
-        <mat-icon>format_italic</mat-icon>
-        <mat-icon>format_strikethrough</mat-icon><span>|</span>
-        <mat-icon>link</mat-icon><span>|</span>
-        <mat-icon>format_list_numbered</mat-icon>
-        <mat-icon>format_list_bulleted</mat-icon><span>|</span>
-        <mat-icon>code</mat-icon>
-    </div>
-    <div class="input">
-        <mat-form-field class="fullWidth" appearance="fill" color="accent">
-            <mat-label>Nachricht an CHANNEL</mat-label>
-            <textarea autosize matInput placeholder="Write something..." class="text-area" rows="3"></textarea>
-        </mat-form-field>
-    </div>
-    <div class="operate">
-        <div>
-            <mat-icon>add</mat-icon>
-            <mat-icon>format_size</mat-icon>
-        </div>
-        <div>
-            <mat-icon>send</mat-icon>
-        </div>
-    </div>
-</mat-card>
-
 -->
 
-<mat-card>
-<quill-editor></quill-editor>
 
+<mat-card>
+    <quill-editor formControl placeholder="Nachricht an" [modules]="modules" (onEditorChanged)="changedEditor($event)"></quill-editor>
+    <div class="sendButton">
+        <mat-icon class="icon" (click)="print()">send</mat-icon>
+    </div>
 </mat-card>
