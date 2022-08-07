@@ -4,6 +4,7 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { finalize } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { EditorChangeContent, EditorChangeSelection } from 'ngx-quill';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-chatbox',
@@ -27,16 +28,23 @@ export class ChatboxComponent implements OnInit {
   uploaded: boolean = false;
   uploadPercent: Observable<number>;
   saved: boolean = false;
+  channelId: string = '';
+  userId: string = '';
 
 
-  constructor(private firestore: AngularFirestore,
-    private storage: AngularFireStorage) { }
+  constructor(
+    private firestore: AngularFirestore,
+    private route: ActivatedRoute,
+    private storage: AngularFireStorage
+  ) { }
 
   ngOnInit(): void {
+    this.channelId = this.getIdOfChat();
+    this.userId = this.getUserIdFromLocalStorage();
   }
 
   ngOnDestroy(): void {
-    if (this.uploaded && !this.saved) { this.deleteLastUpload(); }
+    if (this.uploaded && !this.saved) this.deleteLastUpload();
   }
 
   /**
@@ -63,9 +71,7 @@ export class ChatboxComponent implements OnInit {
     this.currentFile = fileRef;
     const task = this.storage.upload(filePath, file);
     this.uploadPercent = task.percentageChanges();    // observe percentage changes
-    task.snapshotChanges().pipe(
-      finalize(() => this.saveUrl(fileRef))
-    ).subscribe();
+    task.snapshotChanges().pipe(finalize(() => this.saveUrl(fileRef))).subscribe();
   }
 
   /**
@@ -80,7 +86,6 @@ export class ChatboxComponent implements OnInit {
 
 
   saveAndSend() {
-    console.log(this.message);
     // write code to save it in firestore later.
   }
 
@@ -88,4 +93,22 @@ export class ChatboxComponent implements OnInit {
   changedEditor(event: EditorChangeContent | EditorChangeSelection) {
     this.message = event['editor']['root']['innerHTML'];
   }
+
+
+  getIdOfChat() {
+    let id;
+    this.route.paramMap.subscribe(paramMap => { id = paramMap.get('id'); })
+    return id;
+  }
+
+
+  getUserIdFromLocalStorage() {
+    return JSON.parse(localStorage.getItem('user'));
+  }
+
+
+  getCurrentTimeToNumber() {
+    return Date.now();
+  }
+
 }
