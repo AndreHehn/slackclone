@@ -5,7 +5,7 @@ export class Message {
     message: string = '';
     pictureUrl: string = '';
     timestamp: number = null;
-    answers: [] = [];
+    answers: string[] = [];
 
 
     constructor(obj?: any) {

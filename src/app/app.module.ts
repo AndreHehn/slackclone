@@ -9,7 +9,6 @@ import { ChannelListComponent } from './channel-list/channel-list.component';
 import { ChannelComponent } from './channel/channel.component';
 import { ThreadComponent } from './thread/thread.component';
 import { DialogChannelInfoComponent } from './dialog-channel-info/dialog-channel-info.component';
-import { DirectMessagesComponent } from './direct-messages/direct-messages.component';
 import { DialogCreateNewChannelComponent } from './dialog-create-new-channel/dialog-create-new-channel.component';
 import { DialogCreateNewMessageComponent } from './dialog-create-new-message/dialog-create-new-message.component';
 
@@ -48,7 +47,6 @@ import { FormsModule } from '@angular/forms';
     ChannelComponent,
     ThreadComponent,
     DialogChannelInfoComponent,
-    DirectMessagesComponent,
     DialogCreateNewChannelComponent,
     DialogCreateNewMessageComponent,
     DialogBigPictureComponent,

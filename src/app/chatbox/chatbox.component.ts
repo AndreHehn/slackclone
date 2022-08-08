@@ -5,6 +5,8 @@ import { finalize } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { EditorChangeContent, EditorChangeSelection } from 'ngx-quill';
 import { ActivatedRoute } from '@angular/router';
+import { Message } from 'src/models/message.class';
+import { Channel } from 'src/models/channel.class';
 
 @Component({
   selector: 'app-chatbox',
@@ -22,7 +24,7 @@ export class ChatboxComponent implements OnInit {
     ]
   };
   preview: string;
-  message: string = '';
+  messageValue: string = '';
   currentFile = null;
   loading: boolean = false;
   uploaded: boolean = false;
@@ -30,7 +32,8 @@ export class ChatboxComponent implements OnInit {
   saved: boolean = false;
   channelId: string = '';
   userId: string = '';
-
+  message: Message = new Message();
+  channel: Channel = new Channel();
 
   constructor(
     private firestore: AngularFirestore,
@@ -86,12 +89,20 @@ export class ChatboxComponent implements OnInit {
 
 
   saveAndSend() {
-    // write code to save it in firestore later.
+    this.fillArray();
+    this.loading = true;
+    this.firestore
+      .collection('channel')
+      .doc(this.channelId)
+      .update(this.channel.toJson())
+      .then(() => {
+        this.loading = false;
+      });
   }
 
 
   changedEditor(event: EditorChangeContent | EditorChangeSelection) {
-    this.message = event['editor']['root']['innerHTML'];
+    this.messageValue = event['editor']['root']['innerHTML'];
   }
 
 
@@ -109,6 +120,15 @@ export class ChatboxComponent implements OnInit {
 
   getCurrentTimeToNumber() {
     return Date.now();
+  }
+
+  fillArray() {
+    this.message.creatorId = this.userId;
+    if (this.messageValue) this.message.message = this.messageValue;
+    if (this.preview != null) this.message.pictureUrl = this.preview;
+    this.message.timestamp = this.getCurrentTimeToNumber();
+    this.message.messageId ='' + Math.floor(Math.random() * 1000000000);
+    this.channel.messages.push(JSON.stringify(this.message));
   }
 
 }
