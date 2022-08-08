@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthService } from './shared/services/auth.service';
 import { FormControl, Validators } from '@angular/forms';
 
 
@@ -15,18 +13,14 @@ export class AppComponent {
   connected = false;
   showSearch = false;
 
-  constructor(private router: Router,
-    public authService: AuthService) { }
+  constructor() { }
 
 
   public ngOnInit() {
-    this.connected = (this.authService.isLoggedIn) ? true : false;
+
   }
 
-  logOut() {
-    this.router.navigate(['/']);
-    this.authService.SignOut();
-  }
+
 
 
 }

@@ -1,35 +1,13 @@
-<!-- 
-    Dialog für die Erstellung eines neuen Channels
-
-    Status: nicht responsive
-    keine Funktion 
-    
-    André-->
-
-
-<div class="dialogContainer">
-    <div class="headline">
-        <h1 mat-dialog-title>Channels erstellen</h1>
-        <mat-icon>close</mat-icon>
-    </div>
-    <div mat-dialog-content>
-        <p>Channels dienen deinem Team zur Kommunikation. Am besten sollten sie themenbezogen sein – #marketing zum
-            Beispiel.</p>
-        <div class="subheadWrap">
-            <h3>Name</h3><span class="info">Vergiss nicht, deinem Channel einen Namen zu geben.</span>
-        </div>
-        <mat-form-field appearance="fill">
-            <mat-label>Name</mat-label>
-            <input matInput placeholder="z.B. marketing" maxlength="80">
-            <!--# und zeichenzähler hinzufügen-->
-        </mat-form-field>
-        <h3>Beschreibung (optional)</h3>
-        <mat-form-field appearance="fill">
-            <mat-label>Beschreibung</mat-label>
-            <input matInput placeholder="z.B. marketing" maxlength="80">
-        </mat-form-field>
-        <p class="question">Worum geht es in diesem Channel?</p>
-        <div class="buttonWrap"><button mat-button color="accent">Erstellen</button></div>
-        <!--disabled eingeben, wenn kein name gegeben ist-->
-    </div>
+<h1 mat-dialog-title>
+    Add new Channel</h1>
+<div mat-dialog-content>
+    <p>Pleas enter the name of a Channel</p>
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput [(ngModel)]="channelName">
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">No Thanks</button>
+    <button mat-button [disabled]="channelName.length == 0" [mat-dialog-close]="channelName" cdkFocusInitial>Ok</button>
 </div>

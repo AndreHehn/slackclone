@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dialog-create-new-channel',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DialogCreateNewChannelComponent implements OnInit {
 
-  constructor() { }
+  channelName:string = '';
+
+
+  constructor(public dialogRef: MatDialogRef<DialogCreateNewChannelComponent>,
+    public dialog: MatDialog,) { }
 
   ngOnInit(): void {
   }
 
+  onNoClick() {
+    this.dialogRef.close();
+  }
+
+  
 }

@@ -25,15 +25,20 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import {MatFormFieldModule} from '@angular/material/form-field'; 
-import {MatInputModule} from '@angular/material/input'; 
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { AutosizeModule } from 'ngx-autosize';
 import { DialogBigPictureComponent } from './dialog-big-picture/dialog-big-picture.component';
 import { DialogChannelInfoEditDescriptionComponent } from './dialog-channel-info-edit-description/dialog-channel-info-edit-description.component';
 import { QuillModule } from 'ngx-quill';
-
-
-
+import { MainContainerComponent } from './main-container/main-container.component';
+import { LoginComponent } from './login/login.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ToolbarComponent } from './toolbar/toolbar.component';
+import { LeftSideComponent } from './left-side/left-side.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -47,7 +52,12 @@ import { QuillModule } from 'ngx-quill';
     DialogCreateNewChannelComponent,
     DialogCreateNewMessageComponent,
     DialogBigPictureComponent,
-    DialogChannelInfoEditDescriptionComponent
+    DialogChannelInfoEditDescriptionComponent,
+    MainContainerComponent,
+    LoginComponent,
+    SignUpComponent,
+    ToolbarComponent,
+    LeftSideComponent
   ],
   imports: [
     MatToolbarModule,
@@ -67,7 +77,10 @@ import { QuillModule } from 'ngx-quill';
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    ReactiveFormsModule,
+    MatDialogModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
