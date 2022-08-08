@@ -5,11 +5,13 @@
 status:
 Responsive muss angepasst werden, sobald es in der richtigen Komponente eingebunden ist.
 
-Hover-Effekte müssen noch eingebunden werden
+Hover-Effekte müssen noch eingebunden und geändert werden
 
 Aktiv und nicht Aktiv ebenso.
 
-noch keine Funktion 
+Text wird in variable gespeichert aber noch nicht hochgeladen
+
+Bild kann hochgeladen werden
 
 André
 
@@ -17,8 +19,22 @@ André
 
 <!-- 
 <mat-card>
-    <quill-editor formControl placeholder="Nachricht an" [modules]="modules" (onEditorChanged)="changedEditor($event)"></quill-editor>
+    <quill-editor formControl placeholder="Nachricht an" [modules]="modules" (onEditorChanged)="changedEditor($event)">
+    </quill-editor>
+    <div class="pictureWrap" *ngIf="preview">
+        <div class="singlePicture">
+            <div class="delete">
+                <mat-icon (click)="deleteLastUpload()">close</mat-icon>
+            </div>
+            <img class="preview" [src]="preview">
+        </div>
+    </div>
     <div class="sendButton">
-        <mat-icon class="icon" (click)="print()">send</mat-icon>
+        <label for="files" class="customUpload">
+            <input type="file" id="files" single accept="*.jpg .png" (change)="uploadFile($event)"
+                (click)="deleteLastUpload()" placeholder="Upload a picture">
+            <mat-icon class="icon">image</mat-icon>
+        </label>
+        <mat-icon class="icon" (click)="saveAndSend()">send</mat-icon>
     </div>
 </mat-card> -->

@@ -773,7 +773,7 @@
 }
 
 .ql-snow .ql-editor blockquote {
-  border-left: 4px solid #ccc;
+  border-left: 4px solid #C7C7C7;
   margin-bottom: 5px;
   margin-top: 5px;
   padding-left: 16px;
@@ -851,16 +851,16 @@
 }
 
 .ql-snow .ql-picker.ql-expanded .ql-picker-label {
-  color: #ccc;
+  color: #C7C7C7;;
   z-index: 2;
 }
 
 .ql-snow .ql-picker.ql-expanded .ql-picker-label .ql-fill {
-  fill: #ccc;
+  fill: #C7C7C7;;
 }
 
 .ql-snow .ql-picker.ql-expanded .ql-picker-label .ql-stroke {
-  stroke: #ccc;
+  stroke: #C7C7C7;;
 }
 
 .ql-snow .ql-picker.ql-expanded .ql-picker-options {
@@ -1061,11 +1061,11 @@
 }
 
 .ql-toolbar.ql-snow {
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  border-left: 1px solid #ccc;
-  border-right: 1px solid #ccc;
-  border-top: 1px solid #ccc;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-left: 1px solid #C7C7C7;;
+  border-right: 1px solid #C7C7C7;;
+  border-top: 1px solid #C7C7C7;;
   box-sizing: border-box;
   font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
   padding: 8px;
@@ -1085,11 +1085,11 @@
 }
 
 .ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-label {
-  border-color: #ccc;
+  border-color: #C7C7C7;;
 }
 
 .ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-options {
-  border-color: #ccc;
+  border-color: #C7C7C7;;
 }
 
 .ql-toolbar.ql-snow .ql-color-picker .ql-picker-item.ql-selected,
@@ -1103,7 +1103,7 @@
 
 .ql-snow .ql-tooltip {
   background-color: #fff;
-  border: 1px solid #ccc;
+  border: 1px solid #C7C7C7;;
   box-shadow: 0px 0px 5px #ddd;
   color: #444;
   padding: 5px 12px;
@@ -1118,7 +1118,7 @@
 
 .ql-snow .ql-tooltip input[type=text] {
   display: none;
-  border: 1px solid #ccc;
+  border: 1px solid #C7C7C7;;
   font-size: 13px;
   height: 26px;
   margin: 0px;
@@ -1135,7 +1135,7 @@
 }
 
 .ql-snow .ql-tooltip a.ql-action::after {
-  border-right: 1px solid #ccc;
+  border-right: 1px solid #C7C7C7;;
   content: 'Edit';
   margin-left: 16px;
   padding-right: 8px;
@@ -1182,6 +1182,6 @@
 }
 
 .ql-container.ql-snow {
-  border-left: 1px solid #ccc;
-  border-right: 1px solid #ccc;
+  border-left: 1px solid #C7C7C7;;
+  border-right: 1px solid #C7C7C7;;
 }
