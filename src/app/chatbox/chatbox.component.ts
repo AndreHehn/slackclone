@@ -41,10 +41,13 @@ export class ChatboxComponent implements OnInit {
     private storage: AngularFireStorage
   ) { }
 
+
   ngOnInit(): void {
     this.channelId = this.getIdOfChat();
     this.userId = this.getUserIdFromLocalStorage();
+    this.loadChannel();
   }
+
 
   ngOnDestroy(): void {
     if (this.uploaded && !this.saved) this.deleteLastUpload();
@@ -97,6 +100,7 @@ export class ChatboxComponent implements OnInit {
       .update(this.channel.toJson())
       .then(() => {
         this.loading = false;
+        location.reload();
       });
   }
 
@@ -122,13 +126,25 @@ export class ChatboxComponent implements OnInit {
     return Date.now();
   }
 
+
   fillArray() {
     this.message.creatorId = this.userId;
     if (this.messageValue) this.message.message = this.messageValue;
     if (this.preview != null) this.message.pictureUrl = this.preview;
     this.message.timestamp = this.getCurrentTimeToNumber();
-    this.message.messageId ='' + Math.floor(Math.random() * 1000000000);
+    this.message.messageId = '' + Math.floor(Math.random() * 1000000000);
     this.channel.messages.push(JSON.stringify(this.message));
+  }
+
+
+  loadChannel() {
+    this.firestore.collection('channel').doc(this.channelId).valueChanges().subscribe((changes: any) => {
+      let dataFromChannel = changes;
+      if (dataFromChannel.messages) this.channel.messages = dataFromChannel.messages;
+      if (dataFromChannel.users) this.channel.users = dataFromChannel.users;
+      if (dataFromChannel.channelId) this.channel.channelId = dataFromChannel.chanelId;
+      if (dataFromChannel.channelName) this.channel.channelName;
+    });
   }
 
 }

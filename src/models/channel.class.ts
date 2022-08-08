@@ -3,12 +3,14 @@ export class Channel {
     users: [] = [];
     messages: string[] = [];
     channelId: string = '';
+    channelName: string = ``;
 
 
     constructor(obj?: any) {
         this.users = obj ? obj.users : [];
         this.messages = obj ? obj.messages : [];
         this.channelId = obj ? obj.channelId : '';
+        this.channelName = obj ? obj.channelName : '';
     }
 
 
@@ -17,6 +19,7 @@ export class Channel {
             users: this.users,
             messages: this.messages,
             channelId: this.channelId,
+            channelName: this.channelName
         }
     }
 }
