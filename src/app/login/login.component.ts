@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
 import { AuthService } from 'src/app/service/auth.service';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+
 
 
 @Component({
@@ -29,13 +31,13 @@ export class LoginComponent implements OnInit {
   get email() {
     return this.loginForm.get('email');
   }
+
   get password() {
     return this.loginForm.get('password');
   }
+
   submit() {
-    if (!this.loginForm.valid) {
-      return;
-    }
+    if (!this.loginForm.valid) return;
     const { email, password } = this.loginForm.value;
     this.authService.login(email, password).pipe(
       this.toast.observe({
@@ -44,8 +46,26 @@ export class LoginComponent implements OnInit {
         error: ({ message }) => `There was an error: ${message} `
       })
     ).subscribe(() => {
-       this.router.navigate(['main']);
+      this.pushUidToLocalStorage();
+      this.router.navigate(['main']);
     });
+  }
+
+
+
+  pushUidToLocalStorage() {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        localStorage.setItem('SlackCloneUser', JSON.stringify(user.uid));
+        JSON.parse(localStorage.getItem('SlackCloneUser')!);
+      }
+      else {
+        localStorage.setItem('SlackCloneUser', 'null');
+        JSON.parse(localStorage.getItem('SlackCloneUser')!);
+      }
+    }
+    );
   }
 
 }
