@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
 
 @Component({
@@ -8,13 +9,18 @@ import { AuthService } from '../service/auth.service';
 })
 export class ToolbarComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,
+    private router: Router) { }
 
   ngOnInit(): void {
   }
 
   logout() {
-    this.authService.logout();
+    localStorage.clear();
+    this.authService.logout()
+    .subscribe(() => {
+      this.router.navigate(['/']);
+    });
   }
 
 }
