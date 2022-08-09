@@ -51,8 +51,6 @@ export class LoginComponent implements OnInit {
     });
   }
 
-
-
   pushUidToLocalStorage() {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
