@@ -39,6 +39,16 @@ export class LoginComponent implements OnInit {
   submit() {
     if (!this.loginForm.valid) return;
     const { email, password } = this.loginForm.value;
+    this.logIn(email, password);
+  }
+
+
+  logInAsGuest() {
+    this.logIn('guestuser@slackclone.de', 'password');
+  }
+
+
+  logIn(email: string, password: string) {
     this.authService.login(email, password).pipe(
       this.toast.observe({
         success: 'Logged in successfully',
@@ -50,6 +60,8 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['main']);
     });
   }
+
+
 
   pushUidToLocalStorage() {
     const auth = getAuth();
