@@ -24,4 +24,9 @@ export class AuthService {
   logout(): Observable<any> {
     return from(this.auth.signOut());
   }
+
+  get isLoggedIn(): boolean {
+    const user = JSON.parse(localStorage.getItem('slackCloneUser')!);
+    return user !== null !== false ? true : false;
+  }
 }
