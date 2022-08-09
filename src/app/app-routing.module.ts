@@ -26,8 +26,8 @@ const routes: Routes = [
     component: MainContainerComponent,
     children:
       [
-        { path: 'channel/:id', component: ChannelComponent, }
-
+        { path: 'channel/:id', component: ChannelComponent, },
+        { path: 'channel/:id/thread/:id2', component: ChannelComponent }
       ]
   }
 ];

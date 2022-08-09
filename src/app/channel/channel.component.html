@@ -7,3 +7,37 @@
 -->
 
 <!-- <app-chatbox></app-chatbox> -->
+<!--
+
+    path: 'main',
+    component: MainContainerComponent,
+    children:
+      [
+        { path: 'channel/:id', component: ChannelComponent, },
+        { path: 'channel/:id/thread/:id2', component: ChannelComponent }
+      ]
+
+
+      Hey, Ich habe mir das hinsichtlich der Einbindung vom Thread so gedacht:
+       
+      Anzeige des Threads, sobald eine zweite Id vorhanden ist ähnlich dem Muster:
+
+Id2 entspricht der MessageId
+
+
+
+      import { ActivatedRoute } from '@angular/router';
+
+constructor(private route: ActivatedRoute) {
+  this.route.paramMap.subscribe( params => {
+    this.id_1 = params.get('id1');
+    this.id_2 = params.get('id2');
+
+  });
+}
+
+*ngIf="this.id_2"
+
+
+
+-->
