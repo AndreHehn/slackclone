@@ -43,7 +43,8 @@ export class ChatboxComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.channelId = this.getIdOfChat();
+    // this.channelId = this.getIdOfChat();
+    this.channelId = 'akCISwDzqfxOwC6ZxOJw';
     this.userId = this.getUserIdFromLocalStorage();
     this.loadChannel();
   }

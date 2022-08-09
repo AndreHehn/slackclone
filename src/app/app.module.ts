@@ -38,6 +38,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { LeftSideComponent } from './left-side/left-side.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
+import { MembersComponent } from './members/members.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { FormsModule } from '@angular/forms';
     LoginComponent,
     SignUpComponent,
     ToolbarComponent,
-    LeftSideComponent
+    LeftSideComponent,
+    MembersComponent
   ],
   imports: [
     MatToolbarModule,
