@@ -7,6 +7,7 @@ import { EditorChangeContent, EditorChangeSelection } from 'ngx-quill';
 import { ActivatedRoute } from '@angular/router';
 import { Message } from 'src/models/message.class';
 import { Channel } from 'src/models/channel.class';
+import { Answer } from 'src/models/answer.class';
 
 @Component({
   selector: 'app-chatbox',
@@ -28,12 +29,12 @@ export class ChatboxComponent implements OnInit {
   currentFile = null;
   loading: boolean = false;
   uploaded: boolean = false;
-  uploadPercent: Observable<number>;
   saved: boolean = false;
   channelId: string = '';
   userId: string = '';
   message: Message = new Message();
   channel: Channel = new Channel();
+  answer: Answer = new Answer();
 
   constructor(
     private firestore: AngularFirestore,
@@ -77,7 +78,6 @@ export class ChatboxComponent implements OnInit {
     const fileRef = this.storage.ref(filePath);
     this.currentFile = fileRef;
     const task = this.storage.upload(filePath, file);
-    this.uploadPercent = task.percentageChanges();    // observe percentage changes
     task.snapshotChanges().pipe(finalize(() => this.saveUrl(fileRef))).subscribe();
   }
 
@@ -118,6 +118,13 @@ export class ChatboxComponent implements OnInit {
   }
 
 
+  getIdOfMessage() {
+    let id;
+    this.route.paramMap.subscribe(paramMap => { id = paramMap.get('id2'); })
+    return id;
+  }
+
+
   getUserIdFromLocalStorage() {
     return JSON.parse(localStorage.getItem('SlackCloneUser'));
   }
@@ -129,6 +136,12 @@ export class ChatboxComponent implements OnInit {
 
 
   fillArray() {
+    if (!this.getIdOfMessage()) this.fillMessage();
+    if (this.getIdOfMessage()) this.fillAnswer();
+  }
+
+
+  fillMessage() {
     this.message.creatorId = this.userId;
     if (this.messageValue) this.message.message = this.messageValue;
     if (this.preview != null) this.message.pictureUrl = this.preview;
@@ -136,6 +149,20 @@ export class ChatboxComponent implements OnInit {
     this.message.messageId = '' + Math.floor(Math.random() * 1000000000);
     this.channel.messages.push(JSON.stringify(this.message));
   }
+
+  fillAnswer() {//not sure if works. Has to be tested in Thread-component.
+    this.answer.creatorId = this.userId;
+    this.answer.timestamp = this.getCurrentTimeToNumber();
+    if (this.preview != null) this.answer.pictureUrl = this.preview;
+    if (this.messageValue) this.answer.message = this.messageValue;
+    let channelToPushIn = this.channel.messages;
+    for (let i = 0; i < channelToPushIn.length; i++) {
+      const element = channelToPushIn[i];
+      if (element['messageId'] = this.getIdOfMessage()) element[this.getIdOfMessage()]['answers'].push(this.answer);
+    }
+    this.channel.messages.push(JSON.stringify(channelToPushIn));
+  }
+
 
 
   loadChannel() {

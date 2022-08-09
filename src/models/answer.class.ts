@@ -1,6 +1,5 @@
 export class Answer {
 
-    answerId: string = '';
     creatorId: string = '';
     message: string = '';
     pictureUrl: string = '';
@@ -8,7 +7,6 @@ export class Answer {
 
 
     constructor(obj?: any) {
-        this.answerId = obj ? obj.answerId : '';
         this.creatorId = obj ? obj.creatorId : '';
         this.message = obj ? obj.message : '';
         this.pictureUrl = obj ? obj.pictureUrl : '';
@@ -18,7 +16,6 @@ export class Answer {
 
     public toJson() {
         return {
-            answerId: this.answerId,
             creatorId: this.creatorId,
             message: this.message,
             pictureUrl: this.pictureUrl,
