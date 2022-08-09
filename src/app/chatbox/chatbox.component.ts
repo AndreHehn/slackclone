@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { finalize } from 'rxjs/operators';
@@ -16,6 +16,7 @@ import { Answer } from 'src/models/answer.class';
 })
 export class ChatboxComponent implements OnInit {
 
+  @Input() parentName: string;
   modules = {
     toolbar: [
       ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
@@ -136,8 +137,8 @@ export class ChatboxComponent implements OnInit {
 
 
   fillArray() {
-    if (!this.getIdOfMessage()) this.fillMessage();
-    if (this.getIdOfMessage()) this.fillAnswer();
+    if (this.parentName == 'channel') this.fillMessage();
+    if (this.parentName == 'thread') this.fillAnswer();
   }
 
 
