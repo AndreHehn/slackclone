@@ -8,3 +8,24 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     width: 0px !important;
     height: 0px !important;
 }
+
+.d-flex {
+    display: flex;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.mb8 {
+    margin-bottom: 8px !important;
+}
+
+.mb16 {
+    margin-bottom: 16px !important;
+}
+
+.mb24 {
+    margin-bottom: 24px !important;
+}
