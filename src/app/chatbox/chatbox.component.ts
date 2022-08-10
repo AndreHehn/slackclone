@@ -94,7 +94,7 @@ export class ChatboxComponent implements OnInit {
 
 
   saveAndSend() {
-    this.fillArray();
+    this.fillObject();
     this.loading = true;
     this.firestore
       .collection('channel')
@@ -136,7 +136,7 @@ export class ChatboxComponent implements OnInit {
   }
 
 
-  fillArray() {
+  fillObject() {
     if (this.parentName == 'channel') this.fillMessage();
     if (this.parentName == 'thread') this.fillAnswer();
   }
@@ -151,6 +151,7 @@ export class ChatboxComponent implements OnInit {
     this.channel.messages.push(JSON.stringify(this.message));
   }
 
+
   fillAnswer() {//not sure if works. Has to be tested in Thread-component.
     this.answer.creatorId = this.userId;
     this.answer.timestamp = this.getCurrentTimeToNumber();
@@ -163,7 +164,6 @@ export class ChatboxComponent implements OnInit {
     }
     this.channel.messages.push(JSON.stringify(channelToPushIn));
   }
-
 
 
   loadChannel() {

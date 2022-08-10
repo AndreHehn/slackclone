@@ -17,7 +17,6 @@ export class User {
             userId: this.userId,
             userName: this.userName,
             profilePic: this.profilePic,
-
         }
     }
 }
