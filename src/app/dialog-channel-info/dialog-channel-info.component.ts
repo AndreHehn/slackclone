@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DialogChannelInfoComponent implements OnInit {
 
+  countMembers: number = null;
+  userList;
+  creator;
   constructor() { }
 
   ngOnInit(): void {

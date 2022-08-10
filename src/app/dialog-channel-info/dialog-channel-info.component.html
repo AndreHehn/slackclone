@@ -30,21 +30,24 @@ and info about channel
                 </tr>
                 <tr>
                     <td>Erstellt von:</td>
-                    <td>Ersteller</td>
+                    <td>{{ creator }}</td>
                 </tr>
             </table>
 
         </mat-card>
         <mat-card>
-            <h2>Mitglieder (1)</h2>
-<table>
-    <tr>
-        <td><img src=""></td>
-        <td>Max Mustermann</td>
-        <td><button mat-button color="accent">entfernen</button></td>
-    </tr>
-</table>
-<button mat-button color="warn">Channel verlassen</button>
+            <h2>Mitglieder ({{ countMembers }})</h2>
+            <table>
+                <tr><button mat-button color="accent">Leute hinzufügen</button></tr>
+                <tr *ngFor="let user of userList">
+                    <div>
+                        <img src="{{ userList.userUrl }}">
+                        <span>{{ userList.userName }}</span>
+                        <button mat-button color="accent">entfernen</button>
+                    </div>
+                </tr>
+            </table>
+            <button mat-button color="warn">Channel verlassen</button>
         </mat-card>
 
     </div>
