@@ -12,7 +12,6 @@ import { Channel } from 'src/models/channel.class';
 export class DialogCreateNewChannelComponent implements OnInit {
 
   channelName: string = '';
-  description: string = '';
   channel: Channel = new Channel();
 
 
@@ -42,18 +41,12 @@ export class DialogCreateNewChannelComponent implements OnInit {
 
 
   fillObject() {
-    let currentUser: string = this.getUserIdFromLocalStorage();
+    let currentUser = JSON.parse(localStorage.getItem('slackCloneUser'));
     this.channel.users.push(currentUser);
     this.channel.channelName = this.channelName;
-    this.channel.description = this.description;
     this.channel.type = 'channel';
   }
-
-
-  getUserIdFromLocalStorage() {
-    return JSON.parse(localStorage.getItem('SlackCloneUser'));
-  }
-
+  
 
   pushCustomIdToChannel(channelId) {
     this.firestore
@@ -64,6 +57,5 @@ export class DialogCreateNewChannelComponent implements OnInit {
         this.router.navigate(['/channel/' + channelId]);
       });
   }
-
 
 }

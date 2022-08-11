@@ -37,11 +37,6 @@
             <mat-label>Name</mat-label>
             <input matInput placeholder="z.B. marketing" maxlength="80" [(ngModel)]="channelName">
         </mat-form-field>
-        <h3>Beschreibung (optional)</h3>
-        <mat-form-field appearance="fill">
-            <mat-label>Beschreibung</mat-label>
-            <input matInput placeholder="" [(ngModel)]="description">
-        </mat-form-field>
         <p class="question">Worum geht es in diesem Channel?</p>
         <div class="buttonWrap"><button mat-button color="accent" [disabled]="channelName.length == 0"
                 (click)="createNewChannel()">Erstellen</button></div>

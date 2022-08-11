@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,6 +10,13 @@ import { ThreadComponent } from './thread/thread.component';
 import { DialogChannelInfoComponent } from './dialog-channel-info/dialog-channel-info.component';
 import { DialogCreateNewChannelComponent } from './dialog-create-new-channel/dialog-create-new-channel.component';
 import { DialogCreateNewMessageComponent } from './dialog-create-new-message/dialog-create-new-message.component';
+import { MainContainerComponent } from './main-container/main-container.component';
+import { LoginComponent } from './login/login.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { MembersComponent } from './members/members.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
+import { LeftSideComponent } from './left-side/left-side.component';
+import { DialogBigPictureComponent } from './dialog-big-picture/dialog-big-picture.component';
 
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
@@ -26,18 +32,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { AutosizeModule } from 'ngx-autosize';
-import { DialogBigPictureComponent } from './dialog-big-picture/dialog-big-picture.component';
-import { QuillModule } from 'ngx-quill';
-import { MainContainerComponent } from './main-container/main-container.component';
-import { LoginComponent } from './login/login.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { ToolbarComponent } from './toolbar/toolbar.component';
-import { LeftSideComponent } from './left-side/left-side.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { AutosizeModule } from 'ngx-autosize';
+import { QuillModule } from 'ngx-quill';
+import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-import { MembersComponent } from './members/members.component';
+
 
 
 
@@ -65,6 +66,7 @@ import { MembersComponent } from './members/members.component';
     QuillModule,
     MatMenuModule,
     MatIconModule,
+    MatAutocompleteModule,
     MatButtonModule,
     MatSidenavModule,
     MatInputModule,

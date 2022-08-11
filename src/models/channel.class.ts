@@ -4,7 +4,6 @@ export class Channel {
     messages: string[] = [];
     channelId: string = '';
     channelName: string = '';
-    description: string = '';
     type: string = '';
 
 
@@ -14,7 +13,6 @@ export class Channel {
         this.channelId = obj ? obj.channelId : '';
         this.channelName = obj ? obj.channelName : '';
         this.type = obj ? obj.type : '';
-        this.description = obj ? obj.description : '';
     }
 
 
@@ -25,7 +23,6 @@ export class Channel {
             channelId: this.channelId,
             channelName: this.channelName,
             type: this.type,
-            description: this.description
         }
     }
 }

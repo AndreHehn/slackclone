@@ -45,9 +45,8 @@ export class ChatboxComponent implements OnInit {
 
 
   ngOnInit(): void {
-    // this.channelId = this.getIdOfChat();
-    this.channelId = 'akCISwDzqfxOwC6ZxOJw';
-    this.userId = this.getUserIdFromLocalStorage();
+    this.channelId = this.getIdOfChat();
+    this.userId = JSON.parse(localStorage.getItem('slackCloneUser'));
     this.loadChannel();
   }
 
@@ -102,7 +101,7 @@ export class ChatboxComponent implements OnInit {
       .update(this.channel.toJson())
       .then(() => {
         this.loading = false;
-        location.reload();
+        location.reload();// andere Option überlegen um Inhalt von Quill zu löschen und Bild zurückzusetzen;
       });
   }
 
@@ -126,16 +125,6 @@ export class ChatboxComponent implements OnInit {
   }
 
 
-  getUserIdFromLocalStorage() {
-    return JSON.parse(localStorage.getItem('SlackCloneUser'));
-  }
-
-
-  getCurrentTimeToNumber() {
-    return Date.now();
-  }
-
-
   fillObject() {
     if (this.parentName == 'channel') this.fillMessage();
     if (this.parentName == 'thread') this.fillAnswer();
@@ -146,7 +135,7 @@ export class ChatboxComponent implements OnInit {
     this.message.creatorId = this.userId;
     if (this.messageValue) this.message.message = this.messageValue;
     if (this.preview != null) this.message.pictureUrl = this.preview;
-    this.message.timestamp = this.getCurrentTimeToNumber();
+    this.message.timestamp = Date.now();
     this.message.messageId = '' + Math.floor(Math.random() * 1000000000);
     this.channel.messages.push(JSON.stringify(this.message));
   }
@@ -154,7 +143,7 @@ export class ChatboxComponent implements OnInit {
 
   fillAnswer() {//not sure if works. Has to be tested in Thread-component.
     this.answer.creatorId = this.userId;
-    this.answer.timestamp = this.getCurrentTimeToNumber();
+    this.answer.timestamp = Date.now();
     if (this.preview != null) this.answer.pictureUrl = this.preview;
     if (this.messageValue) this.answer.message = this.messageValue;
     let channelToPushIn = this.channel.messages;

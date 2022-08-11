@@ -1,22 +1,26 @@
 export class User {
 
-    userId: string = '';
-    userName: string = '';
-    profilePic: string = '';
+    displayName: string = '';
+    uid: string;
+    email: string;
+    photoURL: string;
+
 
 
     constructor(obj?: any) {
-        this.userId = obj ? obj.userId : '';
-        this.userName = obj ? obj.userName : '';
-        this.profilePic = obj ? obj.profilePic : '';
+        this.displayName = obj ? obj.userName : '';
+        this.uid = obj ? obj.uid : '';
+        this.email = obj ? obj.email : '';
+        this.photoURL = obj ? obj.photoURL : '';
     }
 
 
     public toJson() {
         return {
-            userId: this.userId,
-            userName: this.userName,
-            profilePic: this.profilePic,
+            displayName: this.displayName,
+            uid: this.uid,
+            email: this.email,
+            photoURL: this.photoURL
         }
     }
 }

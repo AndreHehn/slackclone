@@ -16,33 +16,42 @@ and info about channel
 
 <div class="dialogContainer">
     <div class="headline">
-        <h1 mat-dialog-title>Channelname</h1>
+        <h1 mat-dialog-title>Channelname: </h1>
         <mat-icon>close</mat-icon>
     </div>
     <div mat-dialog-content>
         <mat-card>
-            <h2>Info</h2>
-            <table>
-                <tr>
-                    <td>Erstellt von:</td>
-                    <td>{{ creator }}</td>
-                </tr>
-            </table>
-
-        </mat-card>
-        <mat-card>
             <h2>Mitglieder ({{ countMembers }})</h2>
+
+            <form class="example-form">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Nutzer hinzufügen:</mat-label>
+                    <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
+                    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                            {{option.displayName}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+                <button mat-button color="accent" (click)="addUser()">hinzufügen</button>
+            </form>
+
+
+
+
+
+
+
+
             <table>
-                <tr><button mat-button color="accent">Leute hinzufügen</button></tr>
                 <tr *ngFor="let user of userList">
                     <div>
-                        <img src="{{ userList.userUrl }}">
-                        <span>{{ userList.userName }}</span>
+                        <!--<img src="{{ user.}}">-->
+                        <span>{{ user.displayName }}</span>
                     </div>
                 </tr>
             </table>
-            <button mat-button color="warn">Channel verlassen</button>
+            <button mat-button color="warn" (click)="deleteUser()">Channel verlassen</button>
         </mat-card>
-
     </div>
 </div>
