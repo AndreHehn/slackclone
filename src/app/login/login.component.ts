@@ -5,8 +5,6 @@ import { HotToastService } from '@ngneat/hot-toast';
 import { AuthService } from 'src/app/service/auth.service';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
-
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -37,8 +35,6 @@ export class LoginComponent implements OnInit {
     return this.loginForm.get('password');
   }
 
-
-
   submit() {
     if (!this.loginForm.valid) return;
     const { email, password } = this.loginForm.value;
@@ -48,6 +44,10 @@ export class LoginComponent implements OnInit {
 
   logInAsGuest() {
     this.logIn('guestuser@slackclone.de', 'password');
+  }
+
+  alert() {
+    alert('You are logged out');
   }
 
 
