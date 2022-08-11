@@ -21,7 +21,6 @@ export class ToolbarComponent implements OnInit {
     .subscribe(() => {
       this.router.navigate(['/']);
     });
-    this.authService.alert();
   }
 
 }

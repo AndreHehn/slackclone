@@ -8,8 +8,8 @@ import {
   UserInfo,
   UserCredential,
 } from '@angular/fire/auth';
+import { HotToastService } from '@ngneat/hot-toast';
 import { concatMap, from, Observable, of, switchMap } from 'rxjs';
-import { LoginComponent } from "../login/login.component";
 
 @Injectable({
   providedIn: 'root',
@@ -20,7 +20,7 @@ export class AuthService {
   currentUser$ = authState(this.auth);
 
   constructor(private auth: Auth,
-    private comp: LoginComponent) {}
+    private toast: HotToastService) {}
 
   signUp(email: string, password: string): Observable<UserCredential> {
     return from(createUserWithEmailAndPassword(this.auth, email, password));
@@ -31,13 +31,15 @@ export class AuthService {
   }
 
   logout(): Observable<any> {
+    this.toast.observe({
+      success: 'Logged out',
+      loading: 'Logging in...',
+      error: ({ message }) => `There was an error: ${message} `
+    })
     return from(this.auth.signOut());
   }
 
-  alert() {
-    this.comp.alert();
-    // alert('You are logged out');
-  }
+
 
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('slackCloneUser')!);

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
@@ -10,6 +10,11 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
+
+@Injectable({
+  providedIn: 'any',
+})
+
 export class LoginComponent implements OnInit {
   auth = getAuth();
   loginForm = new FormGroup({
@@ -44,10 +49,6 @@ export class LoginComponent implements OnInit {
 
   logInAsGuest() {
     this.logIn('guestuser@slackclone.de', 'password');
-  }
-
-  alert() {
-    alert('You are logged out');
   }
 
 
