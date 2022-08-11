@@ -8,7 +8,6 @@ import {
   UserInfo,
   UserCredential,
 } from '@angular/fire/auth';
-import { HotToastService } from '@ngneat/hot-toast';
 import { concatMap, from, Observable, of, switchMap } from 'rxjs';
 
 @Injectable({
@@ -19,8 +18,7 @@ export class AuthService {
 
   currentUser$ = authState(this.auth);
 
-  constructor(private auth: Auth,
-    private toast: HotToastService) {}
+  constructor(private auth: Auth) {}
 
   signUp(email: string, password: string): Observable<UserCredential> {
     return from(createUserWithEmailAndPassword(this.auth, email, password));
@@ -31,14 +29,8 @@ export class AuthService {
   }
 
   logout(): Observable<any> {
-    this.toast.observe({
-      success: 'Logged out',
-      loading: 'Logging in...',
-      error: ({ message }) => `There was an error: ${message} `
-    })
     return from(this.auth.signOut());
   }
-
 
 
   get isLoggedIn(): boolean {

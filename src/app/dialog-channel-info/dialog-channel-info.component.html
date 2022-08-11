@@ -43,7 +43,7 @@ and info about channel
                     <div>
                         <img src="{{ userList.userUrl }}">
                         <span>{{ userList.userName }}</span>
-                        <button mat-button color="accent">entfernen</button>
+                        <button mat-button color="accent" (click)="deleteUser(userList.userId)">entfernen</button>
                     </div>
                 </tr>
             </table>

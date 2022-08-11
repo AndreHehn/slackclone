@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
-
+import { HotToastService } from '@ngneat/hot-toast';
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
@@ -10,7 +10,8 @@ import { AuthService } from '../service/auth.service';
 export class ToolbarComponent implements OnInit {
 
   constructor(private authService: AuthService,
-    private router: Router) { }
+    private router: Router,
+    private toast: HotToastService) { }
 
   ngOnInit(): void {
   }
@@ -18,9 +19,15 @@ export class ToolbarComponent implements OnInit {
   logout() {
     localStorage.clear();
     this.authService.logout()
-    .subscribe(() => {
-      this.router.navigate(['/']);
-    });
+      .pipe(
+        this.toast.observe({
+          success: 'Logged out!',
+          loading: 'Logging out...',
+          error: ({ message }) => `There was an error: ${message} `
+        })
+      ).subscribe(() => {
+        this.router.navigate(['/']);
+      });
   }
 
 }
