@@ -24,11 +24,6 @@ and info about channel
             <h2>Info</h2>
             <table>
                 <tr>
-                    <td>Beschreibung:</td>
-                    <td>Eine Beschreibung hinzufügen</td>
-                    <td><button mat-button color="accent">bearbeiten</button></td>
-                </tr>
-                <tr>
                     <td>Erstellt von:</td>
                     <td>{{ creator }}</td>
                 </tr>
@@ -43,7 +38,6 @@ and info about channel
                     <div>
                         <img src="{{ userList.userUrl }}">
                         <span>{{ userList.userName }}</span>
-                        <button mat-button color="accent" (click)="deleteUser(userList.userId)">entfernen</button>
                     </div>
                 </tr>
             </table>

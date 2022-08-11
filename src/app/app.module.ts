@@ -28,7 +28,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { AutosizeModule } from 'ngx-autosize';
 import { DialogBigPictureComponent } from './dialog-big-picture/dialog-big-picture.component';
-import { DialogChannelInfoEditDescriptionComponent } from './dialog-channel-info-edit-description/dialog-channel-info-edit-description.component';
 import { QuillModule } from 'ngx-quill';
 import { MainContainerComponent } from './main-container/main-container.component';
 import { LoginComponent } from './login/login.component';
@@ -53,7 +52,6 @@ import { MembersComponent } from './members/members.component';
     DialogCreateNewChannelComponent,
     DialogCreateNewMessageComponent,
     DialogBigPictureComponent,
-    DialogChannelInfoEditDescriptionComponent,
     MainContainerComponent,
     LoginComponent,
     SignUpComponent,
