@@ -36,6 +36,7 @@ export class ChatboxComponent implements OnInit {
   message: Message = new Message();
   channel: Channel = new Channel();
   answer: Answer = new Answer();
+  idOfMessage;
 
   constructor(
     private firestore: AngularFirestore,
@@ -45,7 +46,7 @@ export class ChatboxComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.channelId = this.getIdOfChat();
+    this.route.firstChild.paramMap.subscribe(paramMap => { this.channelId = paramMap['params']['id1']; })
     this.userId = JSON.parse(localStorage.getItem('slackCloneUser'));
     this.loadChannel();
   }
@@ -111,20 +112,6 @@ export class ChatboxComponent implements OnInit {
   }
 
 
-  getIdOfChat() {
-    let id;
-    this.route.paramMap.subscribe(paramMap => { id = paramMap.get('id'); })
-    return id;
-  }
-
-
-  getIdOfMessage() {
-    let id;
-    this.route.paramMap.subscribe(paramMap => { id = paramMap.get('id2'); })
-    return id;
-  }
-
-
   fillObject() {
     if (this.parentName == 'channel') this.fillMessage();
     if (this.parentName == 'thread') this.fillAnswer();
@@ -142,6 +129,7 @@ export class ChatboxComponent implements OnInit {
 
 
   fillAnswer() {//not sure if works. Has to be tested in Thread-component.
+    this.route.firstChild.paramMap.subscribe(paramMap => { this.idOfMessage = paramMap['params']['id2']; })
     this.answer.creatorId = this.userId;
     this.answer.timestamp = Date.now();
     if (this.preview != null) this.answer.pictureUrl = this.preview;
@@ -149,7 +137,7 @@ export class ChatboxComponent implements OnInit {
     let channelToPushIn = this.channel.messages;
     for (let i = 0; i < channelToPushIn.length; i++) {
       const element = channelToPushIn[i];
-      if (element['messageId'] = this.getIdOfMessage()) element[this.getIdOfMessage()]['answers'].push(this.answer);
+      if (element['messageId'] = this.idOfMessage) element[this.idOfMessage]['answers'].push(this.answer);
     }
     this.channel.messages.push(JSON.stringify(channelToPushIn));
   }
@@ -158,8 +146,8 @@ export class ChatboxComponent implements OnInit {
   loadChannel() {
     this.firestore.collection('channel').doc(this.channelId).valueChanges().subscribe((changes: any) => {
       let dataFromChannel = changes;
-      if (dataFromChannel.messages) this.channel.messages = dataFromChannel.messages;
-      if (dataFromChannel.users) this.channel.users = dataFromChannel.users;
+      if (dataFromChannel.messages.length > 0) this.channel.messages = dataFromChannel.messages;
+      if (dataFromChannel.users.length > 0) this.channel.users = dataFromChannel.users;
       if (dataFromChannel.channelId) this.channel.channelId = dataFromChannel.chanelId;
       if (dataFromChannel.channelName) this.channel.channelName = dataFromChannel.channelName;
     });
