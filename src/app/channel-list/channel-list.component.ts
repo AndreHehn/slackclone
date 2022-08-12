@@ -18,7 +18,7 @@ export class ChannelListComponent implements OnInit {
       .valueChanges()
       .subscribe((changes: any) =>{
         this.allChannels = changes;
-        console.log(this.allChannels);
+        // console.log(this.allChannels);
       });
   }
 

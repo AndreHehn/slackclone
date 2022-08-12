@@ -2,7 +2,19 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px;
-    border: 1px solid white;
-    height: 60px;
+    color: white;
+    background-color: rgb(32, 31, 34);
+    padding: 16px;
+
+    h2 {
+        color: white;
+        margin: 0;
+        margin-right: 24px;
+    }
+
+    .user {
+        align-items: center;
+        justify-content: center;
+        margin-right: 24px;
+    }
 }
