@@ -13,6 +13,9 @@ export class DialogCreateNewChannelComponent implements OnInit {
 
   channelName: string = '';
   channel: Channel = new Channel();
+  allChannels;
+  usedNames = [];
+  nameIsUsed = false;
 
 
   constructor(public dialogRef: MatDialogRef<DialogCreateNewChannelComponent>,
@@ -20,23 +23,31 @@ export class DialogCreateNewChannelComponent implements OnInit {
     private firestore: AngularFirestore,
     private router: Router) { }
 
+
   ngOnInit(): void {
+    this.getUsedNames();
   }
+
 
   onNoClick() {
     this.dialogRef.close();
   }
 
+
   createNewChannel() {
-    this.fillObject();
-    this.firestore
-      .collection('channel')
-      .add(this.channel.toJson())
-      .then((ref) => {
-        let channelId = ref.id;
-        this.channel.channelId = channelId;
-        this.pushCustomIdToChannel(channelId);
-      });
+    this.checkIfNameIsUsed();
+    if (!this.nameIsUsed) {
+      this.fillObject();
+      this.firestore
+        .collection('channel')
+        .add(this.channel.toJson())
+        .then((ref) => {
+          let channelId = ref.id;
+          this.channel.channelId = channelId;
+          this.pushCustomIdToChannel(channelId);
+          this.dialogRef.close();
+        });
+    }
   }
 
 
@@ -46,7 +57,7 @@ export class DialogCreateNewChannelComponent implements OnInit {
     this.channel.channelName = this.channelName;
     this.channel.type = 'channel';
   }
-  
+
 
   pushCustomIdToChannel(channelId) {
     this.firestore
@@ -58,4 +69,19 @@ export class DialogCreateNewChannelComponent implements OnInit {
       });
   }
 
+
+  getUsedNames() {
+    this.firestore.collection('channel').valueChanges({ idField: 'customId' }).subscribe((changes: any) => {
+      this.allChannels = changes;
+      this.allChannels.forEach(element => { this.usedNames.push(element.channelName); });
+    });
+  }
+
+
+  checkIfNameIsUsed() {
+    this.nameIsUsed = false;
+    this.usedNames.forEach(element => {
+      if (element == this.channelName) this.nameIsUsed = true;
+    });
+  }
 }

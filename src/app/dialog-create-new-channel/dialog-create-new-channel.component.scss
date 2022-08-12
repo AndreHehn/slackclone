@@ -11,8 +11,9 @@
     justify-content: space-between;
     width: 100%;
 }
-.subheadWrap{
-    display:flex;
+
+.subheadWrap {
+    display: flex;
     align-items: baseline;
 }
 
@@ -21,10 +22,10 @@ mat-form-field {
 }
 
 
-.question{
+.question {
     margin-top: -12px;
     font-size: smaller;
-    color:#C1C1C1;
+    color: #C1C1C1;
 
 }
 
@@ -32,4 +33,11 @@ mat-form-field {
     width: 100%;
     display: flex;
     justify-content: flex-end;
+}
+
+.warntext {
+    color: orangered;
+
+    margin-left: 32px;
+    ;
 }
