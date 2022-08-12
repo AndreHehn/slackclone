@@ -13,13 +13,20 @@ import {
 import { filter, from, map, Observable, of, switchMap } from 'rxjs';
 import { ProfileUser } from '../models/user';
 import { AuthService } from './auth.service';
+
 @Injectable({
   providedIn: 'root',
 })
+
 export class UsersService {
+
+  allMembers = [];
+  selectedUsers = [];
+
   constructor(
     private firestore: Firestore,
     private authService: AuthService) {}
+
   get currentUserProfile$(): Observable<ProfileUser | null> {
     return this.authService.currentUser$.pipe(
       switchMap((user) => {
@@ -32,14 +39,17 @@ export class UsersService {
       })
     );
   }
+
   addUser(user: ProfileUser): Observable<void> {
     const ref = doc(this.firestore, 'users', user.uid);
     return from(setDoc(ref, user));
   }
+
   updateUser(user: ProfileUser): Observable<void> {
     const ref = doc(this.firestore, 'users', user.uid);
     return from(updateDoc(ref, { ...user }));
   }
+
   get allUsers$(): Observable<ProfileUser[]> {
     const ref = collection(this.firestore, 'users');
     const queryAll = query(ref);

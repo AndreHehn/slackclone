@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogAddMembersComponent } from '../dialog-add-members/dialog-add-members.component';
 
 @Component({
   selector: 'app-members',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MembersComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
+  }
+
+  openDialog() {
+    this.dialog.open(DialogAddMembersComponent, {
+      data: {
+        animal: 'panda',
+      },
+    });
   }
 
 }

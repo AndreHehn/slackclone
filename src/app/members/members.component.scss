@@ -1,6 +1,23 @@
-.membersCont {
-    background-color: green;
-    margin-top: 24px;
 
-    height: 40vh;
+.membersCont {
+    margin-top: 24px;
+    height: 44vh;
+    color: white;
+
+    button {
+        height: 28px;
+        width: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .channels {
+        max-height: 40vh;
+        overflow-y: scroll;
+    }
+
+    .channel {
+        cursor: pointer;
+    }
 }

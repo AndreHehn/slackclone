@@ -23,7 +23,7 @@ export class ToolbarComponent implements OnInit {
       .valueChanges()
       .subscribe((user: any) =>{
         this.member = user;
-        console.log(this.member);
+        // console.log(this.member);
       });
   }
 

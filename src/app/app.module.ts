@@ -38,8 +38,7 @@ import { AutosizeModule } from 'ngx-autosize';
 import { QuillModule } from 'ngx-quill';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-
-
+import { DialogAddMembersComponent } from './dialog-add-members/dialog-add-members.component';
 
 
 @NgModule({
@@ -58,7 +57,8 @@ import { FormsModule } from '@angular/forms';
     SignUpComponent,
     ToolbarComponent,
     LeftSideComponent,
-    MembersComponent
+    MembersComponent,
+    DialogAddMembersComponent
   ],
   imports: [
     MatToolbarModule,

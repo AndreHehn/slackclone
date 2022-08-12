@@ -1,0 +1,19 @@
+.dialogAddMembersCont {
+
+    min-width: 200px;
+
+    .dialogAddMember {
+
+        display: flex;
+        align-items: center;
+        margin-bottom: 4px;
+
+        button {
+            height: 28px;
+            width: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}
