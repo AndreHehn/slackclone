@@ -1,6 +1,13 @@
 <div class="channelCont">
-  <p>channel works!</p>
-  <!-- <router-outlet></router-outlet> -->
+    <div class="channelHeader">
+        Users in this channel:
+        <p *ngFor="let user of users">{{user}}, </p>
+        <!-- userid in username umwandeln fehlt noch -->
+    </div>
+    <div class="messageContainer">
+        <app-message-card *ngFor="let message of messages" messageText="{{message}}"></app-message-card>
+    </div>
+    <app-chatbox></app-chatbox>
 </div>
 
 <!--

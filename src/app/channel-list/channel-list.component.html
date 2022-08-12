@@ -6,6 +6,6 @@
         </button>
     </div>
     <div class="channels">
-        <div class="cursorPointer" *ngFor="let channel of allChannels">{{ channel.channelName }}</div>
+        <button class="channelButton cursorPointer" *ngFor="let channel of allChannels" (click)="changeSelectedId(channel.channelId)">{{ channel.channelName }}</button>
     </div>
 </div>

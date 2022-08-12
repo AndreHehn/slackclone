@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogCreateNewChannelComponent } from '../dialog-create-new-channel/dialog-create-new-channel.component';
+import { MessageDataService } from '../message-data-service/message-data.service';
 
 @Component({
   selector: 'app-channel-list',
@@ -13,7 +14,8 @@ export class ChannelListComponent implements OnInit {
   allChannels = [];
 
   constructor(private firestore: AngularFirestore,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog,
+    private MessageService :  MessageDataService) { }
 
   ngOnInit(): void {
     this.firestore
@@ -21,7 +23,7 @@ export class ChannelListComponent implements OnInit {
       .valueChanges()
       .subscribe((changes: any) =>{
         this.allChannels = changes;
-        // console.log(this.allChannels);
+         //console.log(this.allChannels);
       });
   }
 
@@ -46,4 +48,8 @@ export class ChannelListComponent implements OnInit {
       })
   }
 
+  changeSelectedId(channelId: string){
+   this.MessageService.changeId(channelId);
+  }
+ 
 }
