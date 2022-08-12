@@ -12,6 +12,18 @@
     width: 100%;
 }
 
-mat-card{
+mat-card {
     margin-bottom: 16px;
+}
+
+.user {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+
+.avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 2px;
 }
