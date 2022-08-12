@@ -15,12 +15,13 @@ and info about channel
 
 
 <div class="dialogContainer">
-    <div class="headline">
-        <h1 mat-dialog-title>Channelname: </h1>
-        <mat-icon>close</mat-icon>
-    </div>
+
     <div mat-dialog-content>
         <mat-card>
+            <div class="headline">
+                <h1 mat-dialog-title>Channelname: {{channel.channelName}}</h1>
+                <mat-icon>close</mat-icon>
+            </div>
             <h2>Mitglieder ({{ countMembers }})</h2>
 
             <form class="example-form">
@@ -29,7 +30,7 @@ and info about channel
                     <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
                     <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
                         <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                            <img class="avatar" [src]="option.photoURL"> {{option.displayName}}
+                            <img class="avatar" [src]="option.photoURL ? option.photoURL : avatar"> {{option.displayName}}
                         </mat-option>
                     </mat-autocomplete>
                 </mat-form-field>
@@ -38,7 +39,7 @@ and info about channel
             <table>
                 <tr *ngFor="let user of userList">
                     <div class="user">
-                        <img src="{{ user.photoURL }}" class="avatar">
+                        <img [src]=" user.photoURL ? user.photoURL : avatar" class="avatar">
                         <span>{{ user.displayName }}</span>
                     </div>
                 </tr>
