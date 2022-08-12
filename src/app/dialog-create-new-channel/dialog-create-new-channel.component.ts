@@ -54,7 +54,7 @@ export class DialogCreateNewChannelComponent implements OnInit {
       .doc(channelId)
       .update(this.channel.toJson())
       .then(() => {
-        this.router.navigate(['/channel/' + channelId]);
+        this.router.navigate(['main/channel/' + channelId]);
       });
   }
 
