@@ -11,7 +11,7 @@ export class User {
         this.displayName = obj ? obj.userName : '';
         this.uid = obj ? obj.uid : '';
         this.email = obj ? obj.email : '';
-        this.photoURL = obj ? obj.photoURL : '';
+        this.photoURL = obj ? obj.photoURL : './assets/avatar.png';
     }
 
 

@@ -30,28 +30,22 @@ export class DialogChannelInfoComponent implements OnInit {
   myControl = new FormControl<string | ProfileUser>('');
   options: ProfileUser[];
   filteredOptions: Observable<ProfileUser[]>;
+  avatar: string = './assets/avatar.png';
 
 
   constructor(private firestore: AngularFirestore, private route: ActivatedRoute, private router: Router) { }
 
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(paramMap => {
-      // this.channelId = paramMap.get('id');
-      this.channelId = 'gVrGhcP2czZwOffHzfNq';
-      this.allUsers();
-    });
+    this.route.firstChild.paramMap.subscribe(paramMap => { this.channelId = paramMap['params']['id1']; });
+    this.allUsers();
   }
-
-
-
 
 
   deleteUser() {
     this.deleteUserbyUid();
     this.changeUsers('delete');
   }
-
 
 
   changeUsers(status) {
@@ -65,14 +59,19 @@ export class DialogChannelInfoComponent implements OnInit {
       });
   }
 
+
   addUser() {
     this.addUserById();
     this.changeUsers('add');
   }
-  
+
 
   addUserById() {
-    this.channel.users.push(this.myControl.value['uid']);
+    let alreadyInChannel = false;
+    for (let i = 0; i < this.channel.users.length; i++) {
+      if (this.channel.users[i] == this.myControl.value['uid']) alreadyInChannel = true;
+    }
+    if (!alreadyInChannel) this.channel.users.push(this.myControl.value['uid']);
   }
 
 
