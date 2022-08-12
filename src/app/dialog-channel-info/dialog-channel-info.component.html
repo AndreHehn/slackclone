@@ -29,24 +29,16 @@ and info about channel
                     <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
                     <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
                         <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                            {{option.displayName}}
+                            <img class="avatar" [src]="option.photoURL"> {{option.displayName}}
                         </mat-option>
                     </mat-autocomplete>
                 </mat-form-field>
                 <button mat-button color="accent" (click)="addUser()">hinzufügen</button>
             </form>
-
-
-
-
-
-
-
-
             <table>
                 <tr *ngFor="let user of userList">
-                    <div>
-                        <!--<img src="{{ user.}}">-->
+                    <div class="user">
+                        <img src="{{ user.photoURL }}" class="avatar">
                         <span>{{ user.displayName }}</span>
                     </div>
                 </tr>

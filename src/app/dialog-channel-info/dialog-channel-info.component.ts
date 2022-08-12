@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Channel } from 'src/models/channel.class';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -18,7 +18,7 @@ import { User } from 'src/models/user.class';
 
 export class DialogChannelInfoComponent implements OnInit {
 
-  channel;
+  channel: Channel = new Channel();
   user: User = new User();
   userId;
   channelId;
@@ -32,7 +32,7 @@ export class DialogChannelInfoComponent implements OnInit {
   filteredOptions: Observable<ProfileUser[]>;
 
 
-  constructor(private firestore: AngularFirestore, private route: ActivatedRoute) { }
+  constructor(private firestore: AngularFirestore, private route: ActivatedRoute, private router: Router) { }
 
 
   ngOnInit(): void {
@@ -44,23 +44,35 @@ export class DialogChannelInfoComponent implements OnInit {
   }
 
 
-  displayFn(user: ProfileUser): string {
-    return user && user.displayName ? user.displayName : '';
+
+
+
+  deleteUser() {
+    this.deleteUserbyUid();
+    this.changeUsers('delete');
   }
 
 
-  private _filter(name: string): ProfileUser[] {
-    const filterValue = name.toLowerCase();
-    return this.options.filter(option => option.displayName.toLowerCase().includes(filterValue));
-  }
 
-
-  deleteUser() { // userId aus channel.users löschen
-
+  changeUsers(status) {
+    this.firestore
+      .collection('channel')
+      .doc(this.channelId)
+      .update(this.channel.toJson())
+      .then(() => {
+        if (status == 'add') location.reload();
+        if (status == 'delete') this.router.navigate(['']);
+      });
   }
 
   addUser() {
-    console.log(this.myControl.value);// muss noch gemacht werden.
+    this.addUserById();
+    this.changeUsers('add');
+  }
+  
+
+  addUserById() {
+    this.channel.users.push(this.myControl.value['uid']);
   }
 
 
@@ -72,6 +84,7 @@ export class DialogChannelInfoComponent implements OnInit {
         this.getUsers();
       })
   }
+
 
   defineVar(channel) {
     this.channel = new Channel(channel);
@@ -102,7 +115,6 @@ export class DialogChannelInfoComponent implements OnInit {
   }
 
 
-
   forAutoComplete() {
     this.options = this.allUserList;
     this.filteredOptions = this.myControl.valueChanges.pipe(
@@ -112,6 +124,37 @@ export class DialogChannelInfoComponent implements OnInit {
         return name ? this._filter(name as string) : this.options.slice();
       }),
     );
+  }
+
+
+  displayFn(user: ProfileUser): string {
+    return user && user.displayName ? user.displayName : '';
+  }
+
+
+  private _filter(name: string): ProfileUser[] {
+    const filterValue = name.toLowerCase();
+    return this.options.filter(option => option.displayName.toLowerCase().includes(filterValue));
+  }
+
+
+  loadChannel() {
+    this.firestore.collection('channel').doc(this.channelId).valueChanges().subscribe((changes: any) => {
+      let dataFromChannel = changes;
+      if (dataFromChannel.messages) this.channel.messages = dataFromChannel.messages;
+      if (dataFromChannel.users) this.channel.users = dataFromChannel.users;
+      if (dataFromChannel.channelId) this.channel.channelId = dataFromChannel.chanelId;
+      if (dataFromChannel.channelName) this.channel.channelName = dataFromChannel.channelName;
+    });
+  }
+
+
+  deleteUserbyUid() {
+    for (let i = 0; i < this.channel.users.length; i++) {
+      const element = this.channel.users[i];
+      console.log(element);
+      if (element == this.userId) this.channel.users.splice(i, 1);
+    }
   }
 
 }

@@ -161,7 +161,7 @@ export class ChatboxComponent implements OnInit {
       if (dataFromChannel.messages) this.channel.messages = dataFromChannel.messages;
       if (dataFromChannel.users) this.channel.users = dataFromChannel.users;
       if (dataFromChannel.channelId) this.channel.channelId = dataFromChannel.chanelId;
-      if (dataFromChannel.channelName) this.channel.channelName;
+      if (dataFromChannel.channelName) this.channel.channelName = dataFromChannel.channelName;
     });
   }
 
