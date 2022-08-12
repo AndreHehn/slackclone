@@ -1,5 +1,18 @@
 .channelListCont {
-    background-color: yellow;
     margin-top: 24px;
     height: 40vh;
+    color: white;
+
+    button {
+        height: 24px;
+        width: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .channels {
+        max-height: 36vh;
+        overflow-y: scroll;
+    }
 }

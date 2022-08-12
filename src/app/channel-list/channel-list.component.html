@@ -1,3 +1,11 @@
 <div class="channelListCont">
-    <div *ngFor="let channel of allChannels">{{ channel.channelName }}</div>
+    <div class="d-flex sb">
+        <h3>Channels</h3>
+        <button (click)="openDialog()" mat-fab color="basic">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+    <div class="channels">
+        <div *ngFor="let channel of allChannels">{{ channel.channelName }}</div>
+    </div>
 </div>

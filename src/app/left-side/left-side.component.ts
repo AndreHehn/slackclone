@@ -18,24 +18,5 @@ export class LeftSideComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(DialogCreateNewChannelComponent);
-    dialogRef.afterClosed().subscribe((channelName: any) => {
-      console.log('The dialog was closed', channelName);
-      if (channelName && channelName.length > 0){      
-        this.addToCollection('channel', {channelName})
-      }
-    });
-  }
-
-  addToCollection(collectionName: string, data: any) {
-    this.firestore.collection(collectionName)
-      .add(data)
-      .then(res => {
-        console.log('rest', res);
-      })
-      .catch(e => {
-        console.log(e);
-      })
-  }
+ 
 }

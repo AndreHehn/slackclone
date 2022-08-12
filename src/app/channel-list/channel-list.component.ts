@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogCreateNewChannelComponent } from '../dialog-create-new-channel/dialog-create-new-channel.component';
 
 @Component({
   selector: 'app-channel-list',
@@ -10,7 +12,8 @@ export class ChannelListComponent implements OnInit {
 
   allChannels = [];
 
-  constructor(private firestore: AngularFirestore) { }
+  constructor(private firestore: AngularFirestore,
+    public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.firestore
@@ -20,6 +23,27 @@ export class ChannelListComponent implements OnInit {
         this.allChannels = changes;
         // console.log(this.allChannels);
       });
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogCreateNewChannelComponent);
+    dialogRef.afterClosed().subscribe((channelName: any) => {
+      console.log('The dialog was closed', channelName);
+      if (channelName && channelName.length > 0){      
+        this.addToCollection('channel', {channelName})
+      }
+    });
+  }
+
+  addToCollection(collectionName: string, data: any) {
+    this.firestore.collection(collectionName)
+      .add(data)
+      .then(res => {
+        console.log('rest', res);
+      })
+      .catch(e => {
+        console.log(e);
+      })
   }
 
 }

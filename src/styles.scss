@@ -18,6 +18,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     flex-direction: column;
 }
 
+.sb {
+    justify-content: space-between;
+}
+
 .mb8 {
     margin-bottom: 8px !important;
 }
