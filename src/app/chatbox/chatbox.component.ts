@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Optional } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { finalize } from 'rxjs/operators';
@@ -8,15 +8,19 @@ import { ActivatedRoute } from '@angular/router';
 import { Message } from 'src/models/message.class';
 import { Channel } from 'src/models/channel.class';
 import { Answer } from 'src/models/answer.class';
+import { ChannelComponent } from '../channel/channel.component';
+import { ThreadComponent } from '../thread/thread.component';
 
 @Component({
   selector: 'app-chatbox',
   templateUrl: './chatbox.component.html',
+  template: '{{parentName.comp}}',
   styleUrls: ['./chatbox.component.scss']
 })
 export class ChatboxComponent implements OnInit {
 
   @Input() parentName: string;
+
   modules = {
     toolbar: [
       ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
@@ -28,7 +32,7 @@ export class ChatboxComponent implements OnInit {
   preview: string;
   messageValue: string = '';
   currentFile = null;
-  loading: boolean = false;
+  cleared: boolean = true;
   uploaded: boolean = false;
   saved: boolean = false;
   channelId: string = '';
@@ -41,7 +45,9 @@ export class ChatboxComponent implements OnInit {
   constructor(
     private firestore: AngularFirestore,
     private route: ActivatedRoute,
-    private storage: AngularFireStorage
+    private storage: AngularFireStorage,
+    @Optional() public parentIsChannel?: ChannelComponent,
+    @Optional() public parentIsThreadl?: ThreadComponent,
   ) { }
 
 
@@ -73,7 +79,6 @@ export class ChatboxComponent implements OnInit {
    * Uploads picture to the fire storage.
    */
   uploadFile(event) {
-    this.loading = true;
     const file = event.target.files[0];
     const filePath = 'message_images' + Math.floor(Math.random() * 1000000000);
     const fileRef = this.storage.ref(filePath);
@@ -88,21 +93,21 @@ export class ChatboxComponent implements OnInit {
    */
   saveUrl(fileRef) {
     fileRef.getDownloadURL().subscribe(url => { this.preview = url; });
-    this.loading = false;
     this.uploaded = true;
   }
 
 
   saveAndSend() {
     this.fillObject();
-    this.loading = true;
     this.firestore
       .collection('channel')
       .doc(this.channelId)
       .update(this.channel.toJson())
       .then(() => {
-        this.loading = false;
-        location.reload();// andere Option überlegen um Inhalt von Quill zu löschen und Bild zurückzusetzen;
+        this.cleared = false;
+        setTimeout(() => {
+          this.cleared = true; 
+        }, 1);
       });
   }
 
@@ -113,8 +118,9 @@ export class ChatboxComponent implements OnInit {
 
 
   fillObject() {
-    if (this.parentName == 'channel') this.fillMessage();
-    if (this.parentName == 'thread') this.fillAnswer();
+    console.log(this.parentName);
+    if (this.parentIsChannel) this.fillMessage();
+    if (this.parentIsThreadl) this.fillAnswer();
   }
 
 
@@ -148,7 +154,7 @@ export class ChatboxComponent implements OnInit {
       let dataFromChannel = changes;
       if (dataFromChannel.messages.length > 0) this.channel.messages = dataFromChannel.messages;
       if (dataFromChannel.users.length > 0) this.channel.users = dataFromChannel.users;
-      if (dataFromChannel.channelId) this.channel.channelId = dataFromChannel.chanelId;
+      if (dataFromChannel.channelId) this.channel.channelId = dataFromChannel.channelId;
       if (dataFromChannel.channelName) this.channel.channelName = dataFromChannel.channelName;
     });
   }

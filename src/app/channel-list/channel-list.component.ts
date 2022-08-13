@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { DialogCreateNewChannelComponent } from '../dialog-create-new-channel/dialog-create-new-channel.component';
 import { MessageDataService } from '../message-data-service/message-data.service';
 
@@ -15,15 +16,16 @@ export class ChannelListComponent implements OnInit {
 
   constructor(private firestore: AngularFirestore,
     public dialog: MatDialog,
-    private MessageService :  MessageDataService) { }
+    private MessageService: MessageDataService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.firestore
       .collection('channel')
       .valueChanges()
-      .subscribe((changes: any) =>{
+      .subscribe((changes: any) => {
         this.allChannels = changes;
-         //console.log(this.allChannels);
+        //console.log(this.allChannels);
       });
   }
 
@@ -31,8 +33,8 @@ export class ChannelListComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogCreateNewChannelComponent);
     dialogRef.afterClosed().subscribe((channelName: any) => {
       console.log('The dialog was closed', channelName);
-      if (channelName && channelName.length > 0){      
-        this.addToCollection('channel', {channelName})
+      if (channelName && channelName.length > 0) {
+        this.addToCollection('channel', { channelName })
       }
     });
   }
@@ -48,8 +50,9 @@ export class ChannelListComponent implements OnInit {
       })
   }
 
-  changeSelectedId(channelId: string){
-   this.MessageService.changeId(channelId);
+  changeSelectedId(channelId: string) {
+    this.MessageService.changeId(channelId);
+    this.router.navigate(['main/channel/' + channelId]);
   }
- 
+
 }

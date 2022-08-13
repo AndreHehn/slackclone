@@ -31,6 +31,7 @@ export class DialogChannelInfoComponent implements OnInit {
   options: ProfileUser[];
   filteredOptions: Observable<ProfileUser[]>;
   avatar: string = './assets/avatar.png';
+  isUpdated = true;
 
 
   constructor(private firestore: AngularFirestore, private route: ActivatedRoute, private router: Router) { }
@@ -49,12 +50,14 @@ export class DialogChannelInfoComponent implements OnInit {
 
 
   changeUsers(status) {
+    this.isUpdated = false;
     this.firestore
       .collection('channel')
       .doc(this.channelId)
       .update(this.channel.toJson())
       .then(() => {
-        if (status == 'add') location.reload();
+        this.userList = [];
+        this.isUpdated = true;
         if (status == 'delete') this.router.navigate(['']);
       });
   }

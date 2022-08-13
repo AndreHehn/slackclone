@@ -37,7 +37,7 @@ and info about channel
                 </mat-form-field>
                 <button mat-button color="accent" (click)="addUser()">hinzufügen</button>
             </form>
-            <table>
+            <table *ngIf="isUpdated">
                 <tr *ngFor="let user of userList">
                     <div class="user">
                         <img [src]=" user.photoURL ? user.photoURL : avatar" class="avatar">

@@ -5,22 +5,19 @@ import { MessageDataService } from '../message-data-service/message-data.service
 
 @Component({
   selector: 'app-channel',
-  template: `
-    <child-component parentName="'channel'" />
-  `,
   templateUrl: './channel.component.html',
   styleUrls: ['./channel.component.scss']
 })
-export class ChannelComponent implements OnInit {
+export class ChannelComponent implements OnInit{
 
-  channelId : any;
-  messages : any = [];
-  users : any = [];
+  channelId: any;
+  messages: any = [];
+  users: any = [];
 
   constructor(private firestore: AngularFirestore, private MessageService: MessageDataService) { }
 
   ngOnInit(): void {
-    this.MessageService.currentId.subscribe((id)=>{
+    this.MessageService.currentId.subscribe((id) => {
       this.channelId = id;
       this.saveLastChannelId()
       this.loadData()
@@ -28,16 +25,16 @@ export class ChannelComponent implements OnInit {
   }
 
 
-  loadData(){
-    this.firestore.collection('channel').doc(this.channelId).valueChanges().subscribe((channel : any) =>{
-     this.messages = channel.messages;
-     this.users = channel.users;
-     })
+  loadData() {
+    this.firestore.collection('channel').doc(this.channelId).valueChanges().subscribe((channel: any) => {
+      this.messages = channel.messages;
+      this.users = channel.users;
+    })
   }
 
-  saveLastChannelId(){
+  saveLastChannelId() {
     localStorage.setItem('channelId', this.channelId)
   }
 
-  
+
 }

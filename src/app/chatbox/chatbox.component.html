@@ -14,7 +14,7 @@ André
 
 
 <mat-card>
-    <quill-editor placeholder="Nachricht an" [modules]="modules" (onEditorChanged)="changedEditor($event)" id="quillEditor">
+    <quill-editor *ngIf="cleared" placeholder="Nachricht an" [modules]="modules" (onEditorChanged)="changedEditor($event)">
     </quill-editor>
     <div class="pictureWrap" *ngIf="preview">
         <div class="singlePicture">
