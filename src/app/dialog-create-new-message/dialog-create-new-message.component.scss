@@ -1,0 +1,58 @@
+.dialogContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.headline {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.subheadWrap {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.buttonWrap {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.dialogContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+
+form {
+    display: flex;
+}
+
+mat-card {
+    margin-bottom: 16px;
+}
+
+.user {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+
+.avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 2px;
+}

@@ -55,7 +55,7 @@ export class DialogCreateNewChannelComponent implements OnInit {
     let currentUser = JSON.parse(localStorage.getItem('slackCloneUser'));
     this.channel.users.push(currentUser);
     this.channel.channelName = this.channelName;
-    this.channel.type = 'channel';
+    this.channel.type = "channel";
   }
 
 
