@@ -39,6 +39,7 @@ import { QuillModule } from 'ngx-quill';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { DialogAddMembersComponent } from './dialog-add-members/dialog-add-members.component';
+import { MessageCardComponent } from './message-card/message-card.component';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { DialogAddMembersComponent } from './dialog-add-members/dialog-add-membe
     ToolbarComponent,
     LeftSideComponent,
     MembersComponent,
-    DialogAddMembersComponent
+    DialogAddMembersComponent,
+    MessageCardComponent
   ],
   imports: [
     MatToolbarModule,
