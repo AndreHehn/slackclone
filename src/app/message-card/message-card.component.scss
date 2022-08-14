@@ -1,4 +1,29 @@
 mat-card {
     margin-top: 10px;
     margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    .user {
+        margin-bottom: 10px;
+    }
+    .message {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        border: 1px solid rgba(0, 0, 0, 0.6);
+        padding: 5px;
+        background-color: grey;
+    }
+    .edit {
+        button {
+            background-color: transparent;
+            border: none;
+        }
+    }
+    .threads {
+        margin-top: 10px;
+        margin-left: 20px;
+        font-size: 10px;
+    }
 }

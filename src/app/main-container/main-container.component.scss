@@ -12,12 +12,10 @@
 
 .sidenav {
     width: 200px;
-
     ul {
         list-style-type: none;
         padding: 0;
         margin: 0;
-
         li {
             padding-left: 16px;
             padding-right: 16px;
@@ -25,15 +23,12 @@
             display: flex;
             align-items: center;
             cursor: pointer;
-
             mat-icon {
                 margin-right: 16px;
             }
-
             &:hover {
                 background-color: rgba(255, 255, 255, 0.05);
             }
-
             &:focus {
                 outline: none;
             }
@@ -43,7 +38,6 @@
 
 .no-cursor {
     cursor: unset !important;
-
     &:hover {
         background-color: #424242 !important;
     }
@@ -57,13 +51,11 @@
     min-height: 56px;
     display: flex;
     align-items: center;
-
     img {
         height: 48px;
         max-width: 100%;
         filter: invert(100%) sepia(5%) saturate(0%) hue-rotate(322deg) brightness(105%) contrast(100%);
         border: none;
-
         &:focus-visible {
             outline: unset;
         }
@@ -86,22 +78,18 @@ mat-toolbar-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     .header-left {
         display: flex;
         align-items: center;
     }
-
     .header-right {
         display: flex;
         align-items: center;
     }
 }
-
 
 .no-cursor {
     cursor: unset !important;
-
     &:hover {
         background-color: #424242 !important;
     }
@@ -115,13 +103,11 @@ mat-toolbar-row {
     min-height: 56px;
     display: flex;
     align-items: center;
-
     img {
         height: 48px;
         max-width: 100%;
         filter: invert(100%) sepia(5%) saturate(0%) hue-rotate(322deg) brightness(105%) contrast(100%);
         border: none;
-
         &:focus-visible {
             outline: unset;
         }
@@ -144,14 +130,20 @@ mat-toolbar-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     .header-left {
         display: flex;
         align-items: center;
     }
-
     .header-right {
         display: flex;
         align-items: center;
     }
+}
+
+app-main-container {
+    height: calc(100vh - 65px);
+}
+
+.div {
+    height: calc(100vh - 65px);
 }

@@ -1,17 +1,19 @@
 .channelCont {
     max-width: calc(100vw - 249px);
     min-width: calc(100vw - 249px);
-    height: calc(100vh - 89px);
+    height: 872px;
     background-color: rgb(27, 29, 33);
     padding: 12px;
     position: relative;
     .channelHeader {
+        height: 3%;
         display: flex;
         gap: 5px;
         color: white;
         overflow: hidden;
     }
     .messageContainer {
+        height: 70%;
         overflow: hidden;
         max-height: fit-content;
         max-width: 100%;
@@ -19,7 +21,12 @@
 }
 
 app-chatbox {
+    height: 162.45px;
     position: absolute;
-    bottom: 0;
+    bottom: 80px;
     width: calc(100% - 24px);
+}
+
+app-channel {
+    height: 100%;
 }
