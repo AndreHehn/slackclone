@@ -20,21 +20,23 @@ export class DialogChannelInfoComponent implements OnInit {
 
   channel: Channel = new Channel();
   user: User = new User();
-  userId;
-  channelId;
+  userId: string;
+  channelId: string;
   countMembers: number = null;
-  userList = [];
-  userIdList;
-  creator;
-  allUserList = [];
+  userList: Array<any> = [];
+  userIdList: Array<any>;
+  creator: string;
+  allUserList: Array<any> = [];
   myControl = new FormControl<string | ProfileUser>('');
   options: ProfileUser[];
   filteredOptions: Observable<ProfileUser[]>;
   avatar: string = './assets/avatar.png';
-  isUpdated = true;
+  isUpdated: boolean = true;
 
 
-  constructor(private firestore: AngularFirestore, private route: ActivatedRoute, private router: Router) { }
+  constructor(private firestore: AngularFirestore,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
 
   ngOnInit(): void {
@@ -117,7 +119,7 @@ export class DialogChannelInfoComponent implements OnInit {
   }
 
 
-  forAutoComplete() {
+  forAutoComplete() {//d2
     this.options = this.allUserList;
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
@@ -129,18 +131,18 @@ export class DialogChannelInfoComponent implements OnInit {
   }
 
 
-  displayFn(user: ProfileUser): string {
+  displayFn(user: ProfileUser): string {//d2
     return user && user.displayName ? user.displayName : '';
   }
 
 
-  private _filter(name: string): ProfileUser[] {
+  private _filter(name: string): ProfileUser[] {//d2
     const filterValue = name.toLowerCase();
     return this.options.filter(option => option.displayName.toLowerCase().includes(filterValue));
   }
 
 
-  loadChannel() {
+  loadChannel() {//d2
     this.firestore.collection('channel').doc(this.channelId).valueChanges().subscribe((changes: any) => {
       let dataFromChannel = changes;
       if (dataFromChannel.messages) this.channel.messages = dataFromChannel.messages;

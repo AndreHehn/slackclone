@@ -8,7 +8,6 @@ import { Channel } from 'src/models/channel.class';
 import { User } from 'src/models/user.class';
 import { ProfileUser } from '../models/user';
 import { map, startWith } from 'rxjs/operators';
-import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
 
 @Component({
   selector: 'app-dialog-create-new-message',
@@ -17,22 +16,22 @@ import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
 })
 export class DialogCreateNewMessageComponent implements OnInit {
 
-
   channel: Channel = new Channel();
   user: User = new User();
-  userId;
-  channelId;
-  userList = [];
-  userIdList = [];
-  allUserList = [];
+  userId: string;
+  channelId: string;
+  userList: Array<any> = [];
+  userIdList: Array<any> = [];
+  allUserList: Array<any> = [];
   myControl2 = new FormControl<string | ProfileUser>('');
   options: ProfileUser[];
   filteredOptions: Observable<ProfileUser[]>;
   avatar: string = './assets/avatar.png';
-  isUpdated = false;
+  isUpdated: boolean = false;
   chatAlreadyExists = false;
-  idForExistingChat;
-  channelList = [];
+  idForExistingChat: string;
+  channelList: Array<any> = [];
+
 
   constructor(
     public dialogRef: MatDialogRef<DialogCreateNewMessageComponent>,
@@ -40,11 +39,13 @@ export class DialogCreateNewMessageComponent implements OnInit {
     private firestore: AngularFirestore,
     private router: Router) { }
 
+
   ngOnInit(): void {
     this.allUsers();
     this.pushOwnId();
     this.isUpdated = true;
   }
+
 
   onNoClick() {
     this.dialogRef.close();
@@ -98,7 +99,7 @@ export class DialogCreateNewMessageComponent implements OnInit {
   }
 
 
-  forAutoComplete() {
+  forAutoComplete() {//d2
     this.options = this.allUserList;
     this.filteredOptions = this.myControl2.valueChanges.pipe(
       startWith(''),
@@ -110,12 +111,12 @@ export class DialogCreateNewMessageComponent implements OnInit {
   }
 
 
-  displayFn(user: ProfileUser): string {
+  displayFn(user: ProfileUser): string {//d2
     return user && user.displayName ? user.displayName : '';
   }
 
 
-  private _filter(name: string): ProfileUser[] {
+  private _filter(name: string): ProfileUser[] {//d2
     const filterValue = name.toLowerCase();
     return this.options.filter(option => option.displayName.toLowerCase().includes(filterValue));
   }

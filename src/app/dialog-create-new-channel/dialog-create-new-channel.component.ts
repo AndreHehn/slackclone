@@ -13,9 +13,9 @@ export class DialogCreateNewChannelComponent implements OnInit {
 
   channelName: string = '';
   channel: Channel = new Channel();
-  allChannels;
-  usedNames = [];
-  nameIsUsed = false;
+  allChannels: Array<any>;
+  usedNames: Array<any> = [];
+  nameIsUsed: boolean = false;
 
 
   constructor(public dialogRef: MatDialogRef<DialogCreateNewChannelComponent>,

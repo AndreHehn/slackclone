@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Optional } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { AngularFireStorage, AngularFireStorageReference } from '@angular/fire/compat/storage';
 import { finalize } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { EditorChangeContent, EditorChangeSelection } from 'ngx-quill';
@@ -31,7 +31,7 @@ export class ChatboxComponent implements OnInit {
   };
   preview: string;
   messageValue: string = '';
-  currentFile = null;
+  currentFile: AngularFireStorageReference = null;
   cleared: boolean = true;
   uploaded: boolean = false;
   saved: boolean = false;
@@ -40,7 +40,7 @@ export class ChatboxComponent implements OnInit {
   message: Message = new Message();
   channel: Channel = new Channel();
   answer: Answer = new Answer();
-  idOfMessage;
+  idOfMessage: string;
 
   constructor(
     private firestore: AngularFirestore,
@@ -106,7 +106,7 @@ export class ChatboxComponent implements OnInit {
       .then(() => {
         this.cleared = false;
         setTimeout(() => {
-          this.cleared = true; 
+          this.cleared = true;
         }, 1);
       });
   }
@@ -149,7 +149,7 @@ export class ChatboxComponent implements OnInit {
   }
 
 
-  loadChannel() {
+  loadChannel() { //d2
     this.firestore.collection('channel').doc(this.channelId).valueChanges().subscribe((changes: any) => {
       let dataFromChannel = changes;
       if (dataFromChannel.messages.length > 0) this.channel.messages = dataFromChannel.messages;
