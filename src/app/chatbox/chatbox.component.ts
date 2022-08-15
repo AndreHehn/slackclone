@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Optional, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, Optional } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireStorage, AngularFireStorageReference } from '@angular/fire/compat/storage';
 import { finalize } from 'rxjs/operators';
@@ -18,7 +18,6 @@ import { ThreadComponent } from '../thread/thread.component';
   styleUrls: ['./chatbox.component.scss']
 })
 export class ChatboxComponent implements OnInit {
-  // @ViewChild('messageContainer') messageContaner:any;
 
   @Input() parentName: string;
 
@@ -42,6 +41,7 @@ export class ChatboxComponent implements OnInit {
   channel: Channel = new Channel();
   answer: Answer = new Answer();
   idOfMessage: string;
+  sendable: boolean = false;
 
   constructor(
     private firestore: AngularFirestore,
@@ -54,6 +54,7 @@ export class ChatboxComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.firstChild.paramMap.subscribe(paramMap => { this.channelId = paramMap['params']['id1']; });
+    this.route.firstChild.paramMap.subscribe(paramMap => { if (paramMap['params']['id2']) this.idOfMessage = paramMap['params']['id2']; });
     this.userId = JSON.parse(localStorage.getItem('slackCloneUser'));
     this.loadChannel();
   }
@@ -80,12 +81,14 @@ export class ChatboxComponent implements OnInit {
    * Uploads picture to the fire storage.
    */
   uploadFile(event) {
+    this.sendable = false;
     const file = event.target.files[0];
     const filePath = 'message_images' + Math.floor(Math.random() * 1000000000);
     const fileRef = this.storage.ref(filePath);
     this.currentFile = fileRef;
     const task = this.storage.upload(filePath, file);
     task.snapshotChanges().pipe(finalize(() => this.saveUrl(fileRef))).subscribe();
+    this.sendable = true;
   }
 
   /**
@@ -109,17 +112,20 @@ export class ChatboxComponent implements OnInit {
         setTimeout(() => {
           this.cleared = true;
         }, 1);
-        this.scrollBottom();
       });
   }
 
 
   changedEditor(event: EditorChangeContent | EditorChangeSelection) {
     this.messageValue = event['editor']['root']['innerHTML'];
+    this.route.firstChild.paramMap.subscribe(paramMap => { this.channelId = paramMap['params']['id1']; });
+    this.route.firstChild.paramMap.subscribe(paramMap => { this.idOfMessage = paramMap['params']['id2']; });
+    this.loadChannel();
   }
 
 
   fillObject() {
+    console.log(this.parentName);
     if (this.parentIsChannel) this.fillMessage();
     if (this.parentIsThreadl) this.fillAnswer();
   }
@@ -136,7 +142,6 @@ export class ChatboxComponent implements OnInit {
 
 
   fillAnswer() {//not sure if works. Has to be tested in Thread-component.
-    this.route.firstChild.paramMap.subscribe(paramMap => { this.idOfMessage = paramMap['params']['id2']; })
     this.answer.creatorId = this.userId;
     this.answer.timestamp = Date.now();
     if (this.preview != null) this.answer.pictureUrl = this.preview;
@@ -151,19 +156,17 @@ export class ChatboxComponent implements OnInit {
 
 
   loadChannel() { //d2
+    this.sendable = false;
+    this.channel = new Channel();
     this.firestore.collection('channel').doc(this.channelId).valueChanges().subscribe((changes: any) => {
       let dataFromChannel = changes;
       if (dataFromChannel.messages.length > 0) this.channel.messages = dataFromChannel.messages;
       if (dataFromChannel.users.length > 0) this.channel.users = dataFromChannel.users;
-      if (dataFromChannel.channelId) this.channel.channelId = this.channelId;
+      if (dataFromChannel.channelId) this.channel.channelId = dataFromChannel.channelId;
       if (dataFromChannel.channelName) this.channel.channelName = dataFromChannel.channelName;
+      if (dataFromChannel.type) this.channel.type = dataFromChannel.type;
+      this.sendable = true;
     });
-  }
-
-  scrollBottom() {
-    console.log('works');
-    let messageContainer = document.getElementById('messageContainer');
-    messageContainer.scrollTop = messageContainer.scrollHeight;
   }
 
 }
