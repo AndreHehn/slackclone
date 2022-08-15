@@ -4,7 +4,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DialogCreateNewChannelComponent } from '../dialog-create-new-channel/dialog-create-new-channel.component';
-import { MessageDataService } from '../message-data-service/message-data.service';
+import { MessageDataService } from '../message-data-service/message-data.service';;
 
 @Component({
   selector: 'app-channel-list',
@@ -54,9 +54,9 @@ export class ChannelListComponent implements OnInit {
   changeSelectedId(channelId: string) {
     this.MessageService.changeId(channelId);
     this.router.navigate(['main/channel/' + channelId]);
-    setTimeout(() => {
-      location.reload();
-    }, 1);
+    //setTimeout(() => {
+    // location.reload();
+    //}, 1);
 
   }
 

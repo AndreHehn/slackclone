@@ -14,7 +14,8 @@ André
 
 
 <mat-card>
-    <quill-editor *ngIf="cleared" placeholder="Nachricht an" [modules]="modules" (onEditorChanged)="changedEditor($event)">
+    <quill-editor *ngIf="cleared" placeholder="Nachricht an" [modules]="modules"
+        (onEditorChanged)="changedEditor($event)">
     </quill-editor>
     <div class="pictureWrap" *ngIf="preview">
         <div class="singlePicture">
@@ -30,6 +31,6 @@ André
                 (click)="deleteLastUpload()" placeholder="Upload a picture">
             <mat-icon class="icon">image</mat-icon>
         </label>
-        <mat-icon class="icon" (click)="saveAndSend()">send</mat-icon>
+        <mat-icon class="icon" *ngIf="sendable" (click)="saveAndSend()">send</mat-icon>
     </div>
-</mat-card> 
+</mat-card>
