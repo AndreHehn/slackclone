@@ -111,7 +111,6 @@ export class ChatboxComponent implements OnInit {
         }, 1);
         this.scrollBottom();
       });
-
   }
 
 
