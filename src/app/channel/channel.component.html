@@ -5,7 +5,7 @@
         <!-- userid in username umwandeln fehlt noch -->
     </div>
     <div class="messageContainer" #messageContainer>
-        <app-message-card *ngFor="let message of messages" messageText="{{message}}"></app-message-card>
+        <app-message-card class="message" *ngFor="let message of messages" messageText="{{message}}"></app-message-card>
     </div>
     <app-chatbox class="chatbox"></app-chatbox>
 </div>
