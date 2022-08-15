@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dialog-big-picture',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DialogBigPictureComponent implements OnInit {
 
-  constructor() { }
+  imagePath;
+
+  constructor(public dialogRef: MatDialogRef<DialogBigPictureComponent>) { }
 
   ngOnInit(): void {
   }

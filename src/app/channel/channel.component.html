@@ -49,5 +49,20 @@ constructor(private route: ActivatedRoute) {
 *ngIf="this.id_2"
 
 
+/**
+ * 
+ * 
+ * (click)="bigPicture()"
+ * 
+ * 
+ *  bigPicture() {
+    const dialog = this.dialog.open(BigFishComponent);
+    dialog.componentInstance.message = new Fish(this.message.toJson());
+    dialog.componentInstance.imagePath = this.message.pictureUrl;
+    dialog.componentInstance.channelId = this.channelId;
+  }
+ */
+
+
 
 -->
