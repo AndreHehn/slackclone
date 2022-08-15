@@ -57,7 +57,7 @@ export class ChatboxComponent implements OnInit {
     this.route.firstChild.paramMap.subscribe(paramMap => { this.channelId = paramMap['params']['id1']; });
     this.userId = JSON.parse(localStorage.getItem('slackCloneUser'));
     this.loadChannel();
-    
+
   }
 
 
@@ -111,8 +111,9 @@ export class ChatboxComponent implements OnInit {
         setTimeout(() => {
           this.cleared = true;
         }, 1);
+        this.scrollBottom();
       });
-      this.scrollBottom();
+
   }
 
 
