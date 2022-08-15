@@ -12,9 +12,9 @@
     }
     .messageContainer {
         height: 67vh;
-        overflow: scroll;
         max-height: fit-content;
-        max-width: 100%;
+        overflow-y: scroll;
+        width: calc(100vw - 224px);
     }
 
     .chatbox {
