@@ -1,3 +1,4 @@
+import { NgLocalization } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialog } from '@angular/material/dialog';
@@ -53,6 +54,10 @@ export class ChannelListComponent implements OnInit {
   changeSelectedId(channelId: string) {
     this.MessageService.changeId(channelId);
     this.router.navigate(['main/channel/' + channelId]);
+    setTimeout(() => {
+      location.reload();
+    }, 1);
+
   }
 
 }

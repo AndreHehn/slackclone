@@ -118,7 +118,6 @@ export class ChatboxComponent implements OnInit {
 
 
   fillObject() {
-    console.log(this.parentName);
     if (this.parentIsChannel) this.fillMessage();
     if (this.parentIsThreadl) this.fillAnswer();
   }
@@ -154,7 +153,7 @@ export class ChatboxComponent implements OnInit {
       let dataFromChannel = changes;
       if (dataFromChannel.messages.length > 0) this.channel.messages = dataFromChannel.messages;
       if (dataFromChannel.users.length > 0) this.channel.users = dataFromChannel.users;
-      if (dataFromChannel.channelId) this.channel.channelId = dataFromChannel.channelId;
+      if (dataFromChannel.channelId) this.channel.channelId = this.channelId;
       if (dataFromChannel.channelName) this.channel.channelName = dataFromChannel.channelName;
     });
   }
