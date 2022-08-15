@@ -1,9 +1,11 @@
 <mat-card>
     <div class="user">UserName/Profilbild</div>
     <div class="message">
-        <div class="text">{{ messageText }}</div>
+        <div class="text" [innerHTML]="messageText"></div>
         <div class="edit">
-            <button> <mat-icon>edit</mat-icon></button>
+            <button>
+                <mat-icon>edit</mat-icon>
+            </button>
 
         </div>
     </div>
