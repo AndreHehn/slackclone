@@ -25,7 +25,7 @@ export class DialogAddMembersComponent implements OnInit {
       });
   }
 
-  addPersonalUser() {
+  addPersonalMember() {
 
   }
 

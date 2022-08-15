@@ -56,7 +56,7 @@ export class UsersService {
     return collectionData(queryAll) as Observable<ProfileUser[]>;
   }
 
-  addPersonalUser() {
+  addPersonalMember() {
     
   }
 
