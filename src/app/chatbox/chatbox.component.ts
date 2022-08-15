@@ -18,7 +18,7 @@ import { ThreadComponent } from '../thread/thread.component';
   styleUrls: ['./chatbox.component.scss']
 })
 export class ChatboxComponent implements OnInit {
-  @ViewChild('messageContainer') messageContaner:any;
+  // @ViewChild('messageContainer') messageContaner:any;
 
   @Input() parentName: string;
 
@@ -53,10 +53,11 @@ export class ChatboxComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.route.firstChild.paramMap.subscribe(paramMap => { this.channelId = paramMap['params']['id1']; })
+    this.scrollBottom();
+    this.route.firstChild.paramMap.subscribe(paramMap => { this.channelId = paramMap['params']['id1']; });
     this.userId = JSON.parse(localStorage.getItem('slackCloneUser'));
     this.loadChannel();
-    this.scrollBottom();
+    
   }
 
 
@@ -162,7 +163,9 @@ export class ChatboxComponent implements OnInit {
   }
 
   scrollBottom() {
-    this.messageContaner.nativeElement.scrollTop = this.messageContaner.nativeElement.scrollHeight;
+    console.log('works');
+    let messageContainer = document.getElementById('messageContainer');
+    messageContainer.scrollTop = messageContainer.scrollHeight;
   }
 
 }
