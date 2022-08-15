@@ -53,11 +53,9 @@ export class ChatboxComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.scrollBottom();
     this.route.firstChild.paramMap.subscribe(paramMap => { this.channelId = paramMap['params']['id1']; });
     this.userId = JSON.parse(localStorage.getItem('slackCloneUser'));
     this.loadChannel();
-
   }
 
 

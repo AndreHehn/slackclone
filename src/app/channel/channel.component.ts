@@ -8,7 +8,7 @@ import { MessageDataService } from '../message-data-service/message-data.service
   templateUrl: './channel.component.html',
   styleUrls: ['./channel.component.scss']
 })
-export class ChannelComponent implements OnInit{
+export class ChannelComponent implements OnInit {
 
 
   channelId: any;
@@ -30,6 +30,10 @@ export class ChannelComponent implements OnInit{
     this.firestore.collection('channel').doc(this.channelId).valueChanges().subscribe((channel: any) => {
       this.messages = channel.messages;
       this.users = channel.users;
+      setTimeout(() => {
+        this.scrollBottom();
+      }, 1);
+
     })
   }
 
@@ -37,5 +41,10 @@ export class ChannelComponent implements OnInit{
     localStorage.setItem('channelId', this.channelId)
   }
 
+  scrollBottom() {
+    console.log('works');
+    let messageContainer = document.getElementById('messageContainer');
+    messageContainer.scrollTop = messageContainer.scrollHeight;
+  }
 
 }
