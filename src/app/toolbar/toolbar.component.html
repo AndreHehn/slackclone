@@ -1,8 +1,11 @@
 <div class="toolBar">
     <h2>Slack-clone</h2>
     <div class="d-flex user">
-        <h2>User</h2>
-        <button (click)="logout()">logout</button>
+        <img class="userPic" [src]="user.photoURL" [matMenuTriggerFor]="menu1">
+        <mat-menu #menu1="matMenu">
+            <button (click)="openDialog()" mat-menu-item>Edit</button>
+            <button (click)="logout()" mat-menu-item>Logout</button>
+        </mat-menu>
     </div>
 
 </div>

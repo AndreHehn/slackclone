@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
 import { HotToastService } from '@ngneat/hot-toast';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { User } from 'src/models/user.class';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.component';
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
@@ -10,19 +13,23 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 })
 export class ToolbarComponent implements OnInit {
 
-  member = [];
+  member: Array<any>;
+  pictureUrl: string;
+  user: User = new User;
 
   constructor(private authService: AuthService,
     private router: Router,
     private toast: HotToastService,
-    private firestore: AngularFirestore) { }
+    private firestore: AngularFirestore,
+    public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.firestore
       .collection('users')
       .valueChanges()
-      .subscribe((user: any) =>{
+      .subscribe((user: any) => {
         this.member = user;
+        this.filterForCurrentUser();
         // console.log(this.member);
       });
   }
@@ -39,6 +46,17 @@ export class ToolbarComponent implements OnInit {
       ).subscribe(() => {
         this.router.navigate(['/']);
       });
+  }
+
+  filterForCurrentUser() {
+    let currentUser = JSON.parse(localStorage.getItem('slackCloneUser'));
+    this.member.forEach(user => {
+      if (user.userId == currentUser) this.pictureUrl = user.photoURL;
+    });
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(DialogEditUserComponent);
   }
 
 }

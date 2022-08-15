@@ -18,4 +18,11 @@
         justify-content: center;
         margin-right: 24px;
     }
+
+    .userPic {
+        border-radius: 100%;
+        height: 48px;
+        width: 48px;
+        object-fit: contain;
+    }
 }

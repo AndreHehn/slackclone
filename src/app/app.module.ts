@@ -40,6 +40,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { DialogAddMembersComponent } from './dialog-add-members/dialog-add-members.component';
 import { MessageCardComponent } from './message-card/message-card.component';
+import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.component';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { MessageCardComponent } from './message-card/message-card.component';
     LeftSideComponent,
     MembersComponent,
     DialogAddMembersComponent,
-    MessageCardComponent
+    MessageCardComponent,
+    DialogEditUserComponent
   ],
   imports: [
     MatToolbarModule,
