@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MessageDataService } from '../message-data-service/message-data.service';
 
@@ -9,6 +9,7 @@ import { MessageDataService } from '../message-data-service/message-data.service
   styleUrls: ['./channel.component.scss']
 })
 export class ChannelComponent implements OnInit{
+
 
   channelId: any;
   messages: any = [];
@@ -21,7 +22,7 @@ export class ChannelComponent implements OnInit{
       this.channelId = id;
       this.saveLastChannelId()
       this.loadData()
-    })
+    });
   }
 
 

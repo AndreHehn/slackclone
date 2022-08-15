@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Optional } from '@angular/core';
+import { Component, Input, OnInit, Optional, ViewChild } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireStorage, AngularFireStorageReference } from '@angular/fire/compat/storage';
 import { finalize } from 'rxjs/operators';
@@ -18,6 +18,7 @@ import { ThreadComponent } from '../thread/thread.component';
   styleUrls: ['./chatbox.component.scss']
 })
 export class ChatboxComponent implements OnInit {
+  @ViewChild('messageContainer') messageContaner:any;
 
   @Input() parentName: string;
 
@@ -55,6 +56,7 @@ export class ChatboxComponent implements OnInit {
     this.route.firstChild.paramMap.subscribe(paramMap => { this.channelId = paramMap['params']['id1']; })
     this.userId = JSON.parse(localStorage.getItem('slackCloneUser'));
     this.loadChannel();
+    this.scrollBottom();
   }
 
 
@@ -109,6 +111,7 @@ export class ChatboxComponent implements OnInit {
           this.cleared = true;
         }, 1);
       });
+      this.scrollBottom();
   }
 
 
@@ -157,6 +160,10 @@ export class ChatboxComponent implements OnInit {
       if (dataFromChannel.channelId) this.channel.channelId = dataFromChannel.channelId;
       if (dataFromChannel.channelName) this.channel.channelName = dataFromChannel.channelName;
     });
+  }
+
+  scrollBottom() {
+    this.messageContaner.nativeElement.scrollTop = this.messageContaner.nativeElement.scrollHeight;
   }
 
 }

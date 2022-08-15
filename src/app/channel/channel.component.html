@@ -4,7 +4,7 @@
         <p *ngFor="let user of users">{{user}}, </p>
         <!-- userid in username umwandeln fehlt noch -->
     </div>
-    <div class="messageContainer">
+    <div class="messageContainer" #messageContainer>
         <app-message-card *ngFor="let message of messages" messageText="{{message}}"></app-message-card>
     </div>
     <app-chatbox class="chatbox"></app-chatbox>
