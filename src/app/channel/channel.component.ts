@@ -28,7 +28,9 @@ export class ChannelComponent implements OnInit {
 
   loadData() {
     this.firestore.collection('channel').doc(this.channelId).valueChanges().subscribe((channel: any) => {
-      this.messages = channel.messages;
+      let messageJSon = channel.messages;
+      let messageString = JSON.parse(messageJSon)
+      this.messages.push(messageString.message)
       this.users = channel.users;
       setTimeout(() => {
         this.scrollBottom();
