@@ -51,7 +51,8 @@ export class ToolbarComponent implements OnInit {
   filterForCurrentUser() {
     let currentUser = JSON.parse(localStorage.getItem('slackCloneUser'));
     this.member.forEach(user => {
-      if (user.userId == currentUser) this.pictureUrl = user.photoURL;
+      if (user.uid == currentUser) this.user = user;
+      this.pictureUrl = this.user.photoURL;
     });
   }
 

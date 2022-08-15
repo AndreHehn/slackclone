@@ -1,0 +1,78 @@
+.dialog-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.button-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+
+    button {
+        font-size: 18px;
+    }
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    font-size: 18px;
+    line-height: 36px;
+    text-align: center;
+    white-space: nowrap;
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-radius: 4px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    gap: 8px;
+    color: #69f0ae;
+    cursor: pointer;
+    margin-top: 0px;
+
+    &:hover {
+        background-color: rgba(127, 255, 212, 0.02);
+    }
+}
+
+.picture-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.image {
+    max-width: 600px;
+    height: auto;
+    margin-bottom: 32px;
+    
+}
+
+
+@media only screen and (max-width:815px) {
+
+    .image {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .button-wrap {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+
+        button {
+            font-size: 18px;
+        }
+    }
+}

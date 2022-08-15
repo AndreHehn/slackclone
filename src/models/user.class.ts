@@ -20,7 +20,7 @@ export class User {
             displayName: this.displayName,
             uid: this.uid,
             email: this.email,
-            photoURL: this.photoURL
+            photoURL: this.photoURL,
         }
     }
 }
