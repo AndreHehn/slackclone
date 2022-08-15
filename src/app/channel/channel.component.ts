@@ -28,10 +28,16 @@ export class ChannelComponent implements OnInit {
 
   loadData() {
     this.firestore.collection('channel').doc(this.channelId).valueChanges().subscribe((channel: any) => {
-      let messageJSon = channel.messages;
-      let messageString = JSON.parse(messageJSon)
-      this.messages.push(messageString.message)
+      this.messages = [];
+        
+        let messageAll = channel.messages;
+        messageAll.forEach(message => {
+          console.log(message)
+          let messageText = JSON.parse(message)
+        this.messages.push(messageText.message)
+        });
       this.users = channel.users;
+      
       setTimeout(() => {
         this.scrollBottom();
       }, 1);
