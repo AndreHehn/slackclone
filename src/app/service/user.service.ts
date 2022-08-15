@@ -55,4 +55,9 @@ export class UsersService {
     const queryAll = query(ref);
     return collectionData(queryAll) as Observable<ProfileUser[]>;
   }
+
+  addPersonalUser() {
+    
+  }
+
 }

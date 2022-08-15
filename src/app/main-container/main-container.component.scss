@@ -114,12 +114,6 @@ mat-toolbar-row {
     }
 }
 
-mat-toolbar,
-mat-toolbar-row {
-    min-height: 56px;
-    height: 56px;
-}
-
 .router-container {
     padding-left: 56px;
     padding-right: 56px;
@@ -138,12 +132,4 @@ mat-toolbar-row {
         display: flex;
         align-items: center;
     }
-}
-
-app-main-container {
-    height: calc(100vh - 65px);
-}
-
-.div {
-    height: calc(100vh - 65px);
 }
