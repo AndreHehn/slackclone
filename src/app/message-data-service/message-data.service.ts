@@ -11,9 +11,10 @@ export class MessageDataService {
   messageId : string = '';
   creatorsId : string = '';
   threadData: string = '';
+
+
   private idSource = new BehaviorSubject<string>(this.getLastChannelId())
   currentId = this.idSource.asObservable();
-
 
   private threadToggle = new BehaviorSubject<boolean>(this.thread)
   currentToggle = this.threadToggle.asObservable()

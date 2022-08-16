@@ -34,8 +34,6 @@ export class ChannelComponent implements OnInit {
       this.channelId = id;
       this.saveLastChannelId()
       this.loadData()
-      console.log(this.users);
-      
     });
 
     // this.messageService.currentToggle.subscribe((toggle:boolean)=>{            @ joshua: funktioniert ohne das!    ==> siehe message-card-comp-ts zeile 30
@@ -62,12 +60,8 @@ export class ChannelComponent implements OnInit {
         this.threadMessages.push(messagesToJson['answers'])
         console.log('HERE', this.threadMessages)
       });
-
       this.users = channel.users;
-      console.log(this.users);
-      
       this.channelName = channel.channelName;
-
       setTimeout(() => {
         this.scrollBottom();
       }, 1);
