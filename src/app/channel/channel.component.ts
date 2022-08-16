@@ -19,14 +19,14 @@ export class ChannelComponent implements OnInit {
   messageId: any = [];
   users: any = [];
   creatorId: any = [];
-  // thread : boolean;               @ joshua: funktioniert ohne das!
+  // thread : boolean;               @ joshua: funktioniert ohne das!  ==> siehe message-card-comp-ts zeile 30
   threadMessages: any = [];
 
   constructor(
-    private firestore: AngularFirestore, 
+    private firestore: AngularFirestore,
     public messageService: MessageDataService,
     public dialog: MatDialog,
-    ) { }
+   ) { }
 
   ngOnInit(): void {
     this.messageService.currentId.subscribe((id) => {
@@ -35,7 +35,7 @@ export class ChannelComponent implements OnInit {
       this.loadData()
     });
 
-    // this.messageService.currentToggle.subscribe((toggle:boolean)=>{            @ joshua: funktioniert ohne das!   
+    // this.messageService.currentToggle.subscribe((toggle:boolean)=>{            @ joshua: funktioniert ohne das!    ==> siehe message-card-comp-ts zeile 30
     //   this.thread = toggle;
     //   if(this.thread === true){
 
