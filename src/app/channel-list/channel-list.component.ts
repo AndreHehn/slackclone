@@ -17,7 +17,7 @@ export class ChannelListComponent implements OnInit {
 
   constructor(private firestore: AngularFirestore,
     public dialog: MatDialog,
-    private MessageService: MessageDataService,
+    private messageService: MessageDataService,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -52,8 +52,8 @@ export class ChannelListComponent implements OnInit {
   }
 
   changeSelectedId(channelId: string) {
-    this.MessageService.changeId(channelId);
-    this.MessageService.toggleThreadOff()
+    this.messageService.changeId(channelId);
+    this.messageService.toggleThreadOff()
     this.router.navigate(['main/channel/' + channelId]);
     //setTimeout(() => {
     // location.reload();

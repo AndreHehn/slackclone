@@ -1,5 +1,5 @@
 .channelCont {
-    max-width: calc(100vw - 249px);
+    width: 100%;
     background-color: rgb(27, 29, 33);
     padding: 12px;
     height: calc(100vh - 97px);
@@ -21,4 +21,8 @@
         bottom: 12px;
         width: calc(100% - 248px);
     }
+}
+
+.changeWidth {
+    width: calc(100vw - 224px - 300px);
 }

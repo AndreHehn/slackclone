@@ -17,22 +17,23 @@ export class ChannelComponent implements OnInit {
   messageId:any = [];
   users: any = [];
   creatorId: any = [];
-  thread : boolean = true;
+  // thread : boolean;
   threadMessages:any = [];
-  constructor(private firestore: AngularFirestore, private MessageService: MessageDataService) { }
+  constructor(private firestore: AngularFirestore, public messageService: MessageDataService) { }
 
   ngOnInit(): void {
-    this.MessageService.currentId.subscribe((id) => {
+    this.messageService.currentId.subscribe((id) => {
       this.channelId = id;
       this.saveLastChannelId()
       this.loadData()
     });
-    this.MessageService.currentToggle.subscribe((toggle:boolean)=>{
-      this.thread = toggle;
-      if(this.thread === true){
 
-      }
-    })
+    // this.MessageService.currentToggle.subscribe((toggle:boolean)=>{
+    //   this.thread = toggle;
+    //   if(this.thread === true){
+
+    //   }
+    // })
   }
 
 
@@ -65,7 +66,7 @@ export class ChannelComponent implements OnInit {
 
 
   toggleThread(){
-    this.MessageService.toggleThread();
+    this.messageService.toggleThread();
    }
 
 

@@ -1,28 +1,24 @@
-<div class="channelCont">
-    <div class="channelHeader">
-        Users in this channel:
-        <p>{{ users.length }} </p>
-        <!-- userid in username umwandeln fehlt noch -->
-    </div>
-    <div class="messageContainer" id="messageContainer">
-        <div class="thread" *ngIf="thread">
-            <app-thread></app-thread>
-        </div>
-        <div class="channel" *ngIf="!thread">
-            <app-message-card class="message" *ngFor="let message of messages, let i = index" messageText="{{message}}" threadData="{{threadAnwsersToJson(i)}}"></app-message-card>
-        </div>
+<div class="channelCont" [class.changeWidth]="messageService.thread">
+  <div class="channelHeader">
+    Users in this channel:
+    <p>{{ users.length }} </p>
+    <!-- userid in username umwandeln fehlt noch -->
+  </div>
+  <div class="messageContainer" id="messageContainer">
+    <app-message-card class="message" *ngFor="let message of messages, let i = index" messageText="{{message}}"
+      threadData="{{threadAnwsersToJson(i)}}"></app-message-card>
+    <app-chatbox class="chatbox"></app-chatbox>
+  </div>
+</div>  
 
-        <app-chatbox class="chatbox"></app-chatbox>
-    </div>
-
-    <!--
+  <!--
 
     all threads shown
     joshua
 -->
 
-    <!-- <app-chatbox></app-chatbox> -->
-    <!--
+  <!-- <app-chatbox></app-chatbox> -->
+  <!--
 
     path: 'main',
     component: MainContainerComponent,

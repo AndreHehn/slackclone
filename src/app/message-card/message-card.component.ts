@@ -24,8 +24,11 @@ thread: boolean = false;
     this.messageId = threadDataToJson['messageId']
   }
 toggleThread(){
-  console.warn(this.threadData)
+  // console.warn(this.threadData)
    this.MessageService.openThread(JSON.parse(this.threadData));
+   this.MessageService.thread = true;
+  //  console.log(this.MessageService.thread);
+   
    //this.MessageService.updateThread(JSON.parse(this.threadData))
   }
 
