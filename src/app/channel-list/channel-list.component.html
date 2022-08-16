@@ -8,8 +8,12 @@
     </div>
 
     <div class="channels">
-        <button class="channelButton cursorPointer" *ngFor="let channel of filteredForUser"
-            (click)="changeSelectedId(channel.channelId)">{{ channel.channelName }}</button>
+        <p 
+            class="channelButton cursorPointer" 
+            *ngFor="let channel of filteredForUser"
+            (click)="changeSelectedId(channel.channelId)">#
+            {{ channel.channelName }}
+        </p>
     </div>
     
 </div>
