@@ -13,10 +13,10 @@ import { MessageDataService } from '../message-data-service/message-data.service
 })
 export class ChannelListComponent implements OnInit {
 
-  allChannels: Array<any>;
-  filteredForType: Array<any>;
+  allChannels = [];
+  filteredForType = [];
   userId;
-  filteredForUser: Array<any>;
+  filteredForUser = [];
 
   constructor(private firestore: AngularFirestore,
     public dialog: MatDialog,
