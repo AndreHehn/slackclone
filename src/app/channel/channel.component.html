@@ -1,9 +1,11 @@
 <div class="channelCont" [class.changeWidth]="messageService.thread">
 
   <div class="channelHeader d-flex sb">
-    <p>Users in this channel: {{ users.length }} </p>
-    <mat-icon  (click)="openDialog()">info</mat-icon>
-    <!-- userid in username umwandeln fehlt noch -->
+    <h3>{{ channelName }}</h3>
+    <div class="d-flex center">
+      <mat-icon (click)="openDialog()">info</mat-icon>
+      <!-- userid in username umwandeln fehlt noch -->
+    </div>
   </div>
 
   <div class="messageContainer" id="messageContainer">
@@ -12,7 +14,7 @@
     <app-chatbox class="chatbox"></app-chatbox>
   </div>
 
-</div>  
+</div>
 
 
 
@@ -20,14 +22,14 @@
 
 
 
-  <!--
+<!--
 
     all threads shown
     joshua
 -->
 
-  <!-- <app-chatbox></app-chatbox> -->
-  <!--
+<!-- <app-chatbox></app-chatbox> -->
+<!--
 
     path: 'main',
     component: MainContainerComponent,

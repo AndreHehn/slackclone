@@ -1,16 +1,20 @@
 .channelCont {
-    width: 100%;
+    width: calc(100% - 24px);
     background-color: rgb(27, 29, 33);
     padding: 12px;
     height: calc(100vh - 85px);
 
     .channelHeader {
-        width: 95%;
-        height: 3%;
+        width: calc(100% - 24px);
+        height: 40px;
         display: flex;
-        gap: 5px;
         color: white;
-        margin-bottom: 10px;
+        border-bottom: 1px solid rgb(139, 139, 139);
+
+        p {
+            margin-top: 3px;
+            margin-right: 16px;
+        }
 
         mat-icon {
             color: white;
