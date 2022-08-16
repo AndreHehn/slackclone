@@ -167,15 +167,14 @@ export class DialogCreateNewMessageComponent implements OnInit {
       });
   }
 
-
   createChannelName() {
     let userNames = [];
     this.channelName = 'Gruppenchat zwischen: ';
     this.userIdList.forEach(user => {
       this.allUserList.forEach(allUser => {
         if (allUser.uid == user) userNames.push(allUser.displayName);
-      })
-    })
+      });
+    });
     for (let i = 0; i < userNames.length - 1; i++)  this.channelName += userNames[i] + ' und '
     this.channelName += userNames[userNames.length - 1] + '.';
   }

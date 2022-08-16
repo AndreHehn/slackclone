@@ -123,7 +123,6 @@ export class ChatboxComponent implements OnInit {
   }
 
   fillObject() {
-    console.log(this.parentName);
     if (this.parentIsChannel) this.fillMessage();
     if (this.parentIsThreadl) this.fillAnswer();
   }
@@ -137,17 +136,19 @@ export class ChatboxComponent implements OnInit {
     this.channel.messages.push(JSON.stringify(this.message));
   }
 
-  fillAnswer() {//not sure if works. Has to be tested in Thread-component.
+  fillAnswer() {
     this.answer.creatorId = this.userId;
     this.answer.timestamp = Date.now();
     if (this.preview != null) this.answer.pictureUrl = this.preview;
     if (this.messageValue) this.answer.message = this.messageValue;
-    let channelToPushIn = this.channel.messages;
-    for (let i = 0; i < channelToPushIn.length; i++) {
-      const element = channelToPushIn[i];
-      if (element['messageId'] = this.idOfMessage) element[this.idOfMessage]['answers'].push(this.answer);
+    for (let i = 0; i < this.channel.messages.length; i++) {
+      const message = this.channel.messages[i];
+      let wantedMessage = JSON.parse(message);
+      if (wantedMessage.messageId == this.idOfMessage) {
+        wantedMessage.answers.push(this.answer);
+        this.channel.messages[i] = JSON.stringify(wantedMessage);
+      }
     }
-    this.channel.messages.push(JSON.stringify(channelToPushIn));
   }
 
   loadChannel() { //d2
