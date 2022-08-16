@@ -13,7 +13,10 @@ import { MessageDataService } from '../message-data-service/message-data.service
 })
 export class ChannelListComponent implements OnInit {
 
-  allChannels = [];
+  allChannels: Array<any>;
+  filteredForType: Array<any>;
+  userId;
+  filteredForUser: Array<any>;
 
   constructor(private firestore: AngularFirestore,
     public dialog: MatDialog,
@@ -26,31 +29,32 @@ export class ChannelListComponent implements OnInit {
       .valueChanges()
       .subscribe((changes: any) => {
         this.allChannels = changes;
-        //console.log(this.allChannels);
+        this.filterForType();
+        this.filterForUser();
       });
   }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogCreateNewChannelComponent);
-    dialogRef.afterClosed().subscribe((channelName: any) => {
-      console.log('The dialog was closed', channelName);
-      if (channelName && channelName.length > 0) {
-        this.addToCollection('channel', { channelName })
-      }
-    });
+    /*  dialogRef.afterClosed().subscribe((channelName: any) => {
+        console.log('The dialog was closed', channelName);
+        if (channelName && channelName.length > 0) {
+          this.addToCollection('channel', { channelName })
+        }
+      });*/
   }
-
-  addToCollection(collectionName: string, data: any) {
-    this.firestore.collection(collectionName)
-      .add(data)
-      .then(res => {
-        console.log('rest', res);
-      })
-      .catch(e => {
-        console.log(e);
-      })
-  }
-
+  /*
+    addToCollection(collectionName: string, data: any) {
+      this.firestore.collection(collectionName)
+        .add(data)
+        .then(res => {
+          console.log('rest', res);
+        })
+        .catch(e => {
+          console.log(e);
+        })
+    }
+  */
   changeSelectedId(channelId: string) {
     this.messageService.changeId(channelId);
     this.messageService.toggleThreadOff()
@@ -59,6 +63,25 @@ export class ChannelListComponent implements OnInit {
     // location.reload();
     //}, 1);
 
+  }
+
+  filterForType() {
+    this.allChannels.forEach(elem => {
+      if (elem.type == "channel") {
+        this.filteredForType.push(elem);
+        console.log('test', elem);
+      }
+    });
+
+  }
+
+  filterForUser() {
+    this.userId = JSON.parse(localStorage.getItem('slackCloneUser'));
+    this.filteredForType.forEach(element => {
+      element.users.forEach(ele => {
+        if (ele == this.userId) this.filteredForUser.push(element)
+      })
+    })
   }
 
 }

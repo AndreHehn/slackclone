@@ -67,6 +67,7 @@ export class DialogCreateNewMessageComponent implements OnInit {
 
   pushNewChatToFireStore() {
     this.fillObject();
+    console.log(this.channel);
     this.firestore
       .collection('channel')
       .add(this.channel.toJson())
@@ -158,7 +159,9 @@ export class DialogCreateNewMessageComponent implements OnInit {
 
 
   fillObject() {
-    this.channel.users = this.userIdList;
+    this.userIdList.forEach(element => {
+      this.channel.users.push(element);
+    });
     this.channel.channelName = "chat";
     this.channel.type = "chat";
   }

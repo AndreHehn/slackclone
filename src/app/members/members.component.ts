@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddMembersComponent } from '../dialog-add-members/dialog-add-members.component';
+import { DialogCreateNewMessageComponent } from '../dialog-create-new-message/dialog-create-new-message.component';
 
 @Component({
   selector: 'app-members',
@@ -15,11 +16,6 @@ export class MembersComponent implements OnInit {
   }
 
   openDialog() {
-    this.dialog.open(DialogAddMembersComponent, {
-      data: {
-        animal: 'panda',
-      },
-    });
+    const dialogRef = this.dialog.open(DialogCreateNewMessageComponent);
   }
-
 }
