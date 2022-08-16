@@ -92,6 +92,7 @@ export class ChannelComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogChannelInfoComponent);
+    dialogRef.componentInstance.channelId = this.channelId;
   }
 
 }
