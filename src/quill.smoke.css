@@ -8,10 +8,10 @@
 /* I just created some new variables to make the icons appear white on a black background */
 /* If you want, edit the colours to change up the look of the icons */
 :root {
-  --stroke-colour: white;
-  --fill-colour: white;
-  --picker-label-colour: white;
-  --editor-placeholder-colour: white;
+  --stroke-colour: #C7C7C7;
+  --fill-colour: #C7C7C7;
+  --picker-label-colour: #C7C7C7;
+  --editor-placeholder-colour: #C7C7C7;
 }
 
 .ql-container {
@@ -443,7 +443,7 @@
 }
 
 .ql-editor .ql-color-white {
-  color: #fff;
+  color: #C7C7C7;
 }
 
 .ql-editor .ql-color-red {
@@ -566,7 +566,7 @@
 .ql-snow .ql-toolbar .ql-picker-item:hover,
 .ql-snow.ql-toolbar .ql-picker-item.ql-selected,
 .ql-snow .ql-toolbar .ql-picker-item.ql-selected {
-  color: #06c;
+  color: white;
 }
 
 .ql-snow.ql-toolbar button:hover .ql-fill,
@@ -597,7 +597,7 @@
 .ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke.ql-fill,
 .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill,
 .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill {
-  fill: #06c;
+  fill: white;
 }
 
 .ql-snow.ql-toolbar button:hover .ql-stroke,
@@ -628,7 +628,7 @@
 .ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke-miter,
 .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter,
 .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter {
-  stroke: #06c;
+  stroke: white;
 }
 
 @media (pointer: coarse) {
@@ -835,7 +835,7 @@
 }
 
 .ql-snow .ql-picker-options {
-  background-color: #fff;
+  background-color: #C7C7C7;
   display: none;
   min-width: 100%;
   padding: 4px 8px;
@@ -1053,7 +1053,7 @@
 }
 
 .ql-snow .ql-color-picker.ql-background .ql-picker-item {
-  background-color: #fff;
+  background-color: #C7C7C7;
 }
 
 .ql-snow .ql-color-picker.ql-color .ql-picker-item {

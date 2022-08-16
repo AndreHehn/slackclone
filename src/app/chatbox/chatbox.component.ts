@@ -27,8 +27,7 @@ export class ChatboxComponent implements OnInit {
     toolbar: [
       ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
       ['blockquote', 'code-block'],
-      [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-      ['link']                         // link and image, video
+      [{ 'list': 'ordered' }, { 'list': 'bullet' }]
     ]
   };
   preview: string;
