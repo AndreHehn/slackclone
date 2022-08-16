@@ -41,6 +41,8 @@ import { FormsModule } from '@angular/forms';
 import { DialogAddMembersComponent } from './dialog-add-members/dialog-add-members.component';
 import { MessageCardComponent } from './message-card/message-card.component';
 import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.component';
+import { ThreadAnwserCardComponent } from './thread-anwser-card/thread-anwser-card.component';
+
 
 
 @NgModule({
@@ -62,7 +64,8 @@ import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.com
     MembersComponent,
     DialogAddMembersComponent,
     MessageCardComponent,
-    DialogEditUserComponent
+    DialogEditUserComponent,
+    ThreadAnwserCardComponent,
   ],
   imports: [
     MatToolbarModule,

@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
+import { MessageDataService } from '../message-data-service/message-data.service';
 
 @Component({
   selector: 'app-message-card',
@@ -7,10 +8,26 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class MessageCardComponent implements OnInit {
 @Input() messageText : string = '';
+@Input() threadData : any;
+@Input() messageId : string = '';
+@Input() creatorId : string = '';
+@Input() currentAnwsers : Array<any>;
+thread: boolean = false;
+  constructor(private MessageService: MessageDataService) {
 
-  constructor() { }
+   }
 
   ngOnInit(): void {
+    let threadDataToJson = JSON.parse(this.threadData)
+    this.currentAnwsers = threadDataToJson['anwsers']
+    this.creatorId = threadDataToJson['creatorId']
+    this.messageId = threadDataToJson['messageId']
+  }
+toggleThread(){
+  console.warn(this.threadData)
+   this.MessageService.openThread(JSON.parse(this.threadData));
+   //this.MessageService.updateThread(JSON.parse(this.threadData))
   }
 
+ 
 }
