@@ -10,10 +10,10 @@ import { MessageDataService } from '../message-data-service/message-data.service
 export class ThreadComponent implements OnInit {
   threadData : any;
   anwsers : Array<any> = [];
-  constructor(private MessageService: MessageDataService) { }
+  constructor(public messageService: MessageDataService) { }
 
   ngOnInit(): void {
-    this.threadData = this.MessageService.currentThread['source']['_value'];
+    this.threadData = this.messageService.currentThread['source']['_value'];
     console.log(this.threadData)
     let threadMessages = this.threadData['threadMessages']
     if(threadMessages){
@@ -24,7 +24,7 @@ export class ThreadComponent implements OnInit {
   }
 
   closeThread() {
-    this.MessageService.thread = false;
+    this.messageService.thread = false;
   }
 
 }

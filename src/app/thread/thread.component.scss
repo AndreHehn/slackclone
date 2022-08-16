@@ -14,7 +14,7 @@
     position: absolute;
     right: 0;
     top: 61px;
-    width: 250px;
+    width: 350px;
     background-color: rgb(27, 29, 33);
     padding: 12px;
     height: calc(100vh - 85px);
@@ -30,4 +30,8 @@
             transform: rotate(45deg);
         }
     }
+}
+
+.changeWidthChatbox {
+    width: calc(100% - 8px);
 }

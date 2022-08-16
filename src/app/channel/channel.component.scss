@@ -22,7 +22,7 @@
         height: 67vh;
         max-height: fit-content;
         overflow-y: scroll;
-        width: calc(100vw - 224px);
+        //width: calc(100vw - 224px - 400px);
     }
     .chatbox {
         position: absolute;
@@ -32,5 +32,9 @@
 }
 
 .changeWidth {
-    width: calc(100vw - 224px - 300px);
+    width: calc(100vw - 224px - 400px);
+}
+
+.changeWidthChatbox {
+    width: calc(100vw - 224px - 400px) !important;
 }

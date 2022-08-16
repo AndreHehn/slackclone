@@ -1,5 +1,6 @@
 mat-card {
     margin: 0;
+    width: calc(100% - 24px);
 }
 
 quill-editor {
@@ -88,5 +89,5 @@ input[type="file"] {
 }
 
 .changeWidth {
-    width: calc(100% - 24px);
+    width: calc(100vw - 224px - 400px);
 }

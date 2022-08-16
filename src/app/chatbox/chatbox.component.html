@@ -13,10 +13,9 @@ André
 -->
 
 
-<mat-card [class.changeWidth]="messageService.thread">
+<mat-card>
 
-    <quill-editor *ngIf="cleared" placeholder="Nachricht an" [modules]="modules"
-        (onEditorChanged)="changedEditor($event)">
+    <quill-editor *ngIf="cleared" placeholder="Nachricht an" [modules]="modules" (onEditorChanged)="changedEditor($event)">
     </quill-editor>
 
     <div class="pictureWrap" *ngIf="preview">
@@ -36,5 +35,5 @@ André
         </label>
         <mat-icon class="icon" *ngIf="sendable" (click)="saveAndSend()">send</mat-icon>
     </div>
-    
+
 </mat-card>
