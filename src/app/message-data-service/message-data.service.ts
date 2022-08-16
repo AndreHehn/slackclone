@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class MessageDataService {
-  
+
   thread : boolean = false;
   messageId : string = '';
   creatorsId : string = '';
@@ -27,30 +27,30 @@ export class MessageDataService {
     
   }
 
-  changeId(id : string){
+  changeId(id : string) {
     this.idSource.next(id)
-   
   }
-  openThread(threadData:any){
+
+  openThread(threadData:any) {
     this.toggleThread()
     //console.error(threadData)
     this.updateThread(threadData)
   }
-  toggleThread(){
-    this.threadToggle['_value']? this.threadToggle.next(false) : this.threadToggle.next(true)
-   
+
+  toggleThread() {
+    this.threadToggle['_value']? this.threadToggle.next(false) : this.threadToggle.next(true) 
   }
-  toggleThreadOff(){
+
+  toggleThreadOff() {
     this.threadToggle.next(false)
   }
-  updateThread(threadData:string){
+
+  updateThread(threadData:string) {
    this.threadData$.next(threadData)  
    console.warn(this.threadData$['_value'])
   }
 
-  getLastChannelId(){
+  getLastChannelId() {
     return localStorage.getItem('channelId')
   }
-
-
 }
