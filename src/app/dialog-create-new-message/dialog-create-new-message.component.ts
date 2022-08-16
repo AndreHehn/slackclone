@@ -30,15 +30,14 @@ export class DialogCreateNewMessageComponent implements OnInit {
   avatar: string = './assets/avatar.png';
   isUpdated: boolean = false;
   chatAlreadyExists = false;
-  idForExistingChat: string;
   channelList: Array<any> = [];
+  channelName: string = '';
 
   constructor(
     public dialogRef: MatDialogRef<DialogCreateNewMessageComponent>,
     public dialog: MatDialog,
     private firestore: AngularFirestore,
     private router: Router) { }
-
 
   ngOnInit(): void {
     this.allUsers();
@@ -50,20 +49,9 @@ export class DialogCreateNewMessageComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  createNewChat() {
-    this.checkIfChatExists();
-    if (this.chatAlreadyExists) this.router.navigate(['main/channel/' + this.idForExistingChat]);
-    if (!this.chatAlreadyExists) this.pushNewChatToFireStore();
-  }
-
-  checkIfChatExists() {
-    let toFillArray = [];
-    this.getAllChannels(toFillArray);
-  }
-
   pushNewChatToFireStore() {
+    this.createChannelName();
     this.fillObject();
-    console.log(this.channel);
     this.firestore
       .collection('channel')
       .add(this.channel.toJson())
@@ -75,17 +63,34 @@ export class DialogCreateNewMessageComponent implements OnInit {
       });
   }
 
-  getAllChannels(toFillArray) {
-    this.firestore.collection('channel').valueChanges({ idField: 'customId' }).subscribe((changes: any) => {
-      this.channelList = changes;
-      this.channelList.forEach(element => {
-        if (element.type == 'chat' && element.users.length == this.userIdList.length) {
-          toFillArray = this.userIdList;
-          for (let i = 0; i < toFillArray.length; i++)  element.users.forEach(elem => { if (toFillArray[i] == elem) toFillArray.splice(i, 1); });
-        }
+  createNewChat() {// clean code, later!
+    let sending = true;
+    let idForExistingChat;
+    let checkList = this.userIdList;
+    this.chatAlreadyExists = false;
+    if (sending) {
+      this.firestore.collection('channel').valueChanges({ idField: 'customId' }).subscribe((changes: any) => {
+        this.channelList = changes;
+        this.channelList.forEach(channel => {
+          let users = channel.users;
+          users.sort((a, b) => (a < b) ? 1 : -1);
+          checkList.sort((a, b) => (a < b) ? 1 : -1);
+          if (JSON.stringify(users).length === JSON.stringify(checkList).length && channel.type == 'chat' && JSON.stringify(users) === JSON.stringify(checkList)) {
+            this.chatAlreadyExists = true;
+            idForExistingChat = channel.channelId;
+          }
+        });
+        this.chatAlreadyExists ? this.navigateToExistingChat(idForExistingChat) : this.pushNewChatToFireStore();
+        sending = false;
       });
-      if (toFillArray.length == 0) this.chatAlreadyExists;
-    });
+    }
+  }
+
+
+
+  navigateToExistingChat(idForExistingChat) {
+    this.router.navigate(['main/channel/' + idForExistingChat]);
+    this.dialogRef.close();
   }
 
   pushOwnId() {
@@ -148,7 +153,7 @@ export class DialogCreateNewMessageComponent implements OnInit {
     this.userIdList.forEach(element => {
       this.channel.users.push(element);
     });
-    this.channel.channelName = "chat";
+    this.channel.channelName = this.channelName;
     this.channel.type = "chat";
   }
 
@@ -160,5 +165,17 @@ export class DialogCreateNewMessageComponent implements OnInit {
       .then(() => {
         this.router.navigate(['main/channel/' + channelId]);
       });
+  }
+
+  createChannelName() {
+    let userNames = [];
+    this.channelName = 'Gruppenchat zwischen: ';
+    this.userIdList.forEach(user => {
+      this.allUserList.forEach(allUser => {
+        if (allUser.uid == user) userNames.push(allUser.displayName);
+      });
+    });
+    for (let i = 0; i < userNames.length - 1; i++)  this.channelName += userNames[i] + ' und '
+    this.channelName += userNames[userNames.length - 1] + '.';
   }
 }
