@@ -12,6 +12,14 @@
     width: 100%;
 }
 
+.subHeadlineWrap {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+    justify-content: center;
+    align-items: flex-start;
+}
+
 mat-card {
     margin-bottom: 16px;
 }
@@ -19,11 +27,16 @@ mat-card {
 .user {
     display: flex;
     flex-direction: row;
-    gap: 16px;
+    margin-bottom: 16px;
 }
 
 .avatar {
     width: 24px;
     height: 24px;
     border-radius: 2px;
+}
+
+.form {
+    margin-top: 16px;
+
 }

@@ -16,40 +16,42 @@ and info about channel
 
 <div class="dialogContainer">
     <div mat-dialog-content>
-        <mat-card>
 
-            <div class="headline">
-                <h1 mat-dialog-title>Channelname: {{channel.channelName}}</h1>
-                <mat-icon>close</mat-icon>
-            </div>
 
-            <h2>Mitglieder ({{ countMembers }})</h2>
+        <div class="headline">
+            <h1 mat-dialog-title>Channelname: {{channel.channelName}}</h1>
+            <mat-icon (click)="onNoClick()">close</mat-icon>
+        </div>
+        <div class="subHeadlineWrap">
+            <h2>Mitglieder ({{ countMembers }})</h2> <button mat-button color="warn" (click)="deleteUser()">Channel
+                verlassen</button>
+        </div>
 
-            <form class="example-form">
-                <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>Nutzer hinzufügen:</mat-label>
-                    <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
-                    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-                        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                            <img class="avatar" [src]="option.photoURL ? option.photoURL : avatar">
-                            {{option.displayName}}
-                        </mat-option>
-                    </mat-autocomplete>
-                </mat-form-field>
-                <button mat-button color="accent" (click)="addUser()">hinzufügen</button>
-            </form>
+        <table *ngIf="isUpdated">
+            <tr *ngFor="let user of userList">
+                <div class="user">
+                    <img [src]=" user.photoURL ? user.photoURL : avatar" class="avatar">
+                    <span>{{ user.displayName }}</span>
+                </div>
+            </tr>
+        </table>
+        <form class="form">
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Nutzer hinzufügen:</mat-label>
+                <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                        <img class="avatar" [src]="option.photoURL ? option.photoURL : avatar">
+                        {{option.displayName}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+            <button mat-button color="accent" (click)="addUser()">hinzufügen</button>
+        </form>
 
-            <table *ngIf="isUpdated">
-                <tr *ngFor="let user of userList">
-                    <div class="user">
-                        <img [src]=" user.photoURL ? user.photoURL : avatar" class="avatar">
-                        <span>{{ user.displayName }}</span>
-                    </div>
-                </tr>
-            </table>
 
-            <button mat-button color="warn" (click)="deleteUser()">Channel verlassen</button>
 
-        </mat-card>
+
+
     </div>
 </div>

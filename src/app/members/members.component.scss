@@ -1,6 +1,4 @@
-
-.membersCont {
-    margin-top: 24px;
+.channelListCont {
     height: 44vh;
     color: white;
 
@@ -13,11 +11,13 @@
     }
 
     .channels {
-        max-height: 40vh;
+        max-height: 38vh;
         overflow-y: scroll;
     }
 
-    .channel {
-        cursor: pointer;
+    .channelButton {
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
 }

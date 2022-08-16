@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { ProfileUser } from '../models/user';
 import { User } from 'src/models/user.class';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dialog-channel-info',
@@ -19,11 +20,10 @@ export class DialogChannelInfoComponent implements OnInit {
   channel: Channel = new Channel();
   user: User = new User();
   userId: string;
-  channelId: string;
+  channelId: string = '';
   countMembers: number = null;
   userList: Array<any> = [];
   userIdList: Array<any>;
-  creator: string;
   allUserList: Array<any> = [];
   myControl = new FormControl<string | ProfileUser>('');
   options: ProfileUser[];
@@ -33,10 +33,11 @@ export class DialogChannelInfoComponent implements OnInit {
 
   constructor(private firestore: AngularFirestore,
     private route: ActivatedRoute,
+    public dialogRef: MatDialogRef<DialogChannelInfoComponent>,
+    public dialog: MatDialog,
     private router: Router) { }
 
   ngOnInit(): void {
-    this.route.firstChild.paramMap.subscribe(paramMap => { this.channelId = paramMap['params']['id1']; });
     this.allUsers();
   }
 
@@ -82,6 +83,7 @@ export class DialogChannelInfoComponent implements OnInit {
 
   defineVar(channel) {
     this.channel = new Channel(channel);
+
     this.userId = JSON.parse(localStorage.getItem('slackCloneUser'));
     this.userIdList = channel.users;
     this.countMembers = this.userIdList.length;
@@ -126,7 +128,7 @@ export class DialogChannelInfoComponent implements OnInit {
     return this.options.filter(option => option.displayName.toLowerCase().includes(filterValue));
   }
 
-  loadChannel() {//d2
+  loadChannel() {
     this.firestore.collection('channel').doc(this.channelId).valueChanges().subscribe((changes: any) => {
       let dataFromChannel = changes;
       if (dataFromChannel.messages) this.channel.messages = dataFromChannel.messages;
@@ -140,9 +142,14 @@ export class DialogChannelInfoComponent implements OnInit {
   deleteUserbyUid() {
     for (let i = 0; i < this.channel.users.length; i++) {
       const element = this.channel.users[i];
-      console.log(element);
       if (element == this.userId) this.channel.users.splice(i, 1);
     }
+    this.dialogRef.close();
+    this.router.navigate(['main']);
+  }
+
+  onNoClick() {
+    this.dialogRef.close();
   }
 
 }

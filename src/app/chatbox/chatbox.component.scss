@@ -34,6 +34,13 @@ quill-editor {
 .icon {
     padding: 11px 13px;
     cursor: pointer;
+
+    color: #C7C7C7;
+
+    &:hover {
+        color: white;
+
+    }
 }
 
 .customUpload {
