@@ -1,12 +1,16 @@
-<div class="membersCont">
-
-    <div class="d-flex sb">
-        <h3>Direktnachrichten</h3>
-        <button (click)="openDialog()" mat-fab color="basic">
-            <mat-icon>add</mat-icon>
-        </button>
+<div class="channelListCont">
+    <div class="membersCont">
+        <div class="d-flex sb">
+            <h3>Direktnachrichten</h3>
+            <button (click)="openDialog()" mat-fab color="basic">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+        <div class="channels">
+            <button class="channelButton cursorPointer" *ngFor="let channel of filteredForUser"
+                (click)="changeSelectedId(channel.channelId)"><span *ngFor="let user of channel.users"> {{ user }}<span
+                        *ngIf="channel.users.length > 1 && user != channel.users[channel.users.length - 1]">,&nbsp;</span></span>
+            </button>
+        </div>
+        <div class="personalUsers"></div>
     </div>
-
-    <div class="personalUsers"></div>
-
-</div>
