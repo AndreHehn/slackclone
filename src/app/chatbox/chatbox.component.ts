@@ -10,6 +10,8 @@ import { Channel } from 'src/models/channel.class';
 import { Answer } from 'src/models/answer.class';
 import { ChannelComponent } from '../channel/channel.component';
 import { ThreadComponent } from '../thread/thread.component';
+import { MessageDataService } from '../message-data-service/message-data.service';
+
 
 @Component({
   selector: 'app-chatbox',
@@ -47,6 +49,7 @@ export class ChatboxComponent implements OnInit {
     private firestore: AngularFirestore,
     private route: ActivatedRoute,
     private storage: AngularFireStorage,
+    public messageService: MessageDataService,
     @Optional() public parentIsChannel?: ChannelComponent,
     @Optional() public parentIsThreadl?: ThreadComponent,
   ) { }

@@ -86,3 +86,7 @@ quill-editor {
 input[type="file"] {
     display: none;
 }
+
+.changeWidth {
+    width: calc(100vw - 256px - 300px);
+}

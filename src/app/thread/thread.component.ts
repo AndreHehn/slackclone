@@ -20,7 +20,10 @@ export class ThreadComponent implements OnInit {
         this.anwsers.push(anwser)
     });
     }
-    
+  }
+
+  closeThread() {
+    this.MessageService.thread = false;
   }
 
 }

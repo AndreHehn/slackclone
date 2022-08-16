@@ -13,7 +13,7 @@ export class MessageCardComponent implements OnInit {
 @Input() creatorId : string = '';
 @Input() currentAnwsers : Array<any>;
 thread: boolean = false;
-  constructor(private MessageService: MessageDataService) {
+  constructor(public messageService: MessageDataService) {
 
    }
 
@@ -25,8 +25,8 @@ thread: boolean = false;
   }
 toggleThread(){
   // console.warn(this.threadData)
-   this.MessageService.openThread(JSON.parse(this.threadData));
-   this.MessageService.thread = true;
+   this.messageService.openThread(JSON.parse(this.threadData));
+   this.messageService.thread = true;
   //  console.log(this.MessageService.thread);
    
    //this.MessageService.updateThread(JSON.parse(this.threadData))

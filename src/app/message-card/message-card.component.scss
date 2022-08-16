@@ -29,3 +29,7 @@ mat-card {
         font-size: 10px;
     }
 }
+
+.changeWidth {
+    width: calc(100vw - 224px - 300px);
+}

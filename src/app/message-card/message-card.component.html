@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card [class.changeWidth]="messageService.thread">
     <div class="user">UserName/Profilbild</div>
     <div class="message">
         <div class="text" [innerHTML]="messageText"></div>

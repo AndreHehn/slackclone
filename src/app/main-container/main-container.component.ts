@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MessageDataService } from '../message-data-service/message-data.service';
+
 
 @Component({
   selector: 'app-main-container',
@@ -12,7 +14,10 @@ export class MainContainerComponent implements OnInit {
   connected = false;
   showSearch = false;
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    public messageService: MessageDataService,
+    ) { }
 
 
   public ngOnInit() {

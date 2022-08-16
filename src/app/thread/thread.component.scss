@@ -1,13 +1,41 @@
-.threadHeader {
-    color: white;
-    margin-bottom: 20px;
-    .text {
-        background-color: grey;
-        padding: 10px;
-    }
-}
+// .threadHeader {
+//     color: white;
+//     margin-bottom: 20px;
+//     .text {
+//         background-color: grey;
+//         padding: 10px;
+//     }
+// }
 
-app-thread-anwser-card {
-    margin-top: 10px;
-    margin-bottom: 10px;
+// app-thread-anwser-card {
+//     margin-top: 10px;
+//     margin-bottom: 10px;
+// }
+
+.threadCont {
+    position: absolute;
+    right: 0;
+    top: 73px;
+    width: 250px;
+    background-color: rgb(27, 29, 33);
+    padding: 12px;
+    height: calc(100vh - 97px);
+    border-left: 1px solid rgb(139, 139, 139);
+
+    h3 {
+        color: white;
+    }
+
+
+    button {
+        height: 28px;
+        width: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        mat-icon {
+            transform: rotate(45deg);
+        }
+    }
 }

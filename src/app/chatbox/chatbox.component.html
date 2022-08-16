@@ -13,7 +13,7 @@ André
 -->
 
 
-<mat-card>
+<mat-card [class.changeWidth]="messageService.thread">
     <quill-editor *ngIf="cleared" placeholder="Nachricht an" [modules]="modules"
         (onEditorChanged)="changedEditor($event)">
     </quill-editor>

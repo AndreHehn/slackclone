@@ -18,6 +18,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     flex-direction: column;
 }
 
+.d-center {
+    display: flex;
+    justify-content: center;
+}
+
 .cursorPointer {
     cursor: pointer;
 }
@@ -37,3 +42,4 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mb24 {
     margin-bottom: 24px !important;
 }
+
