@@ -19,7 +19,7 @@ export class ChannelComponent implements OnInit {
   messageId: any = [];
   users: any = [];
   creatorId: any = [];
-  // thread : boolean;
+  // thread : boolean;               @ joshua: funktioniert ohne das!
   threadMessages: any = [];
 
   constructor(
@@ -35,7 +35,7 @@ export class ChannelComponent implements OnInit {
       this.loadData()
     });
 
-    // this.messageService.currentToggle.subscribe((toggle:boolean)=>{
+    // this.messageService.currentToggle.subscribe((toggle:boolean)=>{            @ joshua: funktioniert ohne das!   
     //   this.thread = toggle;
     //   if(this.thread === true){
 
