@@ -18,7 +18,7 @@ export class ThreadComponent implements OnInit {
     let threadMessages = this.threadData['threadMessages']
     if(threadMessages){
       threadMessages.forEach(anwser => {
-        this.anwsers.push(anwser)
+        this.anwsers.push(anwser['message'])
     });
     }
   }

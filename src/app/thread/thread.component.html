@@ -1,4 +1,4 @@
-<div class="threadCont column">
+<div class="threadCont">
 
     <div class="d-flex sb">
         <h3>Thread</h3>
@@ -13,5 +13,5 @@
     <div class="threadAnwsers">
         <app-thread-anwser-card *ngFor="let anwser of anwsers" anwser="{{ anwser }}"></app-thread-anwser-card>
     </div>
-    <app-chatbox [class.changeWidthChatbox]="messageService.thread"></app-chatbox>
+    <app-chatbox class="chatbox" [class.changeWidthChatbox]="messageService.thread"></app-chatbox>
 </div>

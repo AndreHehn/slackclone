@@ -6,10 +6,11 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./thread-anwser-card.component.scss']
 })
 export class ThreadAnwserCardComponent implements OnInit {
-  @Input() anwser:string = '';
+  @Input() anwser:any = '';
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.anwser, 'HERRRRRE')
   }
 
 }
