@@ -50,6 +50,7 @@ export class DialogCreateNewMessageComponent implements OnInit {
   }
 
   pushNewChatToFireStore() {
+    this.createChannelName();
     this.fillObject();
     this.firestore
       .collection('channel')
@@ -62,7 +63,7 @@ export class DialogCreateNewMessageComponent implements OnInit {
       });
   }
 
-  createNewChat() {
+  createNewChat() {// clean code, later!
     let sending = true;
     let idForExistingChat;
     let checkList = this.userIdList;
@@ -164,5 +165,18 @@ export class DialogCreateNewMessageComponent implements OnInit {
       .then(() => {
         this.router.navigate(['main/channel/' + channelId]);
       });
+  }
+
+
+  createChannelName() {
+    let userNames = [];
+    this.channelName = 'Gruppenchat zwischen: ';
+    this.userIdList.forEach(user => {
+      this.allUserList.forEach(allUser => {
+        if (allUser.uid == user) userNames.push(allUser.displayName);
+      })
+    })
+    for (let i = 0; i < userNames.length - 1; i++)  this.channelName += userNames[i] + ' und '
+    this.channelName += userNames[userNames.length - 1] + '.';
   }
 }
