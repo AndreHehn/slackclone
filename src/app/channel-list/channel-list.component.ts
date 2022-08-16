@@ -28,9 +28,12 @@ export class ChannelListComponent implements OnInit {
       .collection('channel')
       .valueChanges()
       .subscribe((changes: any) => {
+        this.filteredForType = [];
+        this.filteredForUser = [];
         this.allChannels = changes;
         this.filterForType();
         this.filterForUser();
+        this.sortChannels();
       });
   }
 
@@ -55,21 +58,18 @@ export class ChannelListComponent implements OnInit {
         })
     }
   */
+
+
   changeSelectedId(channelId: string) {
     this.messageService.changeId(channelId);
     this.messageService.toggleThreadOff()
     this.router.navigate(['main/channel/' + channelId]);
-    //setTimeout(() => {
-    // location.reload();
-    //}, 1);
-
   }
 
   filterForType() {
     this.allChannels.forEach(elem => {
       if (elem.type == "channel") {
         this.filteredForType.push(elem);
-        console.log('test', elem);
       }
     });
 
@@ -82,6 +82,11 @@ export class ChannelListComponent implements OnInit {
         if (ele == this.userId) this.filteredForUser.push(element)
       })
     })
+  }
+
+
+  sortChannels() {
+     this.filteredForUser.sort((a, b) => (a.channelName < b.channelName) ? 1 : -1)
   }
 
 }
