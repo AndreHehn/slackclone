@@ -14,11 +14,11 @@ export class ChannelComponent implements OnInit {
 
   channelId: any;
   messages: any = [];
-  messageId:any = [];
+  messageId: any = [];
   users: any = [];
   creatorId: any = [];
   // thread : boolean;
-  threadMessages:any = [];
+  threadMessages: any = [];
   constructor(private firestore: AngularFirestore, public messageService: MessageDataService) { }
 
   ngOnInit(): void {
@@ -43,21 +43,19 @@ export class ChannelComponent implements OnInit {
       this.messageId = [];
       this.creatorId = [];
       this.threadMessages = [];
-        let messageAll = channel.messages;
-        messageAll.forEach(message => {
-          console.log(message)
-          let messagesToJson =  JSON.parse(message)
+      let messageAll = channel.messages;
+      messageAll.forEach(message => {
+        console.log(message)
+        let messagesToJson = JSON.parse(message)
         this.messages.push(messagesToJson['message'])
-        //
         this.messageId.push(messagesToJson['messageId'])
         this.creatorId.push(messagesToJson['creatorId'])
-        this.threadMessages.push(messagesToJson['answers']) 
-        console.log('HERE',this.threadMessages)
-        });
-      
-      
+        this.threadMessages.push(messagesToJson['answers'])
+        console.log('HERE', this.threadMessages)
+      });
+
       this.users = channel.users;
-      
+
       setTimeout(() => {
         this.scrollBottom();
       }, 1);
@@ -65,9 +63,9 @@ export class ChannelComponent implements OnInit {
   }
 
 
-  toggleThread(){
+  toggleThread() {
     this.messageService.toggleThread();
-   }
+  }
 
 
   saveLastChannelId() {
@@ -75,13 +73,13 @@ export class ChannelComponent implements OnInit {
   }
 
 
-  threadAnwsersToJson(i:number){
-      let threadData = {
-            message : this.messages[i],
-            creatorId : this.creatorId[i],
-            threadMessages : this.threadMessages[i]
-      }
-       // console.error( this.threadMessages)
+  threadAnwsersToJson(i: number) {
+    let threadData = {
+      message: this.messages[i],
+      creatorId: this.creatorId[i],
+      threadMessages: this.threadMessages[i]
+    }
+    // console.error( this.threadMessages)
     return JSON.stringify(threadData)
   }
 
