@@ -35,14 +35,13 @@ export class ChannelComponent implements OnInit {
       this.loadData()
     });
 
-    // this.MessageService.currentToggle.subscribe((toggle:boolean)=>{
+    // this.messageService.currentToggle.subscribe((toggle:boolean)=>{
     //   this.thread = toggle;
     //   if(this.thread === true){
 
     //   }
     // })
   }
-
 
   loadData() {
     this.firestore.collection('channel').doc(this.channelId).valueChanges().subscribe((channel: any) => {
@@ -69,16 +68,13 @@ export class ChannelComponent implements OnInit {
     })
   }
 
-
   toggleThread() {
     this.messageService.toggleThread();
   }
 
-
   saveLastChannelId() {
     localStorage.setItem('channelId', this.channelId)
   }
-
 
   threadAnwsersToJson(i: number) {
     let threadData = {
@@ -86,13 +82,10 @@ export class ChannelComponent implements OnInit {
       creatorId: this.creatorId[i],
       threadMessages: this.threadMessages[i]
     }
-    // console.error( this.threadMessages)
     return JSON.stringify(threadData)
   }
 
-
   scrollBottom() {
-    //console.log('works');
     let messageContainer = document.getElementById('messageContainer');
     messageContainer.scrollTop = messageContainer.scrollHeight;
   }
