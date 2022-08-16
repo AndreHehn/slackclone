@@ -6,12 +6,10 @@
 //         padding: 10px;
 //     }
 // }
-
 // app-thread-anwser-card {
 //     margin-top: 10px;
 //     margin-bottom: 10px;
 // }
-
 .threadCont {
     position: absolute;
     right: 0;
@@ -22,15 +20,12 @@
     height: calc(100vh - 85px);
     border-left: 1px solid rgb(139, 139, 139);
     color: white;
-
-
     button {
         height: 28px;
         width: 28px;
         display: flex;
         align-items: center;
         justify-content: center;
-
         mat-icon {
             transform: rotate(45deg);
         }

@@ -34,12 +34,9 @@ quill-editor {
 .icon {
     padding: 11px 13px;
     cursor: pointer;
-
     color: #C7C7C7;
-
     &:hover {
         color: white;
-
     }
 }
 
@@ -65,12 +62,10 @@ quill-editor {
     justify-content: flex-start;
     height: fit-content;
     width: calc(100% - 2px);
-
 }
 
 .singlePicture {
     position: relative;
-
     .delete {
         cursor: pointer;
         position: absolute;
@@ -81,7 +76,6 @@ quill-editor {
         width: 16px;
         height: 16px;
         background-color: black;
-
         mat-icon {
             padding: 0 !important;
             font-size: 16px;
@@ -94,5 +88,5 @@ input[type="file"] {
 }
 
 .changeWidth {
-    width: calc(100vw - 256px - 300px);
+    width: calc(100% - 24px);
 }
