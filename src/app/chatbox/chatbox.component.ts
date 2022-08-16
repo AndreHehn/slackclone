@@ -27,7 +27,8 @@ export class ChatboxComponent implements OnInit {
     toolbar: [
       ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
       ['blockquote', 'code-block'],
-      [{ 'list': 'ordered' }, { 'list': 'bullet' }]
+      [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+      ['link']
     ]
   };
   preview: string;
@@ -162,5 +163,4 @@ export class ChatboxComponent implements OnInit {
       this.sendable = true;
     });
   }
-
 }
