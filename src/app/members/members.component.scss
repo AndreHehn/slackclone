@@ -1,4 +1,4 @@
-.channelListCont {
+.memberListCont {
     height: 44vh;
     color: white;
 
@@ -10,12 +10,18 @@
         justify-content: center;
     }
 
-    .channels {
+    .members {
         max-height: 38vh;
         overflow-y: scroll;
+        align-items: center;
+
+        .userPic {
+            height: 24px;
+            margin-right: 8px;
+        }
     }
 
-    .channelButton {
+    .memberButton {
         width: 100%;
         margin-top: 10px;
         margin-bottom: 10px;

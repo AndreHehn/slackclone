@@ -52,16 +52,20 @@ export class ChannelComponent implements OnInit {
       this.threadMessages = [];
       let messageAll = channel.messages;
       messageAll.forEach(message => {
-        console.log(message)
+        // console.log(message)
         let messagesToJson = JSON.parse(message)
         this.messages.push(messagesToJson['message'])
         this.messageId.push(messagesToJson['messageId'])
         this.creatorId.push(messagesToJson['creatorId'])
         this.threadMessages.push(messagesToJson['answers'])
-        console.log('HERE', this.threadMessages)
+        // console.log('HERE', this.threadMessages)
       });
+
       this.users = channel.users;
+      // console.log(this.users);
+      
       this.channelName = channel.channelName;
+
       setTimeout(() => {
         this.scrollBottom();
       }, 1);
