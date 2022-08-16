@@ -1,9 +1,12 @@
 <div class="dialogAddMembersCont">
+
     <h3>Add Member(s)</h3>
+
     <div class="cursorPointer d-flex sb dialogAddMember" *ngFor="let users of comp.allMembers">
         {{ users.displayName }}
         <button (click)="addPersonalMember()" mat-fab color="basic">
             <mat-icon>add</mat-icon>
         </button>
     </div>
+    
 </div>

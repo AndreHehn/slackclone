@@ -6,9 +6,11 @@ mat-card {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+
     .user {
         margin-bottom: 10px;
     }
+
     .message {
         display: flex;
         justify-content: space-between;
@@ -17,12 +19,12 @@ mat-card {
         padding: 5px;
         background-color: grey;
     }
-    .edit {
-        button {
-            background-color: transparent;
-            border: none;
-        }
+
+    button {
+        background-color: transparent;
+        border: none;
     }
+
     .threads {
         margin-top: 10px;
         margin-left: 20px;

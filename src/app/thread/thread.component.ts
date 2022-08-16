@@ -6,6 +6,7 @@ import { MessageDataService } from '../message-data-service/message-data.service
   templateUrl: './thread.component.html',
   styleUrls: ['./thread.component.scss']
 })
+
 export class ThreadComponent implements OnInit {
   threadData : any;
   anwsers : Array<any> = [];

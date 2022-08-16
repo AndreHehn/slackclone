@@ -1,7 +1,10 @@
 <div class="signUpCont">
+
     <h2>Sign up in our</h2>
     <h1>Slack-Clone</h1>
+
     <form class="formGroup" [formGroup]="signUpForm" (ngSubmit)="submit()">
+
         <div class="d-flex mb8">
             <mat-form-field>
                 <input matInput placeholder="Name" formControlName="name" />
@@ -19,6 +22,7 @@
                 </mat-error>
             </mat-form-field>
         </div>
+
         <div class="d-flex mb24">
             <mat-form-field>
                 <input matInput type="password" placeholder="Password" formControlName="password" />
@@ -36,8 +40,8 @@
                 Passwords should match
             </mat-error>
         </div>
-        <div>
-            <button type="submit" mat-raised-button color="primary">Sign Up!</button>
-        </div>
+
+        <button type="submit" mat-raised-button color="primary">Sign Up!</button>
+
     </form>
 </div>

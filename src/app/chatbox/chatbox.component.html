@@ -14,9 +14,11 @@ André
 
 
 <mat-card [class.changeWidth]="messageService.thread">
+
     <quill-editor *ngIf="cleared" placeholder="Nachricht an" [modules]="modules"
         (onEditorChanged)="changedEditor($event)">
     </quill-editor>
+
     <div class="pictureWrap" *ngIf="preview">
         <div class="singlePicture">
             <div class="delete">
@@ -25,6 +27,7 @@ André
             <img class="preview" [src]="preview">
         </div>
     </div>
+
     <div class="sendButton">
         <label for="files" class="customUpload">
             <input type="file" id="files" single accept="*.jpg .png" (change)="uploadFile($event)"
@@ -33,4 +36,5 @@ André
         </label>
         <mat-icon class="icon" *ngIf="sendable" (click)="saveAndSend()">send</mat-icon>
     </div>
+    
 </mat-card>

@@ -8,6 +8,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
   templateUrl: './left-side.component.html',
   styleUrls: ['./left-side.component.scss']
 })
+
 export class LeftSideComponent implements OnInit {
 
   constructor(

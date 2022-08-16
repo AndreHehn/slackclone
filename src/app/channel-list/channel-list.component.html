@@ -1,12 +1,15 @@
 <div class="channelListCont">
+
     <div class="d-flex sb">
         <h3>Channels</h3>
         <button (click)="openDialog()" mat-fab color="basic">
             <mat-icon>add</mat-icon>
         </button>
     </div>
+
     <div class="channels">
         <button class="channelButton cursorPointer" *ngFor="let channel of filteredForUser"
             (click)="changeSelectedId(channel.channelId)">{{ channel.channelName }}</button>
     </div>
+    
 </div>

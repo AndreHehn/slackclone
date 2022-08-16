@@ -7,10 +7,10 @@ import { UsersService } from '../service/user.service';
   templateUrl: './dialog-add-members.component.html',
   styleUrls: ['./dialog-add-members.component.scss']
 })
+
 export class DialogAddMembersComponent implements OnInit {
 
   checks: any;
-
 
   constructor(private firestore: AngularFirestore,
     public comp: UsersService) { }

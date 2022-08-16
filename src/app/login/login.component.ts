@@ -46,11 +46,9 @@ export class LoginComponent implements OnInit {
     this.logIn(email, password);
   }
 
-
   logInAsGuest() {
     this.logIn('guestuser@slackclone.de', 'password');
   }
-
 
   logIn(email: string, password: string) {
     this.authService.login(email, password).pipe(
@@ -65,8 +63,6 @@ export class LoginComponent implements OnInit {
     });
   }
 
-
-
   pushUidToLocalStorage() {
 
     onAuthStateChanged(this.auth, (user) => {
@@ -78,8 +74,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('slackCloneUser', 'null');
         JSON.parse(localStorage.getItem('slackCloneUser')!);
       }
-    }
-    );
+    });
   }
-
+  
 }

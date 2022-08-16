@@ -1,11 +1,16 @@
 <mat-dialog-content>
+
     <div class="dialog-container">
+
         <h3>Ändere deinen Anzeigenamen:</h3>
+
         <mat-form-field appearance="fill">
             <mat-label>Name</mat-label>
             <input matInput placeholder="{{ displayName }}" maxlength="80" [(ngModel)]="displayName">
         </mat-form-field>
+
         <h3>Ändere deinen Profilbild:</h3>
+
         <div class="picture-wrap">
             <label for="userPic" class="custom-file-upload">
                 <input type="file" id="userPic" single accept="*.jpg .png" (change)="uploadPicture($event)"
@@ -13,10 +18,12 @@
                     <img src="{{ profileImagePath }}" class="image">
             </label>
         </div>
+
         <div class="button-wrap">
             <button *ngIf="uploaded" color="accent" mat-button
                 (click)="dialogRef.close(); saveEntry()">Speichern</button>
             <button *ngIf="uploaded" color="accent" mat-button (click)="dialogRef.close(); deleteLastUpload()">Schließen</button>
         </div>
+        
     </div>
 </mat-dialog-content>

@@ -17,7 +17,6 @@ import { MembersComponent } from './members/members.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { LeftSideComponent } from './left-side/left-side.component';
 import { DialogBigPictureComponent } from './dialog-big-picture/dialog-big-picture.component';
-
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
@@ -43,8 +42,6 @@ import { MessageCardComponent } from './message-card/message-card.component';
 import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.component';
 import { ThreadAnwserCardComponent } from './thread-anwser-card/thread-anwser-card.component';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,6 +64,7 @@ import { ThreadAnwserCardComponent } from './thread-anwser-card/thread-anwser-ca
     DialogEditUserComponent,
     ThreadAnwserCardComponent,
   ],
+
   imports: [
     MatToolbarModule,
     MatCardModule,
@@ -91,7 +89,9 @@ import { ThreadAnwserCardComponent } from './thread-anwser-card/thread-anwser-ca
     MatDialogModule,
     FormsModule
   ],
+
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

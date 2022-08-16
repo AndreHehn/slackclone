@@ -31,6 +31,7 @@ export function passwordsMatchValidator(): ValidatorFn {
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss']
 })
+
 export class SignUpComponent implements OnInit {
 
   signUpForm = new FormGroup(
@@ -42,12 +43,14 @@ export class SignUpComponent implements OnInit {
     },
     { validators: passwordsMatchValidator() }
   );
+
   constructor(
     private authService: AuthService,
     private router: Router,
     private toast: HotToastService,
     private usersService: UsersService
   ) {}
+
   ngOnInit(): void {}
   get email() {
     return this.signUpForm.get('email');
@@ -61,6 +64,7 @@ export class SignUpComponent implements OnInit {
   get name() {
     return this.signUpForm.get('name');
   }
+  
   submit() {
     if (!this.signUpForm.valid) {
       return;

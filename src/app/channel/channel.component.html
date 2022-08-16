@@ -1,16 +1,24 @@
 <div class="channelCont" [class.changeWidth]="messageService.thread">
-  <div class="channelHeader d-flex sb">
 
+  <div class="channelHeader d-flex sb">
     <p>Users in this channel: {{ users.length }} </p>
     <mat-icon  (click)="openDialog()">info</mat-icon>
     <!-- userid in username umwandeln fehlt noch -->
   </div>
+
   <div class="messageContainer" id="messageContainer">
     <app-message-card class="message" *ngFor="let message of messages, let i = index" messageText="{{message}}"
       threadData="{{threadAnwsersToJson(i)}}"></app-message-card>
     <app-chatbox class="chatbox"></app-chatbox>
   </div>
+
 </div>  
+
+
+
+
+
+
 
   <!--
 

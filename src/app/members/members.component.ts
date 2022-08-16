@@ -8,6 +8,7 @@ import { DialogCreateNewMessageComponent } from '../dialog-create-new-message/di
   templateUrl: './members.component.html',
   styleUrls: ['./members.component.scss']
 })
+
 export class MembersComponent implements OnInit {
 
   constructor(public dialog: MatDialog) { }

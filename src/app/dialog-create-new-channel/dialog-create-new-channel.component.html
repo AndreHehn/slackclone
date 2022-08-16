@@ -23,22 +23,35 @@
     André-->
 
 <div class="dialogContainer">
+
     <div class="headline">
         <h1 mat-dialog-title>Channels erstellen</h1>
         <mat-icon (click)="onNoClick()">close</mat-icon>
     </div>
+
     <div mat-dialog-content>
+
         <p>Channels dienen deinem Team zur Kommunikation. Am besten sollten sie themenbezogen sein – #marketing zum
             Beispiel.</p>
+
         <div class="subheadWrap">
             <h3>Name</h3>
             <span *ngIf="nameIsUsed" class="warntext">Name ist bereits vergeben. Bitte wähle einen anderen!</span>
         </div>
+
         <mat-form-field appearance="fill">
             <mat-label>Name</mat-label>
             <input matInput placeholder="z.B. marketing" maxlength="80" [(ngModel)]="channelName">
         </mat-form-field>
-        <div class="buttonWrap"><button mat-button color="accent" [disabled]="channelName.length == 0"
-                (click)="createNewChannel()">Erstellen</button></div>
+
+        <div class="buttonWrap">
+            <button 
+                mat-button 
+                color="accent" 
+                [disabled]="channelName.length == 0"
+                (click)="createNewChannel()">Erstellen
+            </button>
+        </div>
+
     </div>
 </div>

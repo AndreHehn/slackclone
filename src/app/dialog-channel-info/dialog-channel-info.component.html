@@ -15,13 +15,14 @@ and info about channel
 
 
 <div class="dialogContainer">
-
     <div mat-dialog-content>
         <mat-card>
+
             <div class="headline">
                 <h1 mat-dialog-title>Channelname: {{channel.channelName}}</h1>
                 <mat-icon>close</mat-icon>
             </div>
+
             <h2>Mitglieder ({{ countMembers }})</h2>
 
             <form class="example-form">
@@ -37,6 +38,7 @@ and info about channel
                 </mat-form-field>
                 <button mat-button color="accent" (click)="addUser()">hinzufügen</button>
             </form>
+
             <table *ngIf="isUpdated">
                 <tr *ngFor="let user of userList">
                     <div class="user">
@@ -45,7 +47,9 @@ and info about channel
                     </div>
                 </tr>
             </table>
+
             <button mat-button color="warn" (click)="deleteUser()">Channel verlassen</button>
+
         </mat-card>
     </div>
 </div>

@@ -14,6 +14,7 @@ import { map, startWith } from 'rxjs/operators';
   templateUrl: './dialog-create-new-message.component.html',
   styleUrls: ['./dialog-create-new-message.component.scss']
 })
+
 export class DialogCreateNewMessageComponent implements OnInit {
 
   channel: Channel = new Channel();
@@ -32,7 +33,6 @@ export class DialogCreateNewMessageComponent implements OnInit {
   idForExistingChat: string;
   channelList: Array<any> = [];
 
-
   constructor(
     public dialogRef: MatDialogRef<DialogCreateNewMessageComponent>,
     public dialog: MatDialog,
@@ -46,11 +46,9 @@ export class DialogCreateNewMessageComponent implements OnInit {
     this.isUpdated = true;
   }
 
-
   onNoClick() {
     this.dialogRef.close();
   }
-
 
   createNewChat() {
     this.checkIfChatExists();
@@ -58,12 +56,10 @@ export class DialogCreateNewMessageComponent implements OnInit {
     if (!this.chatAlreadyExists) this.pushNewChatToFireStore();
   }
 
-
   checkIfChatExists() {
     let toFillArray = [];
     this.getAllChannels(toFillArray);
   }
-
 
   pushNewChatToFireStore() {
     this.fillObject();
@@ -79,7 +75,6 @@ export class DialogCreateNewMessageComponent implements OnInit {
       });
   }
 
-
   getAllChannels(toFillArray) {
     this.firestore.collection('channel').valueChanges({ idField: 'customId' }).subscribe((changes: any) => {
       this.channelList = changes;
@@ -93,12 +88,10 @@ export class DialogCreateNewMessageComponent implements OnInit {
     });
   }
 
-
   pushOwnId() {
     this.userId = JSON.parse(localStorage.getItem('slackCloneUser'));
     this.userIdList.push(this.userId);
   }
-
 
   forAutoComplete() {//d2
     this.options = this.allUserList;
@@ -111,17 +104,14 @@ export class DialogCreateNewMessageComponent implements OnInit {
     );
   }
 
-
   displayFn(user: ProfileUser): string {//d2
     return user && user.displayName ? user.displayName : '';
   }
-
 
   private _filter(name: string): ProfileUser[] {//d2
     const filterValue = name.toLowerCase();
     return this.options.filter(option => option.displayName.toLowerCase().includes(filterValue));
   }
-
 
   allUsers() {
     this.firestore.
@@ -133,7 +123,6 @@ export class DialogCreateNewMessageComponent implements OnInit {
         this.updateUserList();
       });
   }
-
 
   addUser() {
     this.isUpdated = false;
@@ -147,8 +136,6 @@ export class DialogCreateNewMessageComponent implements OnInit {
     this.isUpdated = true;
   }
 
-
-
   updateUserList() {
     this.allUserList.forEach(ele => {
       this.userIdList.forEach(element => {
@@ -157,7 +144,6 @@ export class DialogCreateNewMessageComponent implements OnInit {
     });
   }
 
-
   fillObject() {
     this.userIdList.forEach(element => {
       this.channel.users.push(element);
@@ -165,7 +151,6 @@ export class DialogCreateNewMessageComponent implements OnInit {
     this.channel.channelName = "chat";
     this.channel.type = "chat";
   }
-
 
   pushCustomIdToChannel(channelId) {
     this.firestore

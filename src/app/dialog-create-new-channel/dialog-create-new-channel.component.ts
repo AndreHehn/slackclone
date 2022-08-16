@@ -9,6 +9,7 @@ import { Channel } from 'src/models/channel.class';
   templateUrl: './dialog-create-new-channel.component.html',
   styleUrls: ['./dialog-create-new-channel.component.scss']
 })
+
 export class DialogCreateNewChannelComponent implements OnInit {
 
   channelName: string = '';
@@ -17,22 +18,18 @@ export class DialogCreateNewChannelComponent implements OnInit {
   usedNames: Array<any> = [];
   nameIsUsed: boolean = false;
 
-
   constructor(public dialogRef: MatDialogRef<DialogCreateNewChannelComponent>,
     public dialog: MatDialog,
     private firestore: AngularFirestore,
     private router: Router) { }
 
-
   ngOnInit(): void {
     this.getUsedNames();
   }
 
-
   onNoClick() {
     this.dialogRef.close();
   }
-
 
   createNewChannel() {
     this.checkIfNameIsUsed();
@@ -50,14 +47,12 @@ export class DialogCreateNewChannelComponent implements OnInit {
     }
   }
 
-
   fillObject() {
     let currentUser = JSON.parse(localStorage.getItem('slackCloneUser'));
     this.channel.users.push(currentUser);
     this.channel.channelName = this.channelName;
     this.channel.type = "channel";
   }
-
 
   pushCustomIdToChannel(channelId) {
     this.firestore
@@ -69,14 +64,12 @@ export class DialogCreateNewChannelComponent implements OnInit {
       });
   }
 
-
   getUsedNames() {
     this.firestore.collection('channel').valueChanges({ idField: 'customId' }).subscribe((changes: any) => {
       this.allChannels = changes;
       this.allChannels.forEach(element => { this.usedNames.push(element.channelName); });
     });
   }
-
 
   checkIfNameIsUsed() {
     this.nameIsUsed = false;

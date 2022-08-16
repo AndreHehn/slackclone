@@ -12,13 +12,13 @@ import { ChannelComponent } from '../channel/channel.component';
 import { ThreadComponent } from '../thread/thread.component';
 import { MessageDataService } from '../message-data-service/message-data.service';
 
-
 @Component({
   selector: 'app-chatbox',
   templateUrl: './chatbox.component.html',
   template: '{{parentName.comp}}',
   styleUrls: ['./chatbox.component.scss']
 })
+
 export class ChatboxComponent implements OnInit {
 
   @Input() parentName: string;
@@ -54,14 +54,12 @@ export class ChatboxComponent implements OnInit {
     @Optional() public parentIsThreadl?: ThreadComponent,
   ) { }
 
-
   ngOnInit(): void {
     this.route.firstChild.paramMap.subscribe(paramMap => { this.channelId = paramMap['params']['id1']; });
     this.route.firstChild.paramMap.subscribe(paramMap => { if (paramMap['params']['id2']) this.idOfMessage = paramMap['params']['id2']; });
     this.userId = JSON.parse(localStorage.getItem('slackCloneUser'));
     this.loadChannel();
   }
-
 
   ngOnDestroy(): void {
     if (this.uploaded && !this.saved) this.deleteLastUpload();
@@ -103,7 +101,6 @@ export class ChatboxComponent implements OnInit {
     this.uploaded = true;
   }
 
-
   saveAndSend() {
     this.fillObject();
     this.firestore
@@ -118,7 +115,6 @@ export class ChatboxComponent implements OnInit {
       });
   }
 
-
   changedEditor(event: EditorChangeContent | EditorChangeSelection) {
     this.messageValue = event['editor']['root']['innerHTML'];
     this.route.firstChild.paramMap.subscribe(paramMap => { this.channelId = paramMap['params']['id1']; });
@@ -126,13 +122,11 @@ export class ChatboxComponent implements OnInit {
     this.loadChannel();
   }
 
-
   fillObject() {
     console.log(this.parentName);
     if (this.parentIsChannel) this.fillMessage();
     if (this.parentIsThreadl) this.fillAnswer();
   }
-
 
   fillMessage() {
     this.message.creatorId = this.userId;
@@ -142,7 +136,6 @@ export class ChatboxComponent implements OnInit {
     this.message.messageId = '' + Math.floor(Math.random() * 1000000000);
     this.channel.messages.push(JSON.stringify(this.message));
   }
-
 
   fillAnswer() {//not sure if works. Has to be tested in Thread-component.
     this.answer.creatorId = this.userId;
@@ -156,7 +149,6 @@ export class ChatboxComponent implements OnInit {
     }
     this.channel.messages.push(JSON.stringify(channelToPushIn));
   }
-
 
   loadChannel() { //d2
     this.sendable = false;

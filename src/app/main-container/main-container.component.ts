@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MessageDataService } from '../message-data-service/message-data.service';
 
-
 @Component({
   selector: 'app-main-container',
   templateUrl: './main-container.component.html',
   styleUrls: ['./main-container.component.scss']
 })
+
 export class MainContainerComponent implements OnInit {
 
   title = 'slackclone';
@@ -19,11 +19,8 @@ export class MainContainerComponent implements OnInit {
     public messageService: MessageDataService,
     ) { }
 
-
   public ngOnInit() {
 
   }
-
-
 
 }

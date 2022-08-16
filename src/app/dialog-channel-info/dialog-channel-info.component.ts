@@ -8,13 +8,11 @@ import { map, startWith } from 'rxjs/operators';
 import { ProfileUser } from '../models/user';
 import { User } from 'src/models/user.class';
 
-
 @Component({
   selector: 'app-dialog-channel-info',
   templateUrl: './dialog-channel-info.component.html',
   styleUrls: ['./dialog-channel-info.component.scss']
 })
-
 
 export class DialogChannelInfoComponent implements OnInit {
 
@@ -33,23 +31,19 @@ export class DialogChannelInfoComponent implements OnInit {
   avatar: string = './assets/avatar.png';
   isUpdated: boolean = true;
 
-
   constructor(private firestore: AngularFirestore,
     private route: ActivatedRoute,
     private router: Router) { }
-
 
   ngOnInit(): void {
     this.route.firstChild.paramMap.subscribe(paramMap => { this.channelId = paramMap['params']['id1']; });
     this.allUsers();
   }
 
-
   deleteUser() {
     this.deleteUserbyUid();
     this.changeUsers('delete');
   }
-
 
   changeUsers(status) {
     this.isUpdated = false;
@@ -64,12 +58,10 @@ export class DialogChannelInfoComponent implements OnInit {
       });
   }
 
-
   addUser() {
     this.addUserById();
     this.changeUsers('add');
   }
-
 
   addUserById() {
     let alreadyInChannel = false;
@@ -78,7 +70,6 @@ export class DialogChannelInfoComponent implements OnInit {
     }
     if (!alreadyInChannel) this.channel.users.push(this.myControl.value['uid']);
   }
-
 
   getChannelInfo() {
     this.firestore.collection('channel')
@@ -89,14 +80,12 @@ export class DialogChannelInfoComponent implements OnInit {
       })
   }
 
-
   defineVar(channel) {
     this.channel = new Channel(channel);
     this.userId = JSON.parse(localStorage.getItem('slackCloneUser'));
     this.userIdList = channel.users;
     this.countMembers = this.userIdList.length;
   }
-
 
   getUsers() {
     this.allUserList.forEach(ele => {
@@ -105,7 +94,6 @@ export class DialogChannelInfoComponent implements OnInit {
       });
     });
   }
-
 
   allUsers() {
     this.firestore.
@@ -118,7 +106,6 @@ export class DialogChannelInfoComponent implements OnInit {
       });
   }
 
-
   forAutoComplete() {//d2
     this.options = this.allUserList;
     this.filteredOptions = this.myControl.valueChanges.pipe(
@@ -130,17 +117,14 @@ export class DialogChannelInfoComponent implements OnInit {
     );
   }
 
-
   displayFn(user: ProfileUser): string {//d2
     return user && user.displayName ? user.displayName : '';
   }
-
 
   private _filter(name: string): ProfileUser[] {//d2
     const filterValue = name.toLowerCase();
     return this.options.filter(option => option.displayName.toLowerCase().includes(filterValue));
   }
-
 
   loadChannel() {//d2
     this.firestore.collection('channel').doc(this.channelId).valueChanges().subscribe((changes: any) => {
@@ -152,7 +136,6 @@ export class DialogChannelInfoComponent implements OnInit {
       if (dataFromChannel.type) this.channel.type = dataFromChannel.type;
     });
   }
-
 
   deleteUserbyUid() {
     for (let i = 0; i < this.channel.users.length; i++) {

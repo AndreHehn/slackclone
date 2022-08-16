@@ -11,6 +11,7 @@ import { MessageDataService } from '../message-data-service/message-data.service
   templateUrl: './channel-list.component.html',
   styleUrls: ['./channel-list.component.scss']
 })
+
 export class ChannelListComponent implements OnInit {
 
   allChannels = [];
@@ -59,7 +60,6 @@ export class ChannelListComponent implements OnInit {
     }
   */
 
-
   changeSelectedId(channelId: string) {
     this.messageService.changeId(channelId);
     this.messageService.toggleThreadOff()
@@ -72,7 +72,6 @@ export class ChannelListComponent implements OnInit {
         this.filteredForType.push(elem);
       }
     });
-
   }
 
   filterForUser() {
@@ -83,7 +82,6 @@ export class ChannelListComponent implements OnInit {
       })
     })
   }
-
 
   sortChannels() {
      this.filteredForUser.sort((a, b) => (a.channelName < b.channelName) ? 1 : -1)

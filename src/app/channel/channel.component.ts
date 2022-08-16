@@ -11,8 +11,8 @@ import { MessageDataService } from '../message-data-service/message-data.service
   templateUrl: './channel.component.html',
   styleUrls: ['./channel.component.scss']
 })
-export class ChannelComponent implements OnInit {
 
+export class ChannelComponent implements OnInit {
 
   channelId: any;
   messages: any = [];

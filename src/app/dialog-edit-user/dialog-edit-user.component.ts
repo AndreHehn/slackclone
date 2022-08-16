@@ -11,8 +11,8 @@ import { User } from 'src/models/user.class';
   templateUrl: './dialog-edit-user.component.html',
   styleUrls: ['./dialog-edit-user.component.scss']
 })
-export class DialogEditUserComponent implements OnInit {
 
+export class DialogEditUserComponent implements OnInit {
 
   profileImagePath: string;
   uploaded = true;
@@ -37,14 +37,12 @@ export class DialogEditUserComponent implements OnInit {
     this.allUsers();
   }
 
-
   deleteLastUpload() {
     if (this.currentFile) {
       const storageRef = this.currentFile;
       storageRef.delete();
     }
   }
-
 
   uploadPicture(event) {
     this.uploaded = false;
@@ -60,7 +58,6 @@ export class DialogEditUserComponent implements OnInit {
     ).subscribe();
     this.uploaded = true;
   }
-
 
   saveEntry() {
     if (this.pictureUrl) this.user.photoURL = this.pictureUrl;
@@ -87,6 +84,7 @@ export class DialogEditUserComponent implements OnInit {
         this.displayName = this.user.displayName;
       });
   }
+  
 }
 
 

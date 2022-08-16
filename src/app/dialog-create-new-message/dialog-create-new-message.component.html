@@ -1,11 +1,16 @@
 <div class="dialogContainer">
+
     <div class="headline">
         <h1 mat-dialog-title>Chat erstellen</h1>
         <mat-icon (click)="onNoClick()">close</mat-icon>
     </div>
+
     <div mat-dialog-content>
+
         <p>Füge Nutzer, mit denen du chatten willst, hinzu!</p>
+
         <div class="subheadWrap">
+
             <form class="example-form">
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>Nutzer hinzufügen:</mat-label>
@@ -19,6 +24,7 @@
                 </mat-form-field>
                 <button mat-button color="accent" (click)="addUser()">hinzufügen</button>
             </form>
+
             <table *ngIf="isUpdated">
                 <tr *ngFor="let user of userList">
                     <div class="user">
@@ -27,8 +33,16 @@
                     </div>
                 </tr>
             </table>
+            
         </div>
-        <div class="buttonWrap"><button mat-button color="accent" [disabled]=""
-                (click)="createNewChat()">Erstellen</button></div>
+
+        <div class="buttonWrap">
+            <button 
+                mat-button color="accent" 
+                [disabled]="" 
+                (click)="createNewChat()">Erstellen
+            </button>
+        </div>
+
     </div>
 </div>
