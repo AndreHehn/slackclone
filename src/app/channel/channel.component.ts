@@ -1,6 +1,8 @@
 import { ThisReceiver } from '@angular/compiler';
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogChannelInfoComponent } from '../dialog-channel-info/dialog-channel-info.component';
 import { MessageDataService } from '../message-data-service/message-data.service';
 
 
@@ -19,7 +21,12 @@ export class ChannelComponent implements OnInit {
   creatorId: any = [];
   // thread : boolean;
   threadMessages: any = [];
-  constructor(private firestore: AngularFirestore, public messageService: MessageDataService) { }
+
+  constructor(
+    private firestore: AngularFirestore, 
+    public messageService: MessageDataService,
+    public dialog: MatDialog,
+    ) { }
 
   ngOnInit(): void {
     this.messageService.currentId.subscribe((id) => {
@@ -88,6 +95,10 @@ export class ChannelComponent implements OnInit {
     //console.log('works');
     let messageContainer = document.getElementById('messageContainer');
     messageContainer.scrollTop = messageContainer.scrollHeight;
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogChannelInfoComponent);
   }
 
 }

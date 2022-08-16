@@ -3,19 +3,28 @@
     background-color: rgb(27, 29, 33);
     padding: 12px;
     height: calc(100vh - 97px);
+
     .channelHeader {
+        width: 95%;
         height: 3%;
         display: flex;
         gap: 5px;
         color: white;
         margin-bottom: 10px;
+
+        mat-icon {
+            color: white;
+            cursor: pointer;
+        }
     }
+
     .messageContainer {
         height: 67vh;
         max-height: fit-content;
         overflow-y: scroll;
         width: calc(100vw - 224px);
     }
+
     .chatbox {
         position: absolute;
         bottom: 12px;
