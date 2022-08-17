@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Channel } from 'src/models/channel.class';
+import { MessageDataService } from '../message-data-service/message-data.service';
 
 @Component({
   selector: 'app-dialog-create-new-channel',
@@ -22,6 +23,7 @@ export class DialogCreateNewChannelComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<DialogCreateNewChannelComponent>,
     public dialog: MatDialog,
     private firestore: AngularFirestore,
+    private messageService: MessageDataService,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -60,6 +62,8 @@ export class DialogCreateNewChannelComponent implements OnInit {
       .doc(channelId)
       .update(this.channel.toJson())
       .then(() => {
+        this.messageService.changeId(channelId);
+        this.messageService.toggleThreadOff();
         this.router.navigate(['main/channel/' + channelId]);
       });
   }

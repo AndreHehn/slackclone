@@ -8,6 +8,7 @@ import { Channel } from 'src/models/channel.class';
 import { User } from 'src/models/user.class';
 import { ProfileUser } from '../models/user';
 import { map, startWith } from 'rxjs/operators';
+import { MessageDataService } from '../message-data-service/message-data.service';
 
 @Component({
   selector: 'app-dialog-create-new-message',
@@ -37,6 +38,7 @@ export class DialogCreateNewMessageComponent implements OnInit {
     public dialogRef: MatDialogRef<DialogCreateNewMessageComponent>,
     public dialog: MatDialog,
     private firestore: AngularFirestore,
+    private messageService: MessageDataService,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -58,7 +60,6 @@ export class DialogCreateNewMessageComponent implements OnInit {
       .then((ref) => {
         let channelId = ref.id;
         this.channel.channelId = channelId;
-        this.dialogRef.close();
         this.pushCustomIdToChannel(channelId);
       });
   }
@@ -68,9 +69,9 @@ export class DialogCreateNewMessageComponent implements OnInit {
     let idForExistingChat;
     let checkList = this.userIdList;
     this.chatAlreadyExists = false;
-    if (sending) {
-      this.firestore.collection('channel').valueChanges({ idField: 'customId' }).subscribe((changes: any) => {
-        this.channelList = changes;
+    this.firestore.collection('channel').valueChanges({ idField: 'customId' }).subscribe((changes: any) => {
+      this.channelList = changes;
+      if (sending) {
         this.channelList.forEach(channel => {
           let users = channel.users;
           users.sort((a, b) => (a < b) ? 1 : -1);
@@ -80,16 +81,16 @@ export class DialogCreateNewMessageComponent implements OnInit {
             idForExistingChat = channel.channelId;
           }
         });
-        this.chatAlreadyExists ? this.navigateToExistingChat(idForExistingChat) : this.pushNewChatToFireStore();
         sending = false;
-      });
-    }
+        this.chatAlreadyExists ? this.navigateToExistingChat(idForExistingChat) : this.pushNewChatToFireStore();
+      }
+    });
   }
-
-
 
   navigateToExistingChat(idForExistingChat) {
     this.dialogRef.close();
+    this.messageService.changeId(idForExistingChat);
+    this.messageService.toggleThreadOff();
     this.router.navigate(['main/channel/' + idForExistingChat]);
   }
 
@@ -157,15 +158,24 @@ export class DialogCreateNewMessageComponent implements OnInit {
     this.channel.type = "chat";
   }
 
+
+
+
+
   pushCustomIdToChannel(channelId) {
     this.firestore
       .collection('channel')
       .doc(channelId)
       .update(this.channel.toJson())
       .then(() => {
+        this.dialogRef.close();
+        this.messageService.changeId(channelId);
+        this.messageService.toggleThreadOff();
         this.router.navigate(['main/channel/' + channelId]);
       });
   }
+
+
 
   createChannelName() {
     let userNames = [];
