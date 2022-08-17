@@ -1,4 +1,4 @@
-<div class="threadCont">
+<div class="threadCont" id="threadCont">
 
     <div class="header d-flex sb">
         <h3>Thread</h3>
@@ -7,13 +7,15 @@
         </button>
     </div>
 
+
+
     <div id="firstMessage">
         <div class="userName"> User {{ threadData['creatorId']}} </div>
         <div class="text" [innerHTML]="threadData['message']"></div>
         <p>Antworten:</p>
     </div>
 
-    <div class="threadAnwsers">
+    <div class="threadAnwsers" id="threadAnwsers">
         <app-thread-anwser-card *ngFor="let anwser of anwsers" anwser="{{ anwser }}"></app-thread-anwser-card>
     </div>
 
