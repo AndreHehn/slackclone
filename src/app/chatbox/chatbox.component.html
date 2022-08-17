@@ -13,9 +13,9 @@ André
 -->
 
 
-<mat-card>
+<mat-card class="mat-elevation-z0 outline">
 
-    <quill-editor *ngIf="cleared" placeholder="Nachricht an" [modules]="modules" (onEditorChanged)="changedEditor($event)">
+    <quill-editor *ngIf="cleared" placeholder="Nachricht" [modules]="modules" (onEditorChanged)="changedEditor($event)">
     </quill-editor>
 
     <div class="pictureWrap" *ngIf="preview">

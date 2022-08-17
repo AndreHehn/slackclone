@@ -1,13 +1,8 @@
 mat-card {
-    width: calc(100% - 40px);
-    padding: 8px;
-    margin-top: 16px;
-    background-color: transparent;
-    border: 0px solid;
-
-    &:hover {
-        background-color: rgb(34, 37, 41);
-    }
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: rgb(34, 37, 41);
     
     .messageCardImg {
         margin-right: 8px;
