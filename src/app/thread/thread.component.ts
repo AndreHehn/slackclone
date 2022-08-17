@@ -32,7 +32,6 @@ export class ThreadComponent implements OnInit {
   }
 
   calc() {
-    let height = '500';
     document.getElementById('threadAnwsers').style.height = (
       document.getElementById('threadCont').offsetHeight - 
       document.getElementById('firstMessage').offsetHeight - 236) + 'px';

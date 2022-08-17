@@ -26,7 +26,10 @@ export class MessageCardComponent implements OnInit {
   }
 
   toggleThread() {
-    this.messageService.openThread(JSON.parse(this.threadData));
-    this.messageService.thread = true;
+    this.messageService.thread = false;
+    setTimeout(() => {
+      this.messageService.openThread(JSON.parse(this.threadData));
+      this.messageService.thread = true;
+    }, 1);
   }
 }
