@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { User } from 'src/models/user.class';
 import { DialogAddMembersComponent } from '../dialog-add-members/dialog-add-members.component';
 import { DialogCreateNewMessageComponent } from '../dialog-create-new-message/dialog-create-new-message.component';
 import { MessageDataService } from '../message-data-service/message-data.service';
@@ -19,11 +18,7 @@ export class MembersComponent implements OnInit {
   filteredForType = [];
   userId;
   filteredForUser = [];
-  filteredForUserImg = [];
   UserList = [];
-  member: Array<any>;
-  pictureUrl: string;
-  user: User = new User;
 
   constructor(private firestore: AngularFirestore,
     public dialog: MatDialog,
@@ -42,16 +37,7 @@ export class MembersComponent implements OnInit {
         this.filterForUser();
         this.sortChannels();
         this.changeUidToDisplayName();
-
       });
-    // this.firestore
-    //   .collection('users')
-    //   .valueChanges()
-    //   .subscribe((user: any) => {
-    //     this.member = user;
-    //     this.filterForCurrentUser();
-    //     // console.log(this.member);
-    //   });
   }
 
   openDialog() {
@@ -77,11 +63,9 @@ export class MembersComponent implements OnInit {
     this.userId = JSON.parse(localStorage.getItem('slackCloneUser'));
     this.filteredForType.forEach(element => {
       element.users.forEach(ele => {
-        if (ele == this.userId) this.filteredForUser.push(element);
-        console.log(element);
-        
+        if (ele == this.userId) this.filteredForUser.push(element)
       })
-    });
+    })
   }
 
   sortChannels() {
@@ -89,33 +73,20 @@ export class MembersComponent implements OnInit {
   }
 
   changeUidToDisplayName() {
-    let userNameList;
-    this.firestore
-.collection('users')
-      .valueChanges()
-      .subscribe((changes: any) => {
-        let registeredUserList = changes;
-        this.filteredForUser.forEach(chat => {
-          let usersInChatList = chat.users;
-          userNameList = [];
-          usersInChatList.forEach(user => {
-            registeredUserList.forEach(registeredUser => {
-              if (registeredUser.uid == user && registeredUser.uid != this.userId) userNameList.push(registeredUser.displayName);
-            })
+    let userList;
+    this.firestore.collection('users').valueChanges().subscribe((changes: any) => {
+      let registeredUserList = changes;
+      this.filteredForUser.forEach(chat => {
+        let usersInChatList = chat.users;
+        userList = [];
+        usersInChatList.forEach(user => {
+          registeredUserList.forEach(registeredUser => {
+            if (registeredUser.uid == user && registeredUser.uid != this.userId) userList.push(registeredUser);
           })
-          usersInChatList = [];
-          chat.users = userNameList;
         })
-      });
+        usersInChatList = [];
+        chat.users = userList;
+      })
+    })
   }
-
-  // filterForCurrentUser() {
-  //   let currentUser = JSON.parse(localStorage.getItem('slackCloneUser'));
-  //   this.member.forEach(user => {
-  //     if (user.uid == currentUser) this.user = user;
-  //     this.pictureUrl = this.user.photoURL;
-  //   });
-  // }
 }
-
-
