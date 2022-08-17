@@ -11,6 +11,7 @@ import { Answer } from 'src/models/answer.class';
 import { ChannelComponent } from '../channel/channel.component';
 import { ThreadComponent } from '../thread/thread.component';
 import { MessageDataService } from '../message-data-service/message-data.service';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-chatbox',
@@ -55,6 +56,10 @@ export class ChatboxComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
+    this.form = new FormGroup({
+      'text': new FormControl()
+    });
     this.route.firstChild.paramMap.subscribe(paramMap => { this.channelId = paramMap['params']['id1']; });
     this.route.firstChild.paramMap.subscribe(paramMap => { if (paramMap['params']['id2']) this.idOfMessage = paramMap['params']['id2']; });
     this.userId = JSON.parse(localStorage.getItem('slackCloneUser'));
@@ -108,10 +113,9 @@ export class ChatboxComponent implements OnInit {
       .doc(this.channelId)
       .update(this.channel.toJson())
       .then(() => {
-        this.cleared = false;
-        setTimeout(() => {
-          this.cleared = true;
-        }, 1);
+        this.form = new FormGroup({
+          'text': new FormControl()
+        });
       });
   }
 
@@ -164,4 +168,19 @@ export class ChatboxComponent implements OnInit {
       this.sendable = true;
     });
   }
+
+
+
+  form!: FormGroup;
+  html!: string;
+  blur() { }
+  onSelectionChanged() { }
+
+
+
+
+
+
+
+
 }
