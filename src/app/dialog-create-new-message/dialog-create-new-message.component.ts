@@ -33,6 +33,9 @@ export class DialogCreateNewMessageComponent implements OnInit {
   chatAlreadyExists = false;
   channelList: Array<any> = [];
   channelName: string = '';
+  sending: boolean;
+  checkList: Array<any>;
+  idForExistingChat: string;
 
   constructor(
     public dialogRef: MatDialogRef<DialogCreateNewMessageComponent>,
@@ -65,26 +68,31 @@ export class DialogCreateNewMessageComponent implements OnInit {
   }
 
   createNewChat() {// clean code, later!
-    let sending = true;
-    let idForExistingChat;
-    let checkList = this.userIdList;
+    this.sending = true;
+    this.checkList = this.userIdList;
     this.chatAlreadyExists = false;
-    this.firestore.collection('channel').valueChanges({ idField: 'customId' }).subscribe((changes: any) => {
-      this.channelList = changes;
-      if (sending) {
-        this.channelList.forEach(channel => {
-          let users = channel.users;
-          users.sort((a, b) => (a < b) ? 1 : -1);
-          checkList.sort((a, b) => (a < b) ? 1 : -1);
-          if (JSON.stringify(users).length === JSON.stringify(checkList).length && channel.type == 'chat' && JSON.stringify(users) === JSON.stringify(checkList)) {
-            this.chatAlreadyExists = true;
-            idForExistingChat = channel.channelId;
-          }
-        });
-        sending = false;
-        this.chatAlreadyExists ? this.navigateToExistingChat(idForExistingChat) : this.pushNewChatToFireStore();
-      }
-    });
+    this.firestore.collection('channel')
+      .valueChanges({ idField: 'customId' })
+      .subscribe((changes: any) => {
+        this.channelList = changes;
+        this.checkIfExists();
+      });
+  }
+
+  checkIfExists() {
+    if (this.sending) {
+      this.channelList.forEach(channel => {
+        let users = channel.users;
+        users.sort((a, b) => (a < b) ? 1 : -1);
+        this.checkList.sort((a, b) => (a < b) ? 1 : -1);
+        if (JSON.stringify(users).length === JSON.stringify(this.checkList).length && channel.type == 'chat' && JSON.stringify(users) === JSON.stringify(this.checkList)) {
+          this.chatAlreadyExists = true;
+          this.idForExistingChat = channel.channelId;
+        }
+      });
+      this.chatAlreadyExists ? this.navigateToExistingChat(this.idForExistingChat) : this.pushNewChatToFireStore();
+      this.sending = false;
+    }
   }
 
   navigateToExistingChat(idForExistingChat) {
