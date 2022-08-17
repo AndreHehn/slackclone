@@ -10,13 +10,14 @@
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
+    gap: 32px;
 }
 
 .subHeadlineWrap {
     display: flex;
     flex-direction: row;
     gap: 32px;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: flex-start;
 }
 

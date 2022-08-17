@@ -67,7 +67,7 @@ export class ChannelListComponent implements OnInit {
   }
 
   sortChannels() {
-     this.filteredForUser.sort((a, b) => (a.channelName < b.channelName) ? 1 : -1)
+     this.filteredForUser.sort((a, b) => (a.channelName > b.channelName) ? 1 : -1)
   }
 
 }
