@@ -21,7 +21,10 @@ export class ThreadComponent implements OnInit {
         this.anwsers.push(anwser['message'])
       });
     };
-    this.calc();
+    setTimeout(() => {
+      this.calc();
+    }, 10);
+    
   }
 
   closeThread() {
@@ -29,20 +32,9 @@ export class ThreadComponent implements OnInit {
   }
 
   calc() {
-    let heightThradAnswers = document.getElementById('threadAnwsers').offsetHeight;
-    let heightThreadCont = document.getElementById('threadCont').offsetHeight;
-    let firstMessage = document.getElementById('firstMessage').offsetHeight;
-    let xyz = heightThreadCont - firstMessage;
-
-    document.getElementById('threadAnwsers').style.height = xyz + '1px';
-
-    heightThradAnswers = document.getElementById('threadAnwsers').offsetHeight;
-
-    console.log('threadAnwsers', heightThradAnswers);
-    console.log('threadCont', heightThreadCont);
-    console.log('firstMessage', firstMessage);
-    console.log('xyz', xyz);
+    let height = '500';
+    document.getElementById('threadAnwsers').style.height = (
+      document.getElementById('threadCont').offsetHeight - 
+      document.getElementById('firstMessage').offsetHeight - 236) + 'px';
   }
-
-
 }
