@@ -133,3 +133,11 @@ mat-toolbar-row {
         align-items: center;
     }
 }
+
+app-channel {
+    width: 100%;
+}
+
+.changeWidth {
+    width: calc(100vw - 224px - 400px);
+}

@@ -1,16 +1,14 @@
 mat-card {
-    margin-top: 10px;
-    margin-bottom: 10px;
     width: calc(100% - 24px);
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-
+    margin-top: 10px;
+    margin-bottom: 10px;
     .user {
         margin-bottom: 10px;
     }
-
     .message {
         display: flex;
         justify-content: space-between;
@@ -19,12 +17,10 @@ mat-card {
         padding: 5px;
         background-color: grey;
     }
-
     button {
         background-color: transparent;
         border: none;
     }
-
     .threads {
         margin-top: 10px;
         margin-left: 20px;
@@ -34,5 +30,5 @@ mat-card {
 }
 
 .changeWidth {
-    width: calc(100vw - 224px - 300px);
+    width: calc(100vw - 224px - 400px);
 }

@@ -17,6 +17,7 @@ export class DialogCreateNewChannelComponent implements OnInit {
   allChannels: Array<any>;
   usedNames: Array<any> = [];
   nameIsUsed: boolean = false;
+  allUserList: Array<any> = [];
 
   constructor(public dialogRef: MatDialogRef<DialogCreateNewChannelComponent>,
     public dialog: MatDialog,
@@ -34,22 +35,21 @@ export class DialogCreateNewChannelComponent implements OnInit {
   createNewChannel() {
     this.checkIfNameIsUsed();
     if (!this.nameIsUsed) {
-      this.fillObject();
-      this.firestore
-        .collection('channel')
-        .add(this.channel.toJson())
-        .then((ref) => {
+      this.firestore.collection('users').valueChanges({ idField: 'customId' }).subscribe((changes: any) => {
+        this.allUserList = changes;
+        this.fillObject();
+        this.firestore.collection('channel').add(this.channel.toJson()).then((ref) => {
           let channelId = ref.id;
           this.channel.channelId = channelId;
           this.pushCustomIdToChannel(channelId);
           this.dialogRef.close();
         });
+      });
     }
   }
 
   fillObject() {
-    let currentUser = JSON.parse(localStorage.getItem('slackCloneUser'));
-    this.channel.users.push(currentUser);
+    this.allUserList.forEach(user => { this.channel.users.push(user.uid) });
     this.channel.channelName = this.channelName;
     this.channel.type = "channel";
   }

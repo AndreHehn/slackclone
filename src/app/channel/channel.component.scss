@@ -3,32 +3,27 @@
     background-color: rgb(27, 29, 33);
     padding: 12px;
     height: calc(100vh - 85px);
-
     .channelHeader {
         width: calc(100% - 24px);
         height: 40px;
         display: flex;
         color: white;
         border-bottom: 1px solid rgb(139, 139, 139);
-
         p {
             margin-top: 3px;
             margin-right: 16px;
         }
-
         mat-icon {
             color: white;
             cursor: pointer;
         }
     }
-
     .messageContainer {
         height: 67vh;
         max-height: fit-content;
         overflow-y: scroll;
-        width: calc(100vw - 224px);
+        //width: calc(100vw - 224px - 400px);
     }
-
     .chatbox {
         position: absolute;
         bottom: 12px;
@@ -37,5 +32,9 @@
 }
 
 .changeWidth {
-    width: calc(100vw - 224px - 300px);
+    width: calc(100vw - 224px - 400px);
+}
+
+.changeWidthChatbox {
+    width: calc(100vw - 224px - 400px) !important;
 }

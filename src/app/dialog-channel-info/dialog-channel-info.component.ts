@@ -83,7 +83,6 @@ export class DialogChannelInfoComponent implements OnInit {
 
   defineVar(channel) {
     this.channel = new Channel(channel);
-
     this.userId = JSON.parse(localStorage.getItem('slackCloneUser'));
     this.userIdList = channel.users;
     this.countMembers = this.userIdList.length;
