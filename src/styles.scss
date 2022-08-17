@@ -1,8 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 @import './quill.smoke.css';
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 ::-webkit-scrollbar {
     width: 0px !important;
@@ -43,3 +50,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     margin-bottom: 24px !important;
 }
 
+p {
+    font-weight: 300 !important;
+}
+
+span {
+    font-weight: 300 !important;
+}
