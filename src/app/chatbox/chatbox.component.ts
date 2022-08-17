@@ -46,8 +46,7 @@ export class ChatboxComponent implements OnInit {
   idOfMessage: string;
   sendable: boolean = false;
   form!: FormGroup;
-  html!: string;
-
+  
   constructor(
     private firestore: AngularFirestore,
     private route: ActivatedRoute,
