@@ -42,16 +42,16 @@ export class MembersComponent implements OnInit {
         this.filterForUser();
         this.sortChannels();
         this.changeUidToDisplayName();
-        this.filterForCurrentUser();
+
       });
-    this.firestore
-      .collection('users')
-      .valueChanges()
-      .subscribe((user: any) => {
-        this.member = user;
-        this.filterForCurrentUser();
-        // console.log(this.member);
-      });
+    // this.firestore
+    //   .collection('users')
+    //   .valueChanges()
+    //   .subscribe((user: any) => {
+    //     this.member = user;
+    //     this.filterForCurrentUser();
+    //     // console.log(this.member);
+    //   });
   }
 
   openDialog() {
@@ -78,6 +78,8 @@ export class MembersComponent implements OnInit {
     this.filteredForType.forEach(element => {
       element.users.forEach(ele => {
         if (ele == this.userId) this.filteredForUser.push(element);
+        console.log(element);
+        
       })
     });
   }
@@ -107,13 +109,13 @@ export class MembersComponent implements OnInit {
       });
   }
 
-  filterForCurrentUser() {
-    let currentUser = JSON.parse(localStorage.getItem('slackCloneUser'));
-    this.member.forEach(user => {
-      if (user.uid == currentUser) this.user = user;
-      this.pictureUrl = this.user.photoURL;
-    });
-  }
+  // filterForCurrentUser() {
+  //   let currentUser = JSON.parse(localStorage.getItem('slackCloneUser'));
+  //   this.member.forEach(user => {
+  //     if (user.uid == currentUser) this.user = user;
+  //     this.pictureUrl = this.user.photoURL;
+  //   });
+  // }
 }
 
 
