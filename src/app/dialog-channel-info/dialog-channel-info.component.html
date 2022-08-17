@@ -20,7 +20,7 @@ and info about channel
 
         <div class="headline">
             <h1 mat-dialog-title>Channelname: {{channel.channelName}}</h1>
-            <mat-icon (click)="onNoClick()">close</mat-icon>
+            <mat-icon class="close" (click)="onNoClick()">close</mat-icon>
         </div>
         <div class="subHeadlineWrap">
             <h2>Mitglieder ({{ countMembers }})</h2> <button mat-button color="warn" (click)="deleteUser()">Channel

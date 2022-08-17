@@ -27,7 +27,9 @@ mat-card {
 .user {
     display: flex;
     flex-direction: row;
+    align-items: center;
     margin-bottom: 16px;
+    gap: 8px;
 }
 
 .avatar {
@@ -38,5 +40,16 @@ mat-card {
 
 .form {
     margin-top: 16px;
+}
 
+.close {
+    cursor: pointer;
+}
+
+span {
+    font-size: 18px !important;
+}
+
+button {
+    font-size: 18px !important;
 }
