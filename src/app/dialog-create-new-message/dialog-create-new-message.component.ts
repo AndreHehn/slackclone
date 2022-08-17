@@ -67,7 +67,7 @@ export class DialogCreateNewMessageComponent implements OnInit {
       });
   }
 
-  createNewChat() {// clean code, later!
+  createNewChat() {
     this.sending = true;
     this.checkList = this.userIdList;
     this.chatAlreadyExists = false;
@@ -166,10 +166,6 @@ export class DialogCreateNewMessageComponent implements OnInit {
     this.channel.type = "chat";
   }
 
-
-
-
-
   pushCustomIdToChannel(channelId) {
     this.firestore
       .collection('channel')
@@ -182,8 +178,6 @@ export class DialogCreateNewMessageComponent implements OnInit {
         this.router.navigate(['main/channel/' + channelId]);
       });
   }
-
-
 
   createChannelName() {
     let userNames = [];
