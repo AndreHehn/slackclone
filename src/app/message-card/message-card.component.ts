@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { MessageDataService } from '../message-data-service/message-data.service';
 
 @Component({
@@ -16,10 +17,11 @@ export class MessageCardComponent implements OnInit {
   @Input() currentAnwsers: Array<any>;
   thread: boolean = false;
 
-  constructor(public messageService: MessageDataService) { }
+  constructor(public messageService: MessageDataService,private router: Router) { }
 
   ngOnInit(): void {
     let threadDataToJson = JSON.parse(this.threadData)
+    console.error(threadDataToJson)
     this.currentAnwsers = threadDataToJson['anwsers']
     this.creatorId = threadDataToJson['creatorId']
     this.messageId = threadDataToJson['messageId']
@@ -30,6 +32,8 @@ export class MessageCardComponent implements OnInit {
     setTimeout(() => {
       this.messageService.openThread(JSON.parse(this.threadData));
       this.messageService.thread = true;
+      console.log(this.messageId, 'HERE')
+      this.router.navigate(['main/channel/' + this.messageService.currentId['source']['_value'] + '/thread/' + this.messageId]);
     }, 1);
   }
 }

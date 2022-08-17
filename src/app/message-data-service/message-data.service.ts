@@ -30,6 +30,7 @@ export class MessageDataService {
 
   changeId(id : string) {
     this.idSource.next(id)
+    console.log(this.currentId)
   }
 
   openThread(threadData:any) {

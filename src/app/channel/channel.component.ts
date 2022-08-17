@@ -19,7 +19,6 @@ export class ChannelComponent implements OnInit {
   messageId: any = [];
   users: any = [];
   creatorId: any = [];
-  // thread : boolean;               @ joshua: funktioniert ohne das!  ==> siehe message-card-comp-ts zeile 30
   threadMessages: any = [];
   channelName: string;
 
@@ -35,13 +34,6 @@ export class ChannelComponent implements OnInit {
       this.saveLastChannelId()
       this.loadData()
     });
-
-    // this.messageService.currentToggle.subscribe((toggle:boolean)=>{            @ joshua: funktioniert ohne das!    ==> siehe message-card-comp-ts zeile 30
-    //   this.thread = toggle;
-    //   if(this.thread === true){
-
-    //   }
-    // })
   }
 
   loadData() {
@@ -58,7 +50,7 @@ export class ChannelComponent implements OnInit {
         this.messageId.push(messagesToJson['messageId'])
         this.creatorId.push(messagesToJson['creatorId'])
         this.threadMessages.push(messagesToJson['answers'])
-        // console.log('HERE', this.threadMessages)
+        //console.log('HERE', this.threadMessages)
       });
 
       this.users = channel.users;
@@ -84,7 +76,8 @@ export class ChannelComponent implements OnInit {
     let threadData = {
       message: this.messages[i],
       creatorId: this.creatorId[i],
-      threadMessages: this.threadMessages[i]
+      threadMessages: this.threadMessages[i],
+      messageId : this.messageId[i]
     }
     return JSON.stringify(threadData)
   }
