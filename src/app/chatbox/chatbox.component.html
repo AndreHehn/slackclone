@@ -14,10 +14,11 @@ André
 
 
 <mat-card class="mat-elevation-z0 outline">
-
-    <quill-editor *ngIf="cleared" placeholder="Nachricht" [modules]="modules" (onEditorChanged)="changedEditor($event)">
-    </quill-editor>
-
+    <div [formGroup]="form">
+        <quill-editor *ngIf="cleared" placeholder="Nachricht" [modules]="modules"
+            (onEditorChanged)="changedEditor($event)" formControlName="text">
+        </quill-editor>
+    </div>
     <div class="pictureWrap" *ngIf="preview">
         <div class="singlePicture">
             <div class="delete">
