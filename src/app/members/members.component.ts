@@ -44,7 +44,7 @@ export class MembersComponent implements OnInit {
         this.changeUidToDisplayName();
         this.filterForCurrentUser();
       });
-      this.firestore
+    this.firestore
       .collection('users')
       .valueChanges()
       .subscribe((user: any) => {
@@ -88,20 +88,23 @@ export class MembersComponent implements OnInit {
 
   changeUidToDisplayName() {
     let userNameList;
-    this.firestore.collection('users').valueChanges().subscribe((changes: any) => {
-      let registeredUserList = changes;
-      this.filteredForUser.forEach(chat => {
-        let usersInChatList = chat.users;
-        userNameList = [];
-        usersInChatList.forEach(user => {
-          registeredUserList.forEach(registeredUser => {
-            if (registeredUser.uid == user && registeredUser.uid != this.userId) userNameList.push(registeredUser.displayName);
+    this.firestore
+      .collection('users')
+      .valueChanges()
+      .subscribe((changes: any) => {
+        let registeredUserList = changes;
+        this.filteredForUser.forEach(chat => {
+          let usersInChatList = chat.users;
+          userNameList = [];
+          usersInChatList.forEach(user => {
+            registeredUserList.forEach(registeredUser => {
+              if (registeredUser.uid == user && registeredUser.uid != this.userId) userNameList.push(registeredUser.displayName);
+            })
           })
+          usersInChatList = [];
+          chat.users = userNameList;
         })
-        usersInChatList = [];
-        chat.users = userNameList;
-      })
-    });
+      });
   }
 
   filterForCurrentUser() {
