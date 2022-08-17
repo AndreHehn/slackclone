@@ -58,8 +58,8 @@ export class DialogCreateNewMessageComponent implements OnInit {
       .then((ref) => {
         let channelId = ref.id;
         this.channel.channelId = channelId;
-        this.pushCustomIdToChannel(channelId);
         this.dialogRef.close();
+        this.pushCustomIdToChannel(channelId);
       });
   }
 
@@ -89,8 +89,8 @@ export class DialogCreateNewMessageComponent implements OnInit {
 
 
   navigateToExistingChat(idForExistingChat) {
-    this.router.navigate(['main/channel/' + idForExistingChat]);
     this.dialogRef.close();
+    this.router.navigate(['main/channel/' + idForExistingChat]);
   }
 
   pushOwnId() {

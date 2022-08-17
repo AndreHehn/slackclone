@@ -86,12 +86,12 @@ export class MembersComponent implements OnInit {
     this.filteredForUser.sort((a, b) => (a.channelName < b.channelName) ? 1 : -1)
   }
 
-  changeUidToDisplayName() {
+  changeUidToDisplayName() {// refactor!
     let userList;
     this.firestore.collection('users').valueChanges().subscribe((changes: any) => {
       let registeredUserList = changes;
       this.filteredForUser.forEach(chat => {
-        let usersInChatList = chat.users;//alles uids
+        let usersInChatList = chat.users;
         userList = [];
         usersInChatList.forEach(user => {
           registeredUserList.forEach(registeredUser => {
