@@ -21,10 +21,20 @@ export class ThreadComponent implements OnInit {
         this.anwsers.push(anwser['message'])
     });
     }
+    this.calc();
   }
 
   closeThread() {
     this.messageService.thread = false;
   }
+
+  calc() {
+    let element = document.getElementById('firstMessage').offsetHeight;
+    console.log(element);
+  }
+
+ 
+  
+
 
 }

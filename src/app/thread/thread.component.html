@@ -7,9 +7,11 @@
         </button>
     </div>
 
-    <div class="userName"> User {{ threadData['creatorId']}} </div>
-    <div class="text" [innerHTML]="threadData['message']"></div>
-    <p>Antworten:</p>
+    <div id="firstMessage">
+        <div class="userName"> User {{ threadData['creatorId']}} </div>
+        <div class="text" [innerHTML]="threadData['message']"></div>
+        <p>Antworten:</p>
+    </div>
 
     <div class="threadAnwsers">
         <app-thread-anwser-card *ngFor="let anwser of anwsers" anwser="{{ anwser }}"></app-thread-anwser-card>
