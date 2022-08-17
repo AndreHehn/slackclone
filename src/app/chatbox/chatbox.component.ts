@@ -156,12 +156,12 @@ export class ChatboxComponent implements OnInit {
     this.channel = new Channel();
     this.firestore.collection('channel').doc(this.channelId).valueChanges().subscribe((changes: any) => {
       let dataFromChannel = changes;
-      
-      if (dataFromChannel.messages.length > 0)this.channel.messages = dataFromChannel.messages ;
-      if (dataFromChannel.users.length > 0) {this.channel.users = dataFromChannel.users};
-      if (dataFromChannel.channelId) {this.channel.channelId = dataFromChannel.channelId};
-      if (dataFromChannel.channelName) {this.channel.channelName = dataFromChannel.channelName};
-      if (dataFromChannel.type) {this.channel.type = dataFromChannel.type};
+
+      if (dataFromChannel.messages.length > 0) this.channel.messages = dataFromChannel.messages;
+      if (dataFromChannel.users.length > 0) this.channel.users = dataFromChannel.users;
+      if (dataFromChannel.channelId) this.channel.channelId = dataFromChannel.channelId;
+      if (dataFromChannel.channelName) this.channel.channelName = dataFromChannel.channelName;
+      if (dataFromChannel.type) this.channel.type = dataFromChannel.type;
       this.sendable = true;
     });
   }

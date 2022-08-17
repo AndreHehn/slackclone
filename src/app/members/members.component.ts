@@ -78,8 +78,6 @@ export class MembersComponent implements OnInit {
     this.filteredForType.forEach(element => {
       element.users.forEach(ele => {
         if (ele == this.userId) this.filteredForUser.push(element);
-        console.log(element);
-        
       })
     });
   }
@@ -89,24 +87,21 @@ export class MembersComponent implements OnInit {
   }
 
   changeUidToDisplayName() {
-    let userNameList;
-    this.firestore
-      .collection('users')
-      .valueChanges()
-      .subscribe((changes: any) => {
-        let registeredUserList = changes;
-        this.filteredForUser.forEach(chat => {
-          let usersInChatList = chat.users;
-          userNameList = [];
-          usersInChatList.forEach(user => {
-            registeredUserList.forEach(registeredUser => {
-              if (registeredUser.uid == user && registeredUser.uid != this.userId) userNameList.push(registeredUser.displayName);
-            })
+    let userList;
+    this.firestore.collection('users').valueChanges().subscribe((changes: any) => {
+      let registeredUserList = changes;
+      this.filteredForUser.forEach(chat => {
+        let usersInChatList = chat.users;//alles uids
+        userList = [];
+        usersInChatList.forEach(user => {
+          registeredUserList.forEach(registeredUser => {
+            if (registeredUser.uid == user && registeredUser.uid != this.userId) userList.push(registeredUser);
           })
-          usersInChatList = [];
-          chat.users = userNameList;
         })
-      });
+        usersInChatList = [];
+        chat.users = userList;
+      })
+    });
   }
 
   // filterForCurrentUser() {

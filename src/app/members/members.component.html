@@ -7,11 +7,10 @@
         </button>
     </div>
 
-    <div class="memberButton members cursorPointer" 
-        *ngFor="let channel of filteredForUser"
+    <div class="memberButton members cursorPointer" *ngFor="let channel of filteredForUser"
         (click)="changeSelectedId(channel.channelId)">
-        <!-- <img class="userPic" [src]="user.photoURL"> -->
-        <span *ngFor="let user of channel.users"> {{ user }}
+        <img class="userPic" [src]="channel.users[0].photoURL">
+        <span *ngFor="let user of channel.users"> {{ user.displayName }}
             <span *ngIf="channel.users.length > 1 && user != channel.users[channel.users.length - 1]">
                 ,&nbsp;
             </span>
