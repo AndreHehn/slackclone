@@ -16,8 +16,7 @@ André
 <mat-card class="mat-elevation-z0 outline">
     <div [formGroup]="form">
         <quill-editor *ngIf="cleared" placeholder="Nachricht" [modules]="modules"
-            (onEditorChanged)="changedEditor($event)" formControlName="text" (onBlur)="blur()"
-            (onSelectionChanged)="onSelectionChanged()">
+            (onEditorChanged)="changedEditor($event)" formControlName="text">
         </quill-editor>
     </div>
     <div class="pictureWrap" *ngIf="preview">

@@ -45,6 +45,8 @@ export class ChatboxComponent implements OnInit {
   answer: Answer = new Answer();
   idOfMessage: string;
   sendable: boolean = false;
+  form!: FormGroup;
+  html!: string;
 
   constructor(
     private firestore: AngularFirestore,
@@ -168,19 +170,5 @@ export class ChatboxComponent implements OnInit {
       this.sendable = true;
     });
   }
-
-
-
-  form!: FormGroup;
-  html!: string;
-  blur() { }
-  onSelectionChanged() { }
-
-
-
-
-
-
-
 
 }
