@@ -14,9 +14,8 @@ mat-card {
         flex-direction: row;
         justify-content: flex-start;
         width: calc(100% - 2px);
-        border-right: 1px solid #C7C7C7;
-        border-left: 1px solid #C7C7C7;
-        ;
+        border-right: 1px solid rgb(139, 139, 139);
+        border-left: 1px solid rgb(139, 139, 139);
     }
 
     .sendButton {
@@ -24,9 +23,9 @@ mat-card {
         flex-direction: row;
         justify-content: space-between;
         width: calc(100% - 2px);
-        border-right: 1px solid #C7C7C7;
-        border-left: 1px solid #C7C7C7;
-        border-bottom: 1px solid #C7C7C7;
+        border-right: 1px solid rgb(139, 139, 139);
+        border-left: 1px solid rgb(139, 139, 139);
+        border-bottom: 1px solid rgb(139, 139, 139);
         border-bottom-left-radius: 8px;
         border-bottom-right-radius: 8px;
     }
@@ -34,7 +33,7 @@ mat-card {
     .icon {
         padding: 11px 13px;
         cursor: pointer;
-        color: #C7C7C7;
+        color: rgb(139, 139, 139);
 
         &:hover {
             color: white;
