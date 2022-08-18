@@ -2,11 +2,13 @@
     width: 100%;
     background-color: rgb(27, 29, 33);
     padding: 12px;
+    padding-left: 24px;
     height: calc(100vh - 85px);
 
     .channelHeader {
-        width: calc(100% - 24px);
+        width: calc(100% - 36px);
         height: 40px;
+        margin-bottom: 12px;
         display: flex;
         color: white;
         border-bottom: 1px solid rgb(139, 139, 139);
@@ -37,7 +39,7 @@
     .chatbox {
         position: absolute;
         bottom: 12px;
-        width: calc(100% - 248px);
+        width: calc(100% - 272px);
     }
 }
 
