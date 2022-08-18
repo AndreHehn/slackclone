@@ -22,7 +22,8 @@ export class MessageCardComponent implements OnInit {
   constructor(
     private firestore: AngularFirestore,
     public messageService: MessageDataService,
-    private router: Router) { }
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     let threadDataToJson = JSON.parse(this.threadData);

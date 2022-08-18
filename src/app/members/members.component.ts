@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { DialogAddMembersComponent } from '../dialog-add-members/dialog-add-members.component';
 import { DialogCreateNewMessageComponent } from '../dialog-create-new-message/dialog-create-new-message.component';
 import { MessageDataService } from '../message-data-service/message-data.service';
 
