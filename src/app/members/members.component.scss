@@ -11,9 +11,16 @@
     }
 
     .members {
+        width: calc(100% - 8px);
+        padding: 4px;
+        border-radius: 4px;
         max-height: 38vh;
         overflow-y: scroll;
         align-items: center;
+
+        &:hover {
+            background-color: rgb(34, 37, 41);
+        }
 
         .userPic {
             height: 24px;

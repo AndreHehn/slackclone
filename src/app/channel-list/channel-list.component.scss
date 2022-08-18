@@ -23,8 +23,14 @@
         overflow-y: scroll;
 
         p {
+            width: calc(100% - 8px);
             font-size: 16px;
-            margin-bottom: 8px !important;
+            padding: 4px;
+            border-radius: 4px;
+
+            &:hover {
+                background-color: rgb(34, 37, 41);
+            }
         }
     }
 
