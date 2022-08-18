@@ -56,7 +56,6 @@ export class MembersComponent implements OnInit {
         this.filteredForType.push(elem);
       }
     });
-
   }
 
   filterForUser() {

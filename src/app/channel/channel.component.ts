@@ -34,6 +34,7 @@ export class ChannelComponent implements OnInit {
       this.saveLastChannelId()
       this.loadData()
     });
+
   }
 
   loadData() {
@@ -91,5 +92,7 @@ export class ChannelComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogChannelInfoComponent);
     dialogRef.componentInstance.channelId = this.channelId;
   }
+
+  
 
 }

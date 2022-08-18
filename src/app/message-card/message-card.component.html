@@ -1,9 +1,9 @@
-<mat-card [class.changeWidth]="messageService.thread" class="d-flex mat-elevation-z0">
+<mat-card [class.changeWidth]="messageService.thread" class="d-flex mat-elevation-z0" *ngFor="let channel of filteredForUser">
 
-    <img class="messageCardImg" src="assets/avatar.png">
+    <img class="messageCardImg" *ngFor="let user of channel.users" [src]="user.photoURL"> 
 
     <div>
-        <div class="userName">UserName</div>
+        <div class="userName" *ngFor="let user of channel.users">{{ user.displayName }}</div>
 
         <div class="text" [innerHTML]="messageText"></div>
 
