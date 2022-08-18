@@ -128,8 +128,8 @@ export class ChatboxComponent implements OnInit {
   }
 
   fillObject() {
-    if (this.parentIsChannel) this.fillMessage();
-    if (this.parentIsThreadl) this.fillAnswer();
+    if (this.parentIsChannel) this.fillMessage(), this.scrollChannel();
+    if (this.parentIsThreadl) this.fillAnswer(), this.scrollThread();
   }
 
   fillMessage() {
@@ -169,6 +169,16 @@ export class ChatboxComponent implements OnInit {
       if (dataFromChannel.type) this.channel.type = dataFromChannel.type;
       this.sendable = true;
     });
+  }
+
+  scrollChannel() {
+    let messageContainer = document.getElementById('messageContainer');
+    messageContainer.scrollTop = messageContainer.scrollHeight;
+  }
+
+  scrollThread() {
+    let answerContainer = document.getElementById('answerContainer');
+    answerContainer.scrollTop = answerContainer.scrollHeight;
   }
 
 }

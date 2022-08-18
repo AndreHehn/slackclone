@@ -59,9 +59,7 @@ export class ChannelComponent implements OnInit {
       
       this.channelName = channel.channelName;
 
-      setTimeout(() => {
-        this.scrollBottom();
-      }, 1);
+
     })
   }
 
@@ -81,11 +79,6 @@ export class ChannelComponent implements OnInit {
       messageId : this.messageId[i]
     }
     return JSON.stringify(threadData)
-  }
-
-  scrollBottom() {
-    let messageContainer = document.getElementById('messageContainer');
-    messageContainer.scrollTop = messageContainer.scrollHeight;
   }
 
   openDialog(): void {

@@ -51,7 +51,7 @@ export class MessageCardComponent implements OnInit {
       .valueChanges()
       .subscribe((user) =>{
         this.creator = user;
-        console.log(this.creator)
+        // console.log(this.creator)
       });
   }
 }
