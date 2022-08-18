@@ -10,18 +10,27 @@ mat-card {
     }
     
     .messageCardImg {
-        margin-right: 8px;
+        margin-right: 12px;
         height: 36px;
         width: 36px;
+        cursor: pointer;
     }
 
     .userName {
-        font-weight:500;
+        font-size: 16px;
+        font-weight: 500;
+        margin-bottom: 4px;
+        cursor: pointer;
+    }
+
+    .text {
+        margin-bottom: 4px;
     }
 
     p {
         margin: 0;
         color: rgb(30, 155, 209);
+        cursor: pointer;
     }
 }
 
