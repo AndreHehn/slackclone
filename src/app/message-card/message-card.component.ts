@@ -1,9 +1,7 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { MessageDataService } from '../message-data-service/message-data.service';
-import { User } from 'src/models/user.class';
-
 
 @Component({
   selector: 'app-message-card',
@@ -19,11 +17,8 @@ export class MessageCardComponent implements OnInit {
   @Input() creatorId: string = '';
   @Input() currentAnwsers: Array<any>;
   thread: boolean = false;
-  allUsers = [];
-  userId = '';
-  channel: any = {};
+  creator: any = {};
  
-
   constructor(
     private firestore: AngularFirestore,
     public messageService: MessageDataService,
@@ -31,17 +26,11 @@ export class MessageCardComponent implements OnInit {
 
   ngOnInit(): void {
     let threadDataToJson = JSON.parse(this.threadData);
-    // console.error(threadDataToJson);
     this.currentAnwsers = threadDataToJson['anwsers'];
     this.creatorId = threadDataToJson['creatorId'];
     this.messageId = threadDataToJson['messageId'];
-    this.firestore
-      .collection('channel')
-      .valueChanges()
-      .subscribe((changes: any) => {
-        this.allUsers = changes;
-      });
-      this.getUser()
+    this.creator = this.creatorId;
+    this.getUser()
   }
 
   toggleThread() {
@@ -56,11 +45,12 @@ export class MessageCardComponent implements OnInit {
 
   getUser() {
     this.firestore
-      .collection('channel')
+      .collection('users')
+      .doc(this.creator)
       .valueChanges()
-      .subscribe((channel: any) => {
-        this.channel = channel;
-        console.log(this.channel)
+      .subscribe((user) =>{
+        this.creator = user;
+        console.log(this.creator)
       });
   }
 }
