@@ -78,7 +78,7 @@ export class MembersComponent implements OnInit {
       this.filteredForUser.forEach(chat => {
         let usersInChatList = chat.users;
         userList = [];
-        usersInChatList.forEach(user => {
+        usersInChatList.forEach((user: any) => {
           registeredUserList.forEach(registeredUser => {
             if (registeredUser.uid == user && registeredUser.uid != this.userId) userList.push(registeredUser);
           })

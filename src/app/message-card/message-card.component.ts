@@ -19,13 +19,10 @@ export class MessageCardComponent implements OnInit {
   @Input() creatorId: string = '';
   @Input() currentAnwsers: Array<any>;
   thread: boolean = false;
-  allChannels = [];
-  filteredForType = [];
-  filteredForUser = [];
-  userId;
-  member: Array<any>;
-  pictureUrl: string;
-  user: User = new User;
+  allUsers = [];
+  userId = '';
+  channel: any = {};
+ 
 
   constructor(
     private firestore: AngularFirestore,
@@ -42,21 +39,9 @@ export class MessageCardComponent implements OnInit {
       .collection('channel')
       .valueChanges()
       .subscribe((changes: any) => {
-        this.filteredForType = [];
-        this.filteredForUser = [];
-        this.allChannels = changes;
-        this.filterForType();
-        this.filterForUser();
-        this.changeUidToDisplayName();
+        this.allUsers = changes;
       });
-      this.firestore
-      .collection('users')
-      .valueChanges()
-      .subscribe((user: any) => {
-        this.member = user;
-        this.filterForCurrentUser();
-        // console.log(this.member);
-      });
+      this.getUser()
   }
 
   toggleThread() {
@@ -69,46 +54,13 @@ export class MessageCardComponent implements OnInit {
     }, 1);
   }
 
-  filterForType() {
-    this.allChannels.forEach(elem => {
-      if (elem.type == "chat") {
-        this.filteredForType.push(elem);
-      }
-    });
-  }
-
-  filterForUser() {
-    this.userId = JSON.parse(localStorage.getItem('slackCloneUser'));
-    this.filteredForType.forEach(element => {
-      element.users.forEach(ele => {
-        if (ele == this.userId) this.filteredForUser.push(element)
-      })
-    })
-  }
-
-  filterForCurrentUser() {
-    let currentUser = JSON.parse(localStorage.getItem('slackCloneUser'));
-    this.member.forEach(user => {
-      if (user.uid == currentUser) this.user = user;
-      this.pictureUrl = this.user.photoURL;
-    });
-  }
-
-  changeUidToDisplayName() {
-    let userList;
-    this.firestore.collection('users').valueChanges().subscribe((changes: any) => {
-      let registeredUserList = changes;
-      this.filteredForUser.forEach(chat => {
-        let usersInChatList = chat.users;
-        userList = [];
-        usersInChatList.forEach(user => {
-          registeredUserList.forEach(registeredUser => {
-            if (registeredUser.uid == user && registeredUser.uid != this.userId) userList.push(registeredUser);
-          })
-        })
-        usersInChatList = [];
-        chat.users = userList;
-      })
-    })
+  getUser() {
+    this.firestore
+      .collection('channel')
+      .valueChanges()
+      .subscribe((channel: any) => {
+        this.channel = channel;
+        console.log(this.channel)
+      });
   }
 }
