@@ -8,7 +8,7 @@
 </mat-card> -->
 
 
-<mat-card class="d-flex mat-elevation-z0">
+<!-- <mat-card class="d-flex mat-elevation-z0">
 
     <img class="messageCardImg" src="assets/avatar.png">
 
@@ -19,6 +19,17 @@
             <div class="text" [innerHTML]="anwser"></div>
         </div>
 
+    </div>
+
+</mat-card> -->
+
+<mat-card class="d-flex mat-elevation-z0">
+
+    <img class="messageCardImg" [src]="creator.photoURL"> 
+
+    <div>
+        <div class="userName">{{ creator.displayName }}</div>
+        <div class="text" [innerHTML]="anwser"></div>
     </div>
 
 </mat-card>

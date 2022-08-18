@@ -9,7 +9,6 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 export class ThreadAnwserCardComponent implements OnInit {
 
   @Input() anwser:any = '';
-  @Input() threadData: any;
   @Input() creatorId: string = '';
   creator: any = {};
 
@@ -17,21 +16,19 @@ export class ThreadAnwserCardComponent implements OnInit {
   constructor(private firestore: AngularFirestore) { }
 
   ngOnInit(): void {
-    // let threadDataToJson = JSON.parse(this.threadData);
-    // this.creator = threadDataToJson['creatorId'];
-    // this.getUser()
+    this.getUser()
     // console.log(this.anwser, 'HERRRRRE')
   }
 
   getUser() {
-    // this.firestore
-    //   .collection('users')
-    //   .doc(this.creator)
-    //   .valueChanges()
-    //   .subscribe((user) =>{
-    //     this.creator = user;
-    //     console.log(this.creator)
-    //   });
+    this.firestore
+      .collection('users')
+      .doc(this.creatorId)
+      .valueChanges()
+      .subscribe((user) =>{
+        this.creator = user;
+        console.log(this.creator)
+      });
   }
 
 }

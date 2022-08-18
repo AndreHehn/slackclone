@@ -8,12 +8,17 @@ import { MessageDataService } from '../message-data-service/message-data.service
 })
 
 export class ThreadComponent implements OnInit {
+
+
   threadData: any;
   anwsers: Array<any> = [];
+  creatorId: any;
+
   constructor(public messageService: MessageDataService) { }
 
   ngOnInit(): void {
     this.threadData = this.messageService.currentThread['source']['_value'];
+    this.creatorId = this.messageService.currentThread['source']['_value']['creatorId']
     console.log(this.threadData)
     let threadMessages = this.threadData['threadMessages']
     if (threadMessages) {
