@@ -13,9 +13,10 @@ export class MessageCardComponent implements OnInit {
 
   @Input() messageText: string = '';
   @Input() threadData: any;
-  @Input() messageId: string = '';
-  @Input() creatorId: string = '';
-  @Input() currentAnwsers: Array<any>;
+   index : number;
+  messageId: string = '';
+   creatorId: string = '';
+   currentAnwsers: Array<any>;
   thread: boolean = false;
   creator: any = {};
  
@@ -29,17 +30,18 @@ export class MessageCardComponent implements OnInit {
     let threadDataToJson = JSON.parse(this.threadData);
     this.currentAnwsers = threadDataToJson['anwsers'];
     this.creatorId = threadDataToJson['creatorId'];
+    this.index = threadDataToJson['index']
     this.messageId = threadDataToJson['messageId'];
     this.creator = this.creatorId;
     this.getUser()
+   
   }
 
   toggleThread() {
     this.messageService.thread = false;
     setTimeout(() => {
-      this.messageService.openThread(JSON.parse(this.threadData));
+      this.messageService.openThread(JSON.parse(this.threadData), this.index);
       this.messageService.thread = true;
-      console.log(this.messageId, 'HERE')
       this.router.navigate(['main/channel/' + this.messageService.currentId['source']['_value'] + '/thread/' + this.messageId]);
     }, 1);
   }
@@ -54,4 +56,6 @@ export class MessageCardComponent implements OnInit {
         // console.log(this.creator)
       });
   }
+
+  
 }

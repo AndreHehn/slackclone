@@ -17,7 +17,6 @@ export class ThreadAnwserCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUser()
-    // console.log(this.anwser, 'HERRRRRE')
   }
 
   getUser() {
@@ -27,7 +26,7 @@ export class ThreadAnwserCardComponent implements OnInit {
       .valueChanges()
       .subscribe((user) =>{
         this.creator = user;
-        console.log(this.creator)
+       
       });
   }
 

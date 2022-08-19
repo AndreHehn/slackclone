@@ -45,21 +45,14 @@ export class ChannelComponent implements OnInit {
       this.threadMessages = [];
       let messageAll = channel.messages;
       messageAll.forEach(message => {
-        // console.log(message)
         let messagesToJson = JSON.parse(message)
         this.messages.push(messagesToJson['message'])
         this.messageId.push(messagesToJson['messageId'])
         this.creatorId.push(messagesToJson['creatorId'])
         this.threadMessages.push(messagesToJson['answers'])
-        //console.log('HERE', this.threadMessages)
       });
-
       this.users = channel.users;
-      // console.log(this.users);
-      
       this.channelName = channel.channelName;
-
-
     })
   }
 
@@ -76,7 +69,8 @@ export class ChannelComponent implements OnInit {
       message: this.messages[i],
       creatorId: this.creatorId[i],
       threadMessages: this.threadMessages[i],
-      messageId : this.messageId[i]
+      messageId : this.messageId[i],
+      index : i
     }
     return JSON.stringify(threadData)
   }
@@ -86,6 +80,6 @@ export class ChannelComponent implements OnInit {
     dialogRef.componentInstance.channelId = this.channelId;
   }
 
-  
+ 
 
 }

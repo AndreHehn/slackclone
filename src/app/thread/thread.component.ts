@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MessageDataService } from '../message-data-service/message-data.service';
 
 @Component({
@@ -13,19 +14,40 @@ export class ThreadComponent implements OnInit {
   threadData: any;
   anwsers: Array<any> = [];
   creatorId: any;
-
-  constructor(public messageService: MessageDataService) { }
+  currentId: any;
+  index: Number;
+  constructor(public messageService: MessageDataService, private firestore: AngularFirestore) { }
 
   ngOnInit(): void {
+
     this.threadData = this.messageService.currentThread['source']['_value'];
     this.creatorId = this.messageService.currentThread['source']['_value']['creatorId']
-    console.log(this.threadData)
+    this.messageService.currentId.subscribe((id)=>{
+      this.currentId = id;
+    })
+    this.messageService.currentIndex.subscribe((index)=>{
+      this.index = index
+    })
+   // console.log(this.threadData)
     let threadMessages = this.threadData['threadMessages']
     if (threadMessages) {
-      threadMessages.forEach(anwser => {
-        this.anwsers.push(anwser['message'])
+      threadMessages.forEach(answer => {
+        this.anwsers.push(answer['message'])
       });
     };
+    this.firestore.collection('channel').doc(this.currentId).valueChanges().subscribe((channel)=>{
+      this.anwsers = [];
+      let threadData = channel['messages'][this.index]
+      this.messageService.updateThread(JSON.parse(threadData),this.index)
+      this.threadData = this.messageService.currentThread['source']['_value']
+      this.creatorId = this.messageService.currentThread['source']['_value']['creatorId']
+      let threadAnwsers = this.threadData['answers']
+      if(threadAnwsers){
+        threadAnwsers.forEach(answer => {
+          this.anwsers.push(answer['message'])
+        });
+      }
+    })  
     setTimeout(() => {
       this.calc();
     }, 10);
