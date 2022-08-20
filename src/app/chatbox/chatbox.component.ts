@@ -46,7 +46,7 @@ export class ChatboxComponent implements OnInit {
   idOfMessage: string;
   sendable: boolean = false;
   form!: FormGroup;
-  
+
   constructor(
     private firestore: AngularFirestore,
     private route: ActivatedRoute,
@@ -172,13 +172,17 @@ export class ChatboxComponent implements OnInit {
   }
 
   scrollChannel() {
-    let messageContainer = document.getElementById('messageContainer');
-    messageContainer.scrollTop = messageContainer.scrollHeight;
+    setTimeout(() => {
+      let messageContainer = document.getElementById('messageContainer');
+      messageContainer.scrollTop = messageContainer.scrollHeight;
+    }, 50);
   }
 
   scrollThread() {
-    let answerContainer = document.getElementById('answerContainer');
-    answerContainer.scrollTop = answerContainer.scrollHeight;
+    setTimeout(() => {
+      let answerContainer = document.getElementById('answerContainer');
+      answerContainer.scrollTop = answerContainer.scrollHeight;
+    }, 50);
   }
 
 }
