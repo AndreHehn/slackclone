@@ -148,6 +148,7 @@ export class DialogCreateNewMessageComponent implements OnInit {
     if (!alreadyInChannel) this.userIdList.push(this.myControl2.value['uid']);
     this.updateUserList();
     this.isUpdated = true;
+    this.myControl2.reset();
   }
 
   updateUserList() {
@@ -189,5 +190,7 @@ export class DialogCreateNewMessageComponent implements OnInit {
     });
     for (let i = 0; i < userNames.length - 1; i++)  this.channelName += userNames[i] + ' und '
     this.channelName += userNames[userNames.length - 1] + '.';
+    if (userNames.length == 1) this.channelName = userNames[0] + ', hier kannst du Notizen machen';
   }
+
 }

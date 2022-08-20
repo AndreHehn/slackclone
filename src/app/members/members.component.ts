@@ -17,7 +17,8 @@ export class MembersComponent implements OnInit {
   filteredForType = [];
   userId;
   filteredForUser = [];
-  UserList = [];
+  userList = [];
+  usersInChatList = [];
 
   constructor(private firestore: AngularFirestore,
     public dialog: MatDialog,
@@ -71,20 +72,30 @@ export class MembersComponent implements OnInit {
   }
 
   changeUidToDisplayName() {
-    let userList;
     this.firestore.collection('users').valueChanges().subscribe((changes: any) => {
       let registeredUserList = changes;
       this.filteredForUser.forEach(chat => {
-        let usersInChatList = chat.users;
-        userList = [];
-        usersInChatList.forEach((user: any) => {
-          registeredUserList.forEach(registeredUser => {
-            if (registeredUser.uid == user && registeredUser.uid != this.userId) userList.push(registeredUser);
-          })
-        })
-        usersInChatList = [];
-        chat.users = userList;
+        this.usersInChatList = chat.users;
+        this.checkForUser(registeredUserList, chat);
       })
     })
+  }
+
+  checkForUser(registeredUserList, chat) {
+    this.userList = [];
+    if (this.usersInChatList.length > 1) {
+      this.usersInChatList.forEach((user: any) => {
+        registeredUserList.forEach(registeredUser => {
+          if (registeredUser.uid == user && registeredUser.uid != this.userId) this.userList.push(registeredUser);
+        })
+      })
+    }
+    if (this.usersInChatList.length == 1) {
+      registeredUserList.forEach(registeredUser => {
+        if (registeredUser.uid == this.userId) this.userList.push(registeredUser);
+      })
+    }
+    this.usersInChatList = [];
+    chat.users = this.userList;
   }
 }

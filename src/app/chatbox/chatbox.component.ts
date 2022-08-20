@@ -44,6 +44,7 @@ export class ChatboxComponent implements OnInit {
   channel: Channel = new Channel();
   answer: Answer = new Answer();
   idOfMessage: string;
+  showPreview: boolean = false;
   sendable: boolean = false;
   form!: FormGroup;
 
@@ -96,6 +97,7 @@ export class ChatboxComponent implements OnInit {
     const task = this.storage.upload(filePath, file);
     task.snapshotChanges().pipe(finalize(() => this.saveUrl(fileRef))).subscribe();
     this.sendable = true;
+    this.showPreview = true;
   }
 
   /**
@@ -118,6 +120,7 @@ export class ChatboxComponent implements OnInit {
           'text': new FormControl()
         });
       });
+    this.showPreview = false;
   }
 
   changedEditor(event: EditorChangeContent | EditorChangeSelection) {

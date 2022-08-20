@@ -14,7 +14,7 @@
             <form class="example-form">
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>Nutzer hinzufügen:</mat-label>
-                    <input type="text" matInput [formControl]="myControl2" [matAutocomplete]="auto">
+                    <input type="text" id="formControl" matInput [formControl]="myControl2" [matAutocomplete]="auto">
                     <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
                         <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
                             <img class="avatar" [src]="option.photoURL ? option.photoURL : avatar">
@@ -22,7 +22,7 @@
                         </mat-option>
                     </mat-autocomplete>
                 </mat-form-field>
-                <button mat-button color="accent" (click)="addUser()">hinzufügen</button>
+                <button mat-button color="accent" (click)="addUser()" class="addButton">Hinzufügen</button>
             </form>
 
             <table *ngIf="isUpdated">

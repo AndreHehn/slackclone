@@ -20,11 +20,11 @@ André
         </quill-editor>
     </div>
     <div class="pictureWrap" *ngIf="preview">
-        <div class="singlePicture">
+        <div class="singlePicture" *ngIf="showPreview">
             <div class="delete">
                 <mat-icon (click)="deleteLastUpload()">close</mat-icon>
             </div>
-            <img class="preview" [src]="preview">
+            <img class="preview"  [src]="preview">
         </div>
     </div>
 
