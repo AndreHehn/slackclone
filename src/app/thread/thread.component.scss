@@ -13,6 +13,7 @@
         height: 40px;
         display: flex;
         color: white;
+        margin-bottom: 12px;
         border-bottom: 1px solid rgb(139, 139, 139);
 
         button {
@@ -32,7 +33,6 @@
         overflow-y: scroll;
 
         .userName {
-            margin-top: 16px;
             font-weight: bold;
         }
 
