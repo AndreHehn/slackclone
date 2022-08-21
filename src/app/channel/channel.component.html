@@ -1,4 +1,4 @@
-<div class="channelCont" [class.changeWidth]="messageService.thread">
+<div class="channelCont" [class.changeWidthB]="messageService.threadB" [class.changeWidthS]="messageService.threadS">
 
     <div class="channelHeader d-flex sb">
         <h3><b># {{ channelName }}</b></h3>
@@ -9,7 +9,7 @@
 
     <div class="messageContainer" id="messageContainer">
         <app-message-card class="message" *ngFor="let message of messages, let i = index" messageText="{{message}}" threadData="{{threadAnwsersToJson(i)}}"></app-message-card>
-        <app-chatbox class="chatbox" [class.changeWidthChatbox]="messageService.thread"></app-chatbox>
+        <app-chatbox class="chatbox" [class.changeWidthChatboxB]="messageService.threadB" [class.changeWidthChatboxS]="messageService.threadS"></app-chatbox>
     </div>
 
 </div>

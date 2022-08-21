@@ -8,6 +8,8 @@ import { BehaviorSubject } from 'rxjs';
 export class MessageDataService {
 
   thread : boolean = false;
+  threadS: boolean = false;
+  threadB: boolean = false;
   messageId : string = '';
   creatorsId : string = '';
   threadData: any = '';

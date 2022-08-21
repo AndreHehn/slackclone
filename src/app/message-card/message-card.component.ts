@@ -38,9 +38,19 @@ export class MessageCardComponent implements OnInit {
   }
 
   toggleThread() {
+    if (window.innerWidth < 900) {
+      this.messageService.threadS = false;
+    } else {
+      this.messageService.threadB = false;
+    }
     this.messageService.thread = false;
     setTimeout(() => {
       this.messageService.openThread(JSON.parse(this.threadData), this.index);
+      if (window.innerWidth < 900) {
+        this.messageService.threadS = true;
+      } else {
+        this.messageService.threadB = true;
+      }
       this.messageService.thread = true;
       this.router.navigate(['main/channel/' + this.messageService.currentId['source']['_value'] + '/thread/' + this.messageId]);
     }, 1);

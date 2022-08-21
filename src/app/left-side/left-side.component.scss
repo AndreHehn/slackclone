@@ -1,7 +1,36 @@
-.leftSide {
-    height: calc(100vh - 85px);
-    width: 200px;
-    border-right: 1px solid rgb(139, 139, 139);
+button {
+    min-width: 36px !important;
+    padding: 0 !important;
+
+    mat-icon {
+        color: white;
+    }
+}
+
+
+mat-drawer-container {
+    position: absolute;
+    height: calc(100vh - 98px);
     background-color: rgb(25, 23, 29);
     padding: 12px;
+
+    mat-drawer {
+        margin-top: 12px;
+        background-color: rgb(25, 23, 29);
+        border-right: 0px solid !important;
+        min-width: 200px;
+        max-height: calc(100vh - 60px) !important;
+    }
+}
+
+.leftSideCont {
+    height: calc(100vh - 85px);
+    background-color: rgb(25, 23, 29);
+    padding: 12px;
+
+    .leftSide {
+        background-color: rgb(25, 23, 29);
+        width: 200px !important;
+        max-height: calc(100vh - 60px) !important;
+    }
 }

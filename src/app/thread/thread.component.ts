@@ -56,6 +56,8 @@ export class ThreadComponent implements OnInit {
 
   closeThread() {
     this.messageService.thread = false;
+    this.messageService.threadS = false;
+    this.messageService.threadB = false;
   }
 
   calc() {

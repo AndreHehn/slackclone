@@ -11,13 +11,18 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 export class LeftSideComponent implements OnInit {
 
+  showFiller = false;
+  menuBtn = false;
+
   constructor(
     public dialog: MatDialog,
     private firestore: AngularFirestore,
   ) { }
 
   ngOnInit(): void {
+    if (window.innerWidth < 900) {
+      this.menuBtn = true;
+      
+    } 
   }
-
- 
 }

@@ -1,6 +1,6 @@
 <app-toolbar></app-toolbar>
 <div class="d-flex div">
-    <app-left-side></app-left-side>
+    <app-left-side class="bgc"></app-left-side>
     <app-channel [class.changeWidth]="messageService.thread"></app-channel>
     <app-thread *ngIf="messageService.thread"></app-thread>
 </div>
