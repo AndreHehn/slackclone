@@ -32,6 +32,10 @@ export class ChatboxComponent implements OnInit {
       ['link']
     ]
   };
+
+  modulesSmall = {
+    "toolbar": false
+  }
   preview: string;
   messageValue: string = '';
   currentFile: AngularFireStorageReference = null;

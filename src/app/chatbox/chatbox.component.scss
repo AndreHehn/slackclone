@@ -2,7 +2,7 @@ mat-card {
     margin: 0;
     padding: 0;
     width: 100%;
-    background-color: rgb(34, 37, 41);  
+    background-color: rgb(34, 37, 41);
     border: none !important;
 
     quill-editor {
@@ -95,3 +95,23 @@ input[type="file"] {
     width: calc(100vw - 224px - 400px);
 }
 
+.showBig {
+    display: unset;
+}
+
+.showSmall {
+    display: none;
+}
+
+@media (max-width: 600px) {
+
+    .showSmall {
+        display: unset;
+    }
+
+    .showBig {
+        display: none;
+    }
+
+    
+}

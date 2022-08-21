@@ -851,16 +851,19 @@
 }
 
 .ql-snow .ql-picker.ql-expanded .ql-picker-label {
-  color: rgb(139, 139, 139);;
+  color: rgb(139, 139, 139);
+  ;
   z-index: 2;
 }
 
 .ql-snow .ql-picker.ql-expanded .ql-picker-label .ql-fill {
-  fill: rgb(139, 139, 139);;
+  fill: rgb(139, 139, 139);
+  ;
 }
 
 .ql-snow .ql-picker.ql-expanded .ql-picker-label .ql-stroke {
-  stroke: rgb(139, 139, 139);;
+  stroke: rgb(139, 139, 139);
+  ;
 }
 
 .ql-snow .ql-picker.ql-expanded .ql-picker-options {
@@ -1063,9 +1066,9 @@
 .ql-toolbar.ql-snow {
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
-  border-left: 1px solid  rgb(139, 139, 139);
-  border-right: 1px solid  rgb(139, 139, 139);
-  border-top: 1px solid  rgb(139, 139, 139);
+  border-left: 1px solid rgb(139, 139, 139);
+  border-right: 1px solid rgb(139, 139, 139);
+  border-top: 1px solid rgb(139, 139, 139);
   box-sizing: border-box;
   font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
   padding: 8px;
@@ -1085,11 +1088,13 @@
 }
 
 .ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-label {
-  border-color: rgb(139, 139, 139);;
+  border-color: rgb(139, 139, 139);
+  ;
 }
 
 .ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-options {
-  border-color: rgb(139, 139, 139);;
+  border-color: rgb(139, 139, 139);
+  ;
 }
 
 .ql-toolbar.ql-snow .ql-color-picker .ql-picker-item.ql-selected,
@@ -1103,7 +1108,8 @@
 
 .ql-snow .ql-tooltip {
   background-color: #fff;
-  border: 1px solid rgb(139, 139, 139);;
+  border: 1px solid rgb(139, 139, 139);
+  ;
   box-shadow: 0px 0px 5px #ddd;
   color: #444;
   padding: 5px 12px;
@@ -1118,7 +1124,8 @@
 
 .ql-snow .ql-tooltip input[type=text] {
   display: none;
-  border: 1px solid rgb(139, 139, 139);;
+  border: 1px solid rgb(139, 139, 139);
+  ;
   font-size: 13px;
   height: 26px;
   margin: 0px;
@@ -1135,7 +1142,7 @@
 }
 
 .ql-snow .ql-tooltip a.ql-action::after {
-  border-right: 1px solid  rgb(139, 139, 139);
+  border-right: 1px solid rgb(139, 139, 139);
   content: 'Edit';
   margin-left: 16px;
   padding-right: 8px;
@@ -1182,8 +1189,10 @@
 }
 
 .ql-container.ql-snow {
-  border-left: 1px solid rgb(139, 139, 139);;
-  border-right: 1px solid rgb(139, 139, 139);;
+  border-left: 1px solid rgb(139, 139, 139);
+  ;
+  border-right: 1px solid rgb(139, 139, 139);
+  ;
 }
 
 
@@ -1194,4 +1203,15 @@
     margin-right: 6px;
   }
 
+}
+
+
+@media (max-width: 600px) {
+
+  .ql-container.ql-snow {
+
+    border-top: 1px solid rgb(139, 139, 139);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
 }

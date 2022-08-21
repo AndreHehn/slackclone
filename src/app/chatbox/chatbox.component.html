@@ -15,7 +15,10 @@ André
 
 <mat-card class="mat-elevation-z0 outline">
     <div [formGroup]="form">
-        <quill-editor *ngIf="cleared" placeholder="Nachricht" [modules]="modules"
+        <quill-editor class="showBig" *ngIf="cleared" placeholder="Nachricht" [modules]="modules"
+            (onEditorChanged)="changedEditor($event)" formControlName="text">
+        </quill-editor>
+        <quill-editor class="showSmall" *ngIf="cleared" placeholder="Nachricht" [modules]="modulesSmall"
             (onEditorChanged)="changedEditor($event)" formControlName="text">
         </quill-editor>
     </div>
@@ -24,7 +27,7 @@ André
             <div class="delete">
                 <mat-icon (click)="deleteLastUpload()">close</mat-icon>
             </div>
-            <img class="preview"  [src]="preview">
+            <img class="preview" [src]="preview">
         </div>
     </div>
 
