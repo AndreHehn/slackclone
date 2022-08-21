@@ -11,8 +11,8 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 export class LeftSideComponent implements OnInit {
 
-  showFiller = false;
   menuBtn = false;
+  menuOpen: boolean = false;
 
   constructor(
     public dialog: MatDialog,
@@ -24,5 +24,13 @@ export class LeftSideComponent implements OnInit {
       this.menuBtn = true;
       
     } 
+  }
+
+  addClass() {
+    if (this.menuOpen) {
+      this.menuOpen = false;
+    } else {
+      this.menuOpen = true;
+    }
   }
 }

@@ -34,3 +34,7 @@ mat-drawer-container {
         max-height: calc(100vh - 60px) !important;
     }
 }
+
+.menuOpen {
+    border: 1px solid  rgb(139, 139, 139);
+}
