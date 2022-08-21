@@ -36,7 +36,7 @@ mat-form-field {
     align-items: flex-start;
 }
 
-form {
+.form {
     display: flex;
     margin-top: 16px;
     width: 100%;
@@ -63,4 +63,20 @@ mat-card {
     height: 24px;
     object-fit: contain;
     border-radius: 2px;
+}
+
+@media (max-width: 340px) {
+
+    .form {
+        display: flex;
+        flex-direction: column;
+
+        .addButton {
+            align-self: flex-end;
+            padding: 0 16px;
+            
+            width: unset;
+        }
+    }
+
 }
