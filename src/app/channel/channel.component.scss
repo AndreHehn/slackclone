@@ -45,3 +45,15 @@
 .changeWidthChatbox {
     width: calc(100vw - 224px - 412px) !important;
 }
+
+@media (max-width: 1100px) {
+
+    .changeWidth {
+        width: calc(100vw - 224px - 328px);
+    }
+    
+    .changeWidthChatbox {
+        width: calc(100vw - 224px - 362px) !important;
+    }
+
+}
