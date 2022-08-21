@@ -53,9 +53,20 @@
     .chatbox {
         position: absolute;
         bottom: 12px;
+        width: calc(100% - 24px);
     }
 }
 
-.changeWidthChatbox {
-    width: calc(100% - 24px);
+@media (max-width: 410px) {
+
+    .threadCont {
+        width: calc(100% - 60px) !important;
+    }
+}
+
+@media (max-width: 360px) {
+
+    .threadCont {
+        width: 250px;
+    }
 }

@@ -30,7 +30,7 @@
         width: calc(100% - 24px);
         overflow-y: scroll;
     }
-    
+
     .chatbox {
         position: absolute;
         bottom: 12px;
@@ -56,10 +56,12 @@
 
 
 
-// @media (max-width: 899px) {
+@media (max-width: 899px) {
 
-//     .threadCont {
-//         width: calc(100vw - 10.5vw - 36px) !important;
-//     }
+    .channelCont {
+        .chatbox {
+            width: calc(100% - 80px);
+        }
+    }
 
-// }
+}
