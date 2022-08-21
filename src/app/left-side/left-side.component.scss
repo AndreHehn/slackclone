@@ -36,5 +36,7 @@ mat-drawer-container {
 }
 
 .menuOpen {
-    border: 1px solid  rgb(139, 139, 139);
+    border-top: 1px solid  rgb(139, 139, 139);
+    border-right: 1px solid  rgb(139, 139, 139);
+    border-top-right-radius: 8px;
 }

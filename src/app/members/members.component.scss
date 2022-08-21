@@ -2,13 +2,23 @@
     height: 44vh;
     color: white;
 
-    button {
-        height: 28px;
-        width: 28px;
+    .header {
+        height: 40px;
         display: flex;
-        align-items: center;
-        justify-content: center;
+        color: white;
+        border-bottom: 1px solid rgb(139, 139, 139);
+        margin-bottom: 16px;
+
+        button {
+            height: 28px;
+            width: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
     }
+
+   
 
     .members {
         width: calc(100% - 8px);
@@ -34,11 +44,6 @@
             p {
                 font-size: 16px !important;
             }
-        }
-
-       
+        }  
     }
-
-    
-
 }
