@@ -9,7 +9,7 @@ mat-card {
     &:hover {
         background-color: rgb(34, 37, 41);
     }
-    
+
     .messageCardImg {
         margin-right: 12px;
         height: 36px;
@@ -24,15 +24,17 @@ mat-card {
         cursor: pointer;
     }
 
-    .text {
-        margin-bottom: 4px;
-    }
+
 
     p {
-        margin: 0;
+        margin-bottom: 0;
         color: rgb(30, 155, 209);
         cursor: pointer;
     }
+
+
+
+
 }
 
 .changeWidth {
