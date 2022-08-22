@@ -4,9 +4,11 @@ mat-card {
     width: 100%;
     background-color: rgb(34, 37, 41);
     border: none !important;
+    overflow-y: hidden;
 
     quill-editor {
         width: 100%;
+
     }
 
     .pictureWrap {
@@ -113,5 +115,5 @@ input[type="file"] {
         display: none;
     }
 
-    
+
 }
