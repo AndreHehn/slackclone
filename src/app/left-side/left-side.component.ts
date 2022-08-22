@@ -29,7 +29,8 @@ export class LeftSideComponent implements OnInit {
   ngOnInit(): void {
     if (window.innerWidth < 900) {
       this.menuBtn = true;
-
+    } else {
+      this.menuBtn = false;
     }
   }
 
