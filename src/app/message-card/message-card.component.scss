@@ -30,8 +30,10 @@ mat-card {
         cursor: pointer;
     }
 
-
-
+    .text {
+        word-break: break-all;
+        word-wrap: break-word;
+    }
 
 }
 
