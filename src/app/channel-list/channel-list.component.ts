@@ -1,5 +1,5 @@
 import { NgLocalization } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -13,6 +13,8 @@ import { MessageDataService } from '../message-data-service/message-data.service
 })
 
 export class ChannelListComponent implements OnInit {
+  @Output() leftSide: EventEmitter<any> = new EventEmitter();
+
 
   allChannels = [];
   filteredForType = [];
@@ -49,6 +51,7 @@ export class ChannelListComponent implements OnInit {
     this.messageService.thread = false;
     this.messageService.threadB = false;
     this.messageService.threadS = false;
+    this.leftSide.emit();
   }
 
   filterForType() {
@@ -69,7 +72,8 @@ export class ChannelListComponent implements OnInit {
   }
 
   sortChannels() {
-     this.filteredForUser.sort((a, b) => (a.channelName > b.channelName) ? 1 : -1)
+    this.filteredForUser.sort((a, b) => (a.channelName > b.channelName) ? 1 : -1)
   }
+
 
 }

@@ -8,8 +8,8 @@
 
     <mat-drawer-container id="matDrawerCont" [class.menuOpen]="menuOpen">
         <mat-drawer #drawer mode="side">
-            <app-channel-list></app-channel-list>
-            <app-members></app-members>
+            <app-channel-list (leftSide)="leftSide()"></app-channel-list>
+            <app-members (leftSide)="leftSide()"></app-members>
         </mat-drawer>
     </mat-drawer-container>
 
@@ -18,8 +18,8 @@
 <div class="leftSideCont" [class.d-none]="menuBtn">
 
     <div class="leftSide">
-        <app-channel-list></app-channel-list>
-        <app-members></app-members>
+        <app-channel-list (leftSide)="leftSide()"></app-channel-list>
+        <app-members (leftSide)="leftSide()"></app-members>
     </div>
 
 </div>

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DialogCreateNewChannelComponent } from '../dialog-create-new-channel/dialog-create-new-channel.component';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { MatDrawer} from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-left-side',
@@ -10,7 +11,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 })
 
 export class LeftSideComponent implements OnInit {
-
+  @ViewChild('drawer') drawer: MatDrawer;
   menuBtn = false;
   menuOpen: boolean = false;
 
@@ -32,5 +33,9 @@ export class LeftSideComponent implements OnInit {
     } else {
       this.menuOpen = true;
     }
+  }
+
+leftSide(){
+    this.drawer.toggle();
   }
 }

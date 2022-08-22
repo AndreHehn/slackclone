@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -12,7 +12,7 @@ import { MessageDataService } from '../message-data-service/message-data.service
 })
 
 export class MembersComponent implements OnInit {
-
+  @Output() leftSide: EventEmitter<any> = new EventEmitter();
   allChannels = [];
   filteredForType = [];
   userId;
@@ -48,6 +48,7 @@ export class MembersComponent implements OnInit {
     this.messageService.changeId(channelId);
     this.messageService.toggleThreadOff()
     this.router.navigate(['main/channel/' + channelId]);
+    this.leftSide.emit();
   }
 
   filterForType() {
