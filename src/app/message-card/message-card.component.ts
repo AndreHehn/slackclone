@@ -13,13 +13,14 @@ export class MessageCardComponent implements OnInit {
 
   @Input() messageText: string = '';
   @Input() threadData: any;
-  index : number;
+  index: number;
   messageId: string = '';
   creatorId: string = '';
   currentAnwsers: Array<any>;
   thread: boolean = false;
   creator: any = {};
- 
+  anwsers: Array<any> = [];
+
   constructor(
     private firestore: AngularFirestore,
     public messageService: MessageDataService,
@@ -33,13 +34,18 @@ export class MessageCardComponent implements OnInit {
     this.index = threadDataToJson['index']
     this.messageId = threadDataToJson['messageId'];
     this.creator = this.creatorId;
-    this.getUser()
-    setTimeout(() => {
-      console.log(this.currentAnwsers);
-    }, 1000);
     
+    let threadMessages = this.threadData['threadMessages']
+    if (threadMessages) {
+      threadMessages.forEach(answer => {
+        this.anwsers.push(answer['message'])
+      });
+    };
     
+    this.getUser();
   }
+
+
 
   toggleThread() {
     if (window.innerWidth < 900) {
@@ -65,11 +71,11 @@ export class MessageCardComponent implements OnInit {
       .collection('users')
       .doc(this.creator)
       .valueChanges()
-      .subscribe((user) =>{
+      .subscribe((user) => {
         this.creator = user;
         // console.log(this.creator)
       });
   }
 
-  
+
 }

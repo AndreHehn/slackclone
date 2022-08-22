@@ -56,7 +56,6 @@ export class ChannelComponent implements OnInit {
       setTimeout(() => {
 
         this.messageService.anwsers = this.messages;
-        console.log(this.messages);
         
       }, 100);
       
