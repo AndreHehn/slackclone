@@ -8,27 +8,10 @@
     flex-direction: column !important;
     background-color: black;
 
-    span {
-        color: white;
-    }
-
     h1 {
         font-size: 3em;
         font-weight: bold;
         margin-bottom: 40px;
-        color: white;
-    }
-
-    h2 {
-        color: white;
-    }
-
-    h3 {
-        color: white;
-    }
-
-    input {
-        color: white;
     }
 
     .loginBtn {
@@ -46,7 +29,7 @@
         transition: 225ms ease-in-out;
 
         &:hover {
-            color: white;
+            color: whitesmoke;
         }
     }
 

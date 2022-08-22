@@ -7,12 +7,10 @@
     padding: 12px;
     height: calc(100vh - 85px);
     border-left: 1px solid rgb(139, 139, 139);
-    color: white;
 
     .header {
         height: 40px;
         display: flex;
-        color: white;
         margin-bottom: 12px;
         border-bottom: 1px solid rgb(139, 139, 139);
 
@@ -55,7 +53,7 @@
 
         hr {
             height: 0;
-            width: 256px;
+            width: 250px;
             border-width: 0.5px !important;
             margin-top: 10px;
             border: 1px solid rgb(80, 80, 80);
