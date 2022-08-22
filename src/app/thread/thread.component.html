@@ -11,7 +11,8 @@
 
     <div class="scroll" id="answerContainer">
         <div id="firstMessage">
-            <div class="userName"> User {{ threadData['creatorId']}} </div>
+            <img class="messageCardImg" [src]="creator.photoURL"> 
+            <div class="userName">{{ creator.displayName }}</div>
             <div class="text" [innerHTML]="threadData['message']"></div>
             <p>Antworten:</p>
         </div>

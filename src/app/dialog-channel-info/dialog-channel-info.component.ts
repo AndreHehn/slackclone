@@ -74,7 +74,8 @@ export class DialogChannelInfoComponent implements OnInit {
 
   getChannelInfo() {
     this.firestore.collection('channel')
-      .doc(this.channelId).valueChanges()
+      .doc(this.channelId)
+      .valueChanges()
       .subscribe((channel: any) => {
         this.defineVar(channel);
         this.getUsers();

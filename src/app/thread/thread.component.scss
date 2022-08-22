@@ -32,6 +32,13 @@
     .scroll {
         overflow-y: scroll;
 
+        .messageCardImg {
+            margin-right: 12px;
+            height: 36px;
+            width: 36px;
+            cursor: pointer;
+        }
+
         .userName {
             font-weight: bold;
         }

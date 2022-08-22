@@ -26,7 +26,6 @@ export class ThreadAnwserCardComponent implements OnInit {
       .valueChanges()
       .subscribe((user) =>{
         this.creator = user;
-       
       });
   }
 
