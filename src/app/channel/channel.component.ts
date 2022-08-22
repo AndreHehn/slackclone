@@ -53,6 +53,14 @@ export class ChannelComponent implements OnInit {
       });
       this.users = channel.users;
       this.channelName = channel.channelName;
+      setTimeout(() => {
+
+        this.messageService.anwsers = this.messages;
+        console.log(this.messages);
+        
+      }, 100);
+      
+      
     })
   }
 

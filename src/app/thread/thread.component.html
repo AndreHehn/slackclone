@@ -10,11 +10,16 @@
 
 
     <div class="scroll" id="answerContainer">
-        <div id="firstMessage">
-            <img class="messageCardImg" [src]="creator.photoURL"> 
-            <div class="userName">{{ creator.displayName }}</div>
-            <div class="text" [innerHTML]="threadData['message']"></div>
-            <p>Antworten:</p>
+        <div class="d-flex" id="firstMessage">
+            <img class="messageCardImg" [src]="creator.photoURL">
+            <div>
+                <div class="userName">{{ creator.displayName }}</div>
+                <div class="text" [innerHTML]="threadData['message']"></div>
+            </div>
+        </div>
+        <div class="d-flex">
+            <p>{{ anwsers.length }} Antworten</p>
+            <hr>
         </div>
 
         <div class="threadAnwsers" id="threadAnwsers">

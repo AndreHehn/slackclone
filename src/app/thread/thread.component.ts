@@ -30,11 +30,6 @@ export class ThreadComponent implements OnInit {
       this.currentId = id;
     })
 
-    console.log(this.creatorId);
-    console.log(this.currentId);
-    
-    
-
 
     this.messageService.currentIndex.subscribe((index) => {
       this.index = index
@@ -52,7 +47,7 @@ export class ThreadComponent implements OnInit {
 
     setTimeout(() => {
       this.calc();
-    }, 10);
+    }, 100);
   }
 
   getData() {

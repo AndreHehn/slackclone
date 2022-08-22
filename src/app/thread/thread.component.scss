@@ -44,13 +44,22 @@
         }
 
         .text {
-            border-bottom: 1px solid rgb(139, 139, 139);
+            margin-bottom: 8px;
         }
 
         p {
-            margin-top: 4px;
-            color: rgb(139, 139, 139);
+            margin-left: 4px;
+            margin-right: 8px;
+            color: rgb(180, 180, 180);
         }
+
+        hr {
+            height: 0;
+            width: 256px;
+            border-width: 0.5px !important;
+            margin-top: 10px;
+            border: 1px solid rgb(80, 80, 80);
+        }        
 
         .threadAnwsers {
             width: 100%;

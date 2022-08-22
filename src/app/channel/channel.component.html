@@ -8,8 +8,21 @@
     </div>
 
     <div class="messageContainer" id="messageContainer">
-        <app-message-card class="message" *ngFor="let message of messages, let i = index" messageText="{{message}}" threadData="{{threadAnwsersToJson(i)}}"></app-message-card>
-        <app-chatbox class="chatbox" [class.changeWidthChatboxB]="messageService.threadB" [class.changeWidthChatboxS]="messageService.threadS"></app-chatbox>
+
+        <app-message-card 
+          class="message" 
+          *ngFor="let message of messages, 
+          let i = index"
+          messageText="{{message}}" 
+          threadData="{{threadAnwsersToJson(i)}}">
+        </app-message-card>
+
+        <app-chatbox 
+          class="chatbox" 
+          [class.changeWidthChatboxB]="messageService.threadB" 
+          [class.changeWidthChatboxS]="messageService.threadS">
+        </app-chatbox>
+
     </div>
 
 </div>

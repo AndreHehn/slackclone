@@ -13,10 +13,10 @@ export class MessageCardComponent implements OnInit {
 
   @Input() messageText: string = '';
   @Input() threadData: any;
-   index : number;
+  index : number;
   messageId: string = '';
-   creatorId: string = '';
-   currentAnwsers: Array<any>;
+  creatorId: string = '';
+  currentAnwsers: Array<any>;
   thread: boolean = false;
   creator: any = {};
  
@@ -34,7 +34,11 @@ export class MessageCardComponent implements OnInit {
     this.messageId = threadDataToJson['messageId'];
     this.creator = this.creatorId;
     this.getUser()
-   
+    setTimeout(() => {
+      console.log(this.currentAnwsers);
+    }, 1000);
+    
+    
   }
 
   toggleThread() {

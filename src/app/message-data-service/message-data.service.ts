@@ -13,6 +13,7 @@ export class MessageDataService {
   messageId : string = '';
   creatorsId : string = '';
   threadData: any = '';
+  anwsers: Array<any> = [];
 
 
   private idSource = new BehaviorSubject<string>(this.getLastChannelId())
