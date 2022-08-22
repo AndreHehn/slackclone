@@ -37,7 +37,11 @@ export class ChannelComponent implements OnInit {
   }
 
   loadData() {
-    this.firestore.collection('channel').doc(this.channelId).valueChanges().subscribe((channel: any) => {
+    this.firestore
+    .collection('channel')
+    .doc(this.channelId)
+    .valueChanges()
+    .subscribe((channel: any) => {
       this.messages = [];
       this.messageId = [];
       this.creatorId = [];
@@ -52,14 +56,10 @@ export class ChannelComponent implements OnInit {
       });
       this.users = channel.users;
       this.channelName = channel.channelName;
+      
       setTimeout(() => {
-
         this.messageService.anwsers = this.messages;
-        
       }, 100);
-      
-      
-      
     })
   }
 

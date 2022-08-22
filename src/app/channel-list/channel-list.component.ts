@@ -47,6 +47,8 @@ export class ChannelListComponent implements OnInit {
     this.messageService.toggleThreadOff()
     this.router.navigate(['main/channel/' + channelId]);
     this.messageService.thread = false;
+    this.messageService.threadB = false;
+    this.messageService.threadS = false;
   }
 
   filterForType() {
