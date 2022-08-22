@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DialogCreateNewChannelComponent } from '../dialog-create-new-channel/dialog-create-new-channel.component';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { MatDrawer} from '@angular/material/sidenav';
+import { MatDrawer } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-left-side',
@@ -11,6 +11,12 @@ import { MatDrawer} from '@angular/material/sidenav';
 })
 
 export class LeftSideComponent implements OnInit {
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.ngOnInit();
+  }
+
   @ViewChild('drawer') drawer: MatDrawer;
   menuBtn = false;
   menuOpen: boolean = false;
@@ -23,8 +29,8 @@ export class LeftSideComponent implements OnInit {
   ngOnInit(): void {
     if (window.innerWidth < 900) {
       this.menuBtn = true;
-      
-    } 
+
+    }
   }
 
   addClass() {
@@ -35,7 +41,7 @@ export class LeftSideComponent implements OnInit {
     }
   }
 
-leftSide(){
+  leftSide() {
     this.drawer.toggle();
   }
 }
