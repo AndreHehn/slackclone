@@ -13,6 +13,7 @@ export class MessageCardComponent implements OnInit {
 
   @Input() messageText: string = '';
   @Input() threadData: any;
+  @Input() counter: any;
   index: number;
   messageId: string = '';
   creatorId: string = '';
@@ -34,13 +35,21 @@ export class MessageCardComponent implements OnInit {
     this.index = threadDataToJson['index']
     this.messageId = threadDataToJson['messageId'];
     this.creator = this.creatorId;
+
+    console.log(this.currentAnwsers);
     
-    let threadMessages = this.threadData['threadMessages']
-    if (threadMessages) {
-      threadMessages.forEach(answer => {
-        this.anwsers.push(answer['message'])
-      });
-    };
+    
+    // this.firestore
+    //   .collection('channel')
+    //   .doc('YJuf9EqRLghKMtWVw8zT')
+    //   .valueChanges({idField: 'messages'})
+    //   .subscribe((message) => { 
+        
+    //     this.anwsers.push(message)
+    //     console.log('test', this.anwsers.length);
+    //   });
+
+    
     
     this.getUser();
   }
@@ -73,7 +82,6 @@ export class MessageCardComponent implements OnInit {
       .valueChanges()
       .subscribe((user) => {
         this.creator = user;
-        // console.log(this.creator)
       });
   }
 

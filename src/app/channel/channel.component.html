@@ -14,7 +14,8 @@
           *ngFor="let message of messages, 
           let i = index"
           messageText="{{message}}" 
-          threadData="{{threadAnwsersToJson(i)}}">
+          threadData="{{threadAnwsersToJson(i)}}"
+          counter="{{ this.threadMessages[i].length}}">
         </app-message-card>
 
         <app-chatbox 

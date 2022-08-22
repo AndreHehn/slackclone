@@ -34,7 +34,6 @@ export class MessageDataService {
 
   changeId(id : string) {
     this.idSource.next(id)
-    console.log(this.currentId)
   }
 
   openThread(threadData:any, index:Number) {
@@ -53,7 +52,6 @@ export class MessageDataService {
   updateThread(threadData:any, index:Number) {
    this.threadData$.next(threadData)  
    this.updateIndex(index)
-   console.warn(this.threadData$)
   }
 
   updateIndex(index:Number){

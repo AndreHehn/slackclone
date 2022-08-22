@@ -1,5 +1,4 @@
-import { ThisReceiver } from '@angular/compiler';
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogChannelInfoComponent } from '../dialog-channel-info/dialog-channel-info.component';
@@ -60,6 +59,7 @@ export class ChannelComponent implements OnInit {
       }, 100);
       
       
+      
     })
   }
 
@@ -79,6 +79,8 @@ export class ChannelComponent implements OnInit {
       messageId : this.messageId[i],
       index : i
     }
+    // console.log(threadData.threadMessages);
+    
     return JSON.stringify(threadData)
   }
 

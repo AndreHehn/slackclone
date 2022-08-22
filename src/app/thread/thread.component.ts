@@ -38,9 +38,13 @@ export class ThreadComponent implements OnInit {
     let threadMessages = this.threadData['threadMessages']
     if (threadMessages) {
       threadMessages.forEach(answer => {
-        this.anwsers.push(answer['message'])
+        this.anwsers.push(answer['message']);
+        this.messageService.anwsers = this.anwsers
       });
     };
+
+    console.log(this.anwsers);
+    
 
     this.getData();
     this.getUser();
@@ -64,7 +68,8 @@ export class ThreadComponent implements OnInit {
         let threadAnwsers = this.threadData['answers']
         if (threadAnwsers) {
           threadAnwsers.forEach(answer => {
-            this.anwsers.push(answer['message'])
+            this.anwsers.push(answer['message']);
+            this.messageService.anwsers = this.anwsers;
           });
         }
       })
