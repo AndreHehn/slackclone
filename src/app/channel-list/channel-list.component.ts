@@ -4,6 +4,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DialogCreateNewChannelComponent } from '../dialog-create-new-channel/dialog-create-new-channel.component';
+import { LeftSideComponent } from '../left-side/left-side.component';
 import { MessageDataService } from '../message-data-service/message-data.service';;
 
 @Component({
@@ -24,7 +25,9 @@ export class ChannelListComponent implements OnInit {
   constructor(private firestore: AngularFirestore,
     public dialog: MatDialog,
     private messageService: MessageDataService,
-    private router: Router) { }
+    private router: Router,
+    private leftSideAdd: LeftSideComponent
+    ) { }
 
   ngOnInit(): void {
     this.firestore
@@ -52,6 +55,7 @@ export class ChannelListComponent implements OnInit {
     this.messageService.threadB = false;
     this.messageService.threadS = false;
     this.leftSide.emit();
+    this.leftSideAdd.addClass();
   }
 
   filterForType() {
