@@ -10,7 +10,7 @@
   <div class="messageContainer" id="messageContainer">
 
     <app-message-card class="message" *ngFor="let message of messages, 
-          let i = index" messageText="{{message['message']}}" picture="{{message['picture']}}"
+          let i = index" messageText="{{message['message']}}" picture="{{message['picture']}}" timestamp="{{message['timestamp']}}"
       threadData="{{threadAnwsersToJson(i)}}" counter="{{ this.threadMessages[i].length}}">
     </app-message-card>
 

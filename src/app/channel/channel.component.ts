@@ -52,7 +52,8 @@ export class ChannelComponent implements OnInit {
           let messagesToJson = JSON.parse(message)
           this.messages.push({
             message: messagesToJson['message'],
-            picture: messagesToJson['pictureUrl']
+            picture: messagesToJson['pictureUrl'],
+            timestamp: messagesToJson['timestamp']
           })
           this.messageId.push(messagesToJson['messageId'])
           this.creatorId.push(messagesToJson['creatorId'])
