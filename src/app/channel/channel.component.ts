@@ -54,6 +54,9 @@ export class ChannelComponent implements OnInit {
         this.messageId.push(messagesToJson['messageId'])
         this.creatorId.push(messagesToJson['creatorId'])
         this.threadMessages.push(messagesToJson['answers'])
+        this.timestamp.push(messagesToJson['timestamp'])
+        console.log(messagesToJson);
+        
       });
       this.users = channel.users;
       this.channelName = channel.channelName;

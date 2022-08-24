@@ -146,8 +146,6 @@ export class ChatboxComponent implements OnInit {
     if (this.preview != null) this.message.pictureUrl = this.preview;
     this.message.messageId = '' + Math.floor(Math.random() * 1000000000);
     this.channel.messages.push(JSON.stringify(this.message));    
-    console.log(this.message);
-    
   }
 
   fillAnswer() {
