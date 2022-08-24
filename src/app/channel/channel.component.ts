@@ -20,6 +20,7 @@ export class ChannelComponent implements OnInit {
   creatorId: any = [];
   threadMessages: any = [];
   channelName: string;
+  timestamp: any = [];
 
   constructor(
     private firestore: AngularFirestore,
@@ -76,10 +77,10 @@ export class ChannelComponent implements OnInit {
       message: this.messages[i],
       creatorId: this.creatorId[i],
       threadMessages: this.threadMessages[i],
-      messageId : this.messageId[i],
+      messageId: this.messageId[i],
+      timestamp: this.timestamp[i], 
       index : i
     }
-    // console.log(threadData.threadMessages);
     
     return JSON.stringify(threadData)
   }

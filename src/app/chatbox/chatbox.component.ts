@@ -141,11 +141,13 @@ export class ChatboxComponent implements OnInit {
 
   fillMessage() {
     this.message.creatorId = this.userId;
+    this.message.timestamp = Date.now();
     if (this.messageValue) this.message.message = this.messageValue;
     if (this.preview != null) this.message.pictureUrl = this.preview;
-    this.message.timestamp = Date.now();
     this.message.messageId = '' + Math.floor(Math.random() * 1000000000);
-    this.channel.messages.push(JSON.stringify(this.message));
+    this.channel.messages.push(JSON.stringify(this.message));    
+    console.log(this.message);
+    
   }
 
   fillAnswer() {

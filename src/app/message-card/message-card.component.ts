@@ -21,6 +21,7 @@ export class MessageCardComponent implements OnInit {
   thread: boolean = false;
   creator: any = {};
   anwsers: Array<any> = [];
+  timestamp: any;
 
   constructor(
     private firestore: AngularFirestore,
@@ -36,7 +37,11 @@ export class MessageCardComponent implements OnInit {
     this.messageId = threadDataToJson['messageId'];
     this.creator = this.creatorId;
 
-    console.log(this.currentAnwsers);
+
+    console.log(threadDataToJson);
+    
+    
+
     
     
     // this.firestore
