@@ -18,7 +18,7 @@ export class ThreadComponent implements OnInit {
   creator: any = {};
 
   constructor(
-    public messageService: MessageDataService, 
+    public messageService: MessageDataService,
     private firestore: AngularFirestore
   ) { }
 
@@ -38,13 +38,11 @@ export class ThreadComponent implements OnInit {
     let threadMessages = this.threadData['threadMessages']
     if (threadMessages) {
       threadMessages.forEach(answer => {
-        this.anwsers.push(answer['message']);
+        this.anwsers.push(answer);
         this.messageService.anwsers = this.anwsers
       });
     };
 
-    console.log(this.anwsers);
-    
 
     this.getData();
     this.getUser();
@@ -68,8 +66,9 @@ export class ThreadComponent implements OnInit {
         let threadAnwsers = this.threadData['answers']
         if (threadAnwsers) {
           threadAnwsers.forEach(answer => {
-            this.anwsers.push(answer['message']);
+            this.anwsers.push(answer);
             this.messageService.anwsers = this.anwsers;
+            console.log(this.anwsers);
           });
         }
       })
@@ -80,7 +79,7 @@ export class ThreadComponent implements OnInit {
       .collection('users')
       .doc(this.creatorId)
       .valueChanges()
-      .subscribe((user) =>{
+      .subscribe((user) => {
         this.creator = user;
       });
   }

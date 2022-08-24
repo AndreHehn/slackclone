@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogBigPictureComponent } from '../dialog-big-picture/dialog-big-picture.component';
 
 @Component({
   selector: 'app-thread-anwser-card',
@@ -8,15 +10,20 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 })
 export class ThreadAnwserCardComponent implements OnInit {
 
-  @Input() anwser:any = '';
+  @Input() anwser: any = '';
+  @Input() picture;
+  @Input() message;
+  @Input() timestamp;
   @Input() creatorId: string = '';
   creator: any = {};
 
 
-  constructor(private firestore: AngularFirestore) { }
+  constructor(private firestore: AngularFirestore,
+    public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.getUser()
+    this.getUser();
+    console.log(this.anwser);
   }
 
   getUser() {
@@ -24,9 +31,14 @@ export class ThreadAnwserCardComponent implements OnInit {
       .collection('users')
       .doc(this.creatorId)
       .valueChanges()
-      .subscribe((user) =>{
+      .subscribe((user) => {
         this.creator = user;
       });
+  }
+
+  openDialog(url) {
+    const dialog = this.dialog.open(DialogBigPictureComponent);
+    dialog.componentInstance.imagePath = url;
   }
 
 }

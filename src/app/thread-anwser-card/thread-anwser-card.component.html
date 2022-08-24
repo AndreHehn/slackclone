@@ -1,10 +1,13 @@
 <mat-card class="d-flex mat-elevation-z0 borderBottom">
 
-    <img class="messageCardImg" [src]="creator.photoURL"> 
+    <img class="messageCardImg" [src]="creator.photoURL">
 
     <div>
         <div class="userName">{{ creator.displayName }}</div>
-        <div class="text" [innerHTML]="anwser"></div>
+        <div class="text" [innerHTML]="anwser['message']"></div>
+        <div *ngIf="message" class="text" [innerHTML]="message"></div>
+        <img *ngIf="picture" class="preview" (click)="openDialog(picture)" [src]="picture">
+        <p>{{ timestamp | date:'dd.MM.YY HH:mm' }}</p>
     </div>
 
 </mat-card>

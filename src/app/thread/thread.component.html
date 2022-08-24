@@ -23,7 +23,8 @@
         </div>
 
         <div class="threadAnwsers" id="threadAnwsers">
-            <app-thread-anwser-card *ngFor="let anwser of anwsers" anwser="{{ anwser }}" creatorId="{{ creatorId }}">
+            <app-thread-anwser-card *ngFor="let anwser of anwsers" message="{{ anwser.message}}"
+                picture="{{anwser.pictureUrl}}" timestamp="{{ anwser.timestamp}}" creatorId="{{ anwser.creatorId }}">
             </app-thread-anwser-card>
         </div>
     </div>

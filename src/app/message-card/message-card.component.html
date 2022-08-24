@@ -6,7 +6,7 @@
         <div class="userName">{{ creator.displayName }}</div>
         <div *ngIf="messageText" class="text" [innerHTML]="messageText"></div>
         <img *ngIf="picture" class="preview" (click)="openDialog(picture)" [src]="picture">
-        <p (click)="toggleThread()">{{ counter }} Antworten {{ timestamp | date:'HH:mm' }}</p>
+        <p (click)="toggleThread()">{{ counter }} Antworten {{ timestamp | date:'dd.MM.YY HH:mm' }}</p>
     </div>
 
 </mat-card>
