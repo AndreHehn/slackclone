@@ -105,6 +105,10 @@ input[type="file"] {
     display: none;
 }
 
+.hide {
+    color: #222529;
+}
+
 @media (max-width: 600px) {
 
     .showSmall {
@@ -114,6 +118,5 @@ input[type="file"] {
     .showBig {
         display: none;
     }
-
 
 }

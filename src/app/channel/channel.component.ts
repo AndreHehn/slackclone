@@ -12,7 +12,6 @@ import { MessageDataService } from '../message-data-service/message-data.service
 })
 
 export class ChannelComponent implements OnInit {
-
   channelId: any;
   messages: any = [];
   messageId: any = [];
@@ -21,6 +20,7 @@ export class ChannelComponent implements OnInit {
   threadMessages: any = [];
   channelName: string;
   timestamp: any = [];
+  parent = 'channel';
 
   constructor(
     private firestore: AngularFirestore,

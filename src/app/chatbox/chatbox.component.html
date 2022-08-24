@@ -22,21 +22,38 @@ André
             (onEditorChanged)="changedEditor($event)" formControlName="text">
         </quill-editor>
     </div>
-    <div class="pictureWrap" *ngIf="preview">
+    <div class="pictureWrap" *ngIf="previewThread && parent == 'thread'">
         <div class="singlePicture" *ngIf="showPreview">
             <div class="delete">
                 <mat-icon (click)="deleteLastUpload()">close</mat-icon>
             </div>
-            <img class="preview" [src]="preview">
+            <img class="preview" [src]="previewThread">
+        </div>
+    </div>
+    <div class="pictureWrap" *ngIf="previewChannel && parent == 'channel'">
+        <div class="singlePicture" *ngIf="showPreview">
+            <div class="delete">
+                <mat-icon (click)="deleteLastUpload()">close</mat-icon>
+            </div>
+            <img class="preview" [src]="previewChannel">
         </div>
     </div>
 
-    <div class="sendButton">
-        <label for="files" class="customUpload">
-            <input type="file" id="files" single accept="*.jpg .png" (change)="uploadFile($event)"
+    <div class="sendButton" *ngIf="parent =='thread'">
+        <label for="files1" class="customUpload">
+            <input type="file" id="files1" single accept="*.jpg .png" (change)="uploadFileThread($event)"
                 (click)="deleteLastUpload()" placeholder="Upload a picture">
             <mat-icon class="icon">image</mat-icon>
         </label>
+        <mat-icon class="icon" *ngIf="sendable" (click)="saveAndSend()">send</mat-icon>
+    </div>
+    <div class="sendButton" *ngIf="parent =='channel'">
+        <label for="files2" class="customUpload">
+            <input type="file" id="files2" single accept="*.jpg .png" (change)="uploadFileChannel($event)"
+                (click)="deleteLastUpload()" placeholder="Upload a picture">
+            <mat-icon class="icon">image</mat-icon>
+        </label>
+        <p id="parentShow" class="hide">{{parent}}</p>
         <mat-icon class="icon" *ngIf="sendable" (click)="saveAndSend()">send</mat-icon>
     </div>
 

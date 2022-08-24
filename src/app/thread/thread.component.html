@@ -23,10 +23,11 @@
         </div>
 
         <div class="threadAnwsers" id="threadAnwsers">
-            <app-thread-anwser-card *ngFor="let anwser of anwsers" anwser="{{ anwser }}" creatorId="{{ creatorId }}"></app-thread-anwser-card>
+            <app-thread-anwser-card *ngFor="let anwser of anwsers" anwser="{{ anwser }}" creatorId="{{ creatorId }}">
+            </app-thread-anwser-card>
         </div>
     </div>
 
-    <app-chatbox class="chatbox"></app-chatbox>
+    <app-chatbox class="chatbox" parent="thread"></app-chatbox>
 
 </div>
