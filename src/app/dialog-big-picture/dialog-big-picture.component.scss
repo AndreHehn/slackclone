@@ -1,12 +1,25 @@
+mat-dialog-content {
+    margin-top: -24px;
+    margin-bottom: -24px;
+    ;
+    padding: 0;
+}
+
+.dialog-container {
+    display: flex;
+    flex-direction: column;
+}
+
 .image {
-    max-width: 600px;
+    max-width: 1000px;
     height: auto;
 }
 
-@media only screen and (max-width:815px) {
+
+@media only screen and (max-width:1000px) {
 
     .image {
         width: 100%;
         max-width: 100%;
-    }  
+    }
 }

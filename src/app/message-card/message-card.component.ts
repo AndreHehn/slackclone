@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { DialogBigPictureComponent } from '../dialog-big-picture/dialog-big-picture.component';
 import { MessageDataService } from '../message-data-service/message-data.service';
 
 @Component({
@@ -12,6 +14,7 @@ import { MessageDataService } from '../message-data-service/message-data.service
 export class MessageCardComponent implements OnInit {
 
   @Input() messageText: string = '';
+  @Input() picture: string = '';
   @Input() threadData: any;
   @Input() counter: any;
   index: number;
@@ -26,7 +29,8 @@ export class MessageCardComponent implements OnInit {
   constructor(
     private firestore: AngularFirestore,
     public messageService: MessageDataService,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -70,6 +74,12 @@ export class MessageCardComponent implements OnInit {
         this.creator = user;
       });
   }
+
+  openDialog(url) {
+    const dialog = this.dialog.open(DialogBigPictureComponent);
+    dialog.componentInstance.imagePath = url;
+  }
+
 
 
 }

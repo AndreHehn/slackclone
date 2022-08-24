@@ -26,7 +26,7 @@ export class ChannelComponent implements OnInit {
     private firestore: AngularFirestore,
     public messageService: MessageDataService,
     public dialog: MatDialog,
-   ) { }
+  ) { }
 
   ngOnInit(): void {
     this.messageService.currentId.subscribe((id) => {
@@ -39,30 +39,33 @@ export class ChannelComponent implements OnInit {
 
   loadData() {
     this.firestore
-    .collection('channel')
-    .doc(this.channelId)
-    .valueChanges()
-    .subscribe((channel: any) => {
-      this.messages = [];
-      this.messageId = [];
-      this.creatorId = [];
-      this.threadMessages = [];
-      let messageAll = channel.messages;
-      messageAll.forEach(message => {
-        let messagesToJson = JSON.parse(message)
-        this.messages.push(messagesToJson['message'])
-        this.messageId.push(messagesToJson['messageId'])
-        this.creatorId.push(messagesToJson['creatorId'])
-        this.threadMessages.push(messagesToJson['answers'])
-        this.timestamp.push(messagesToJson['timestamp'])
-      });
-      this.users = channel.users;
-      this.channelName = channel.channelName;
-      
-      setTimeout(() => {
-        this.messageService.anwsers = this.messages;
-      }, 100);
-    })
+      .collection('channel')
+      .doc(this.channelId)
+      .valueChanges()
+      .subscribe((channel: any) => {
+        this.messages = [];
+        this.messageId = [];
+        this.creatorId = [];
+        this.threadMessages = [];
+        let messageAll = channel.messages;
+        messageAll.forEach(message => {
+          let messagesToJson = JSON.parse(message)
+          this.messages.push({
+            message: messagesToJson['message'],
+            picture: messagesToJson['pictureUrl']
+          })
+          this.messageId.push(messagesToJson['messageId'])
+          this.creatorId.push(messagesToJson['creatorId'])
+          this.threadMessages.push(messagesToJson['answers'])
+          this.timestamp.push(messagesToJson['timestamp'])
+        });
+        this.users = channel.users;
+        this.channelName = channel.channelName;
+
+        setTimeout(() => {
+          this.messageService.anwsers = this.messages;
+        }, 100);
+      })
   }
 
   toggleThread() {
@@ -79,10 +82,10 @@ export class ChannelComponent implements OnInit {
       creatorId: this.creatorId[i],
       threadMessages: this.threadMessages[i],
       messageId: this.messageId[i],
-      timestamp: this.timestamp[i], 
-      index : i
+      timestamp: this.timestamp[i],
+      index: i
     }
-    
+
     return JSON.stringify(threadData)
   }
 
@@ -91,6 +94,6 @@ export class ChannelComponent implements OnInit {
     dialogRef.componentInstance.channelId = this.channelId;
   }
 
- 
+
 
 }
