@@ -22,7 +22,6 @@ export class MessageCardComponent implements OnInit {
   creator: any = {};
   anwsers: Array<any> = [];
   timestamp: any;
-  time: any;
 
   constructor(
     private firestore: AngularFirestore,
@@ -37,29 +36,7 @@ export class MessageCardComponent implements OnInit {
     this.index = threadDataToJson['index']
     this.messageId = threadDataToJson['messageId'];
     this.timestamp = threadDataToJson['timestamp'];
-    this.time = this.timestamp;
     this.creator = this.creatorId; 
-
-
-    console.log(threadDataToJson);
-    console.log(this.time);
-
-
-
-
-
-    // this.firestore
-    //   .collection('channel')
-    //   .doc('YJuf9EqRLghKMtWVw8zT')
-    //   .valueChanges({idField: 'messages'})
-    //   .subscribe((message) => { 
-
-    //     this.anwsers.push(message)
-    //     console.log('test', this.anwsers.length);
-    //   });
-
-
-
     this.getUser();
   }
 
