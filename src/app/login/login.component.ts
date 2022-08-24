@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if (this.authService.isLoggedIn) this.router.navigate(['main']);
+    if (this.authService.isLoggedIn) this.router.navigate(['main/channel/dx3j2Rj82aw88xtnfJwS']);
   }
 
   get email() {
@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit {
       })
     ).subscribe(() => {
       this.pushUidToLocalStorage();
-      this.router.navigate(['main']);
+      this.router.navigate(['main/channel/dx3j2Rj82aw88xtnfJwS']);
     });
   }
 
