@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+
 import { MatDialogModule } from '@angular/material/dialog';
 import { RouterModule } from '@angular/router';
+
 
 import { SignUpComponent } from './sign-up.component';
 
@@ -11,9 +13,9 @@ describe('SignUpComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [RouterModule.forRoot([]), MatDialogModule],
-      declarations: [ SignUpComponent ]
+
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(SignUpComponent);
     component = fixture.componentInstance;

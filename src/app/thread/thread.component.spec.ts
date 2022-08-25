@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { environment } from 'src/environments/environment';
 
 import { ThreadComponent } from './thread.component';
@@ -12,7 +12,7 @@ describe('ThreadComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AngularFireModule.initializeApp(environment.firebase), AngularFireStorageModule, MatDialogRef],
+      imports: [AngularFireModule.initializeApp(environment.firebase), AngularFireStorageModule, MatDialogModule],
       declarations: [ ThreadComponent ]
     })
     .compileComponents();

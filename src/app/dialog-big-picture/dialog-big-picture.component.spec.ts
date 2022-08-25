@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { RouterModule } from '@angular/router';
 import { DialogBigPictureComponent } from './dialog-big-picture.component';
 
@@ -10,7 +10,11 @@ describe('DialogBigPictureComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [RouterModule.forRoot([]), MatDialogModule],
-      declarations: [ DialogBigPictureComponent ]
+      declarations: [ DialogBigPictureComponent ],
+      providers: [{
+        provide: MatDialogRef,
+        useValue: {}
+      }]
     })
     .compileComponents();
 

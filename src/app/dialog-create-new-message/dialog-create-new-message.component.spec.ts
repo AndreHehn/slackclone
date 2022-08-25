@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { DialogCreateNewMessageComponent } from './dialog-create-new-message.component';
 
 describe('DialogCreateNewMessageComponent', () => {
@@ -8,9 +8,17 @@ describe('DialogCreateNewMessageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DialogCreateNewMessageComponent ]
+      declarations: [DialogCreateNewMessageComponent],
+      imports: [
+        MatDialogModule,
+
+      ],
+      providers: [{
+        provide: MatDialogRef,
+        useValue: {}
+      }]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(DialogCreateNewMessageComponent);
     component = fixture.componentInstance;

@@ -1,6 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
+import { AngularFireModule } from '@angular/fire/compat';
 import { DialogCreateNewChannelComponent } from './dialog-create-new-channel.component';
+import { environment } from 'src/environments/environment';
+import { RouterModule } from '@angular/router';
 
 describe('DialogCreateNewChannelComponent', () => {
   let component: DialogCreateNewChannelComponent;
@@ -8,9 +12,18 @@ describe('DialogCreateNewChannelComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DialogCreateNewChannelComponent ]
+      declarations: [DialogCreateNewChannelComponent],
+      imports: [
+        MatDialogModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        RouterModule.forRoot([])
+      ],
+      providers: [{
+        provide: MatDialogRef,
+        useValue: {}
+      }]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(DialogCreateNewChannelComponent);
     component = fixture.componentInstance;

@@ -1,9 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
-import { MatDialogRef } from '@angular/material/dialog';
 import { environment } from 'src/environments/environment';
-
+import { MatDialogModule } from '@angular/material/dialog';
 import { ChannelComponent } from './channel.component';
 
 describe('ChannelComponent', () => {
@@ -12,10 +11,14 @@ describe('ChannelComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AngularFireModule.initializeApp(environment.firebase), AngularFireStorageModule, MatDialogRef],
-      declarations: [ ChannelComponent ]
+      imports: [
+        MatDialogModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFireStorageModule
+      ],
+      declarations: [ChannelComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(ChannelComponent);
     component = fixture.componentInstance;

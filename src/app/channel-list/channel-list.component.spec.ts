@@ -1,10 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { environment } from 'src/environments/environment';
-
+import { RouterModule } from '@angular/router';
 import { ChannelListComponent } from './channel-list.component';
+
 
 describe('ChannelListComponent', () => {
   let component: ChannelListComponent;
@@ -12,10 +13,14 @@ describe('ChannelListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AngularFireModule.initializeApp(environment.firebase), AngularFireStorageModule, MatDialogRef],
-      declarations: [ ChannelListComponent ]
+      imports: [AngularFireModule.initializeApp(environment.firebase),
+        AngularFireStorageModule,
+        MatDialogModule,
+      RouterModule.forRoot([]),
+      ],
+      declarations: [ChannelListComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(ChannelListComponent);
     component = fixture.componentInstance;
