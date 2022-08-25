@@ -88,7 +88,7 @@ export class ChatboxComponent implements OnInit {
   /**
    * 
    * Uploads picture to the fire storage.
-   * I know, double, but this is how i got it to work.....
+   * Unfortunately, i only got it work by splitting the upload events that way
    */
   uploadFileThread(event) {
     this.sendable = false;

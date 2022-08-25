@@ -23,7 +23,6 @@ export class ThreadAnwserCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUser();
-    console.log(this.anwser);
   }
 
   getUser() {

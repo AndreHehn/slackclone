@@ -1,18 +1,3 @@
-<!--
-    
-    input field for channel component
-
-status:
-Responsive muss angepasst werden, sobald es in der richtigen Komponente eingebunden ist.
-
-Hover-Effekte müssen noch eingebunden und geändert werden
-
-
-André
-
--->
-
-
 <mat-card class="mat-elevation-z0 outline">
     <div [formGroup]="form">
         <quill-editor class="showBig" *ngIf="cleared" placeholder="Nachricht" [modules]="modules"
@@ -30,15 +15,6 @@ André
             <img class="preview" [src]="previewThread">
         </div>
     </div>
-    <div class="pictureWrap" *ngIf="previewChannel && parent == 'channel'">
-        <div class="singlePicture" *ngIf="showPreview">
-            <div class="delete">
-                <mat-icon (click)="deleteLastUpload()">close</mat-icon>
-            </div>
-            <img class="preview" [src]="previewChannel">
-        </div>
-    </div>
-
     <div class="sendButton" *ngIf="parent =='thread'">
         <label for="files1" class="customUpload">
             <input type="file" id="files1" single accept="*.jpg .png" (change)="uploadFileThread($event)"
@@ -46,6 +22,16 @@ André
             <mat-icon class="icon">image</mat-icon>
         </label>
         <mat-icon class="icon" *ngIf="sendable" (click)="saveAndSend()">send</mat-icon>
+    </div>
+
+
+    <div class="pictureWrap" *ngIf="previewChannel && parent == 'channel'">
+        <div class="singlePicture" *ngIf="showPreview">
+            <div class="delete">
+                <mat-icon (click)="deleteLastUpload()">close</mat-icon>
+            </div>
+            <img class="preview" [src]="previewChannel">
+        </div>
     </div>
     <div class="sendButton" *ngIf="parent =='channel'">
         <label for="files2" class="customUpload">
