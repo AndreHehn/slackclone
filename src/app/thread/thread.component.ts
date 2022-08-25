@@ -68,7 +68,6 @@ export class ThreadComponent implements OnInit {
           threadAnwsers.forEach(answer => {
             this.anwsers.push(answer);
             this.messageService.anwsers = this.anwsers;
-            console.log(this.anwsers);
           });
         }
       })
