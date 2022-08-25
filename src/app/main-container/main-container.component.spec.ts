@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialogModule } from '@angular/material/dialog';
+import { RouterModule } from '@angular/router';
 
 import { MainContainerComponent } from './main-container.component';
 
@@ -8,6 +10,7 @@ describe('MainContainerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [RouterModule.forRoot([]), MatDialogModule],
       declarations: [ MainContainerComponent ]
     })
     .compileComponents();

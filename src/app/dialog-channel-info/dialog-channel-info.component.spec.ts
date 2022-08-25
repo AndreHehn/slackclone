@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { MatDialogModule } from '@angular/material/dialog';
+import { RouterModule } from '@angular/router';
 import { DialogChannelInfoComponent } from './dialog-channel-info.component';
 
 describe('DialogChannelInfoComponent', () => {
@@ -8,6 +9,7 @@ describe('DialogChannelInfoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [RouterModule.forRoot([]), MatDialogModule],
       declarations: [ DialogChannelInfoComponent ]
     })
     .compileComponents();
