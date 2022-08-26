@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { ActivatedRoute } from '@angular/router';
 import { MessageDataService } from '../message-data-service/message-data.service';
 
 
@@ -22,7 +23,8 @@ export class ThreadComponent implements OnInit {
 
   constructor(
     public messageService: MessageDataService,
-    private firestore: AngularFirestore
+    private firestore: AngularFirestore,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
@@ -56,6 +58,7 @@ export class ThreadComponent implements OnInit {
   }
 
   getData() {
+    this.route.firstChild.paramMap.subscribe(paramMap => { this.currentId = paramMap['params']['id1']; });
     this.firestore
       .collection('channel')
       .doc(this.currentId)

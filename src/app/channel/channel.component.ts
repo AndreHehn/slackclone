@@ -55,7 +55,8 @@ export class ChannelComponent implements OnInit {
           this.messages.push({
             message: messagesToJson['message'],
             picture: messagesToJson['pictureUrl'],
-            timestamp: messagesToJson['timestamp']
+            timestamp: messagesToJson['timestamp'],
+            creatorId: messagesToJson['creatorId']
           })
           this.messageId.push(messagesToJson['messageId'])
           this.creatorId.push(messagesToJson['creatorId'])

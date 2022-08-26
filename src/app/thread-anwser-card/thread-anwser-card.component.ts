@@ -10,11 +10,11 @@ import { DialogBigPictureComponent } from '../dialog-big-picture/dialog-big-pict
 })
 export class ThreadAnwserCardComponent implements OnInit {
 
-  @Input() anwser: any = '';
+  @Input() anwser: any;
   @Input() picture;
   @Input() message;
   @Input() timestamp;
-  @Input() creatorId: string = '';
+  @Input() creatorId: string;
   creator: any = {};
 
 
