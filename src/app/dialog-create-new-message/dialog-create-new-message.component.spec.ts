@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { AngularFireModule } from '@angular/fire/compat';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { environment } from 'src/environments/environment';
 import { DialogCreateNewMessageComponent } from './dialog-create-new-message.component';
 
 describe('DialogCreateNewMessageComponent', () => {
@@ -11,7 +13,7 @@ describe('DialogCreateNewMessageComponent', () => {
       declarations: [DialogCreateNewMessageComponent],
       imports: [
         MatDialogModule,
-
+        AngularFireModule.initializeApp(environment.firebase),
       ],
       providers: [{
         provide: MatDialogRef,

@@ -1,5 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { AuthModule } from '@angular/fire/auth';
+import { AngularFireModule } from '@angular/fire/compat';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { RouterTestingModule } from '@angular/router/testing';
+import { environment } from 'src/environments/environment';
 import { AuthService } from '../service/auth.service';
 
 import { ToolbarComponent } from './toolbar.component';
@@ -10,9 +15,23 @@ describe('ToolbarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule,
+      imports: [
+        AngularFireModule.initializeApp(environment.firebase),
+        RouterTestingModule,
+        AuthModule,
+        provideFirestore(() => getFirestore()),
+        provideFirebaseApp(() => initializeApp(environment.firebase)),
       ],
-      declarations: [ToolbarComponent]
+      declarations: [ToolbarComponent],
+      providers:
+        [
+          AuthService,
+          {
+            provide: AuthService,
+            useValue: {
+            },
+          },
+        ]
     })
       .compileComponents();
 

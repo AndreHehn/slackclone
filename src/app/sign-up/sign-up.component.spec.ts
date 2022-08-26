@@ -1,6 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { AuthModule } from '@angular/fire/auth';
+import { AngularFireModule } from '@angular/fire/compat';
+import { Firestore, getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { RouterModule } from '@angular/router';
+import { environment } from 'src/environments/environment';
 import { AuthService } from '../service/auth.service';
 
 
@@ -13,12 +17,19 @@ describe('SignUpComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AuthModule,
-        RouterModule.forRoot([])],
-        providers: [AuthService,
+        RouterModule.forRoot([]),
+        AngularFireModule.initializeApp(environment.firebase),
+        provideFirebaseApp(() => initializeApp(environment.firebase)),
+        provideFirestore(() => getFirestore()),
+      ],
+
+      providers:
+        [
+          AuthService,
           {
             provide: AuthService,
             useValue: {
-              email: 'guestuser@slackclone.de',
+              email: 'newguestuser@slackclone.de',
               password: 'passwort'
             },
           },
