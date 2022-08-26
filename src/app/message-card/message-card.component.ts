@@ -20,7 +20,7 @@ export class MessageCardComponent implements OnInit {
   @Input() timestamp: any;
   index: number;
   messageId: string = '';
-  creatorId: string = '';
+  @Input() creatorId: string = '';
   currentAnwsers: Array<any>;
   thread: boolean = false;
   creator: any = {};
@@ -69,7 +69,7 @@ export class MessageCardComponent implements OnInit {
   getUser() {
     this.firestore
       .collection('users')
-      .doc(this.creator)
+      .doc(this.creatorId)
       .valueChanges()
       .subscribe((user) => {
         this.creator = user;

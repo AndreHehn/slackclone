@@ -11,7 +11,7 @@
 
     <app-message-card class="message" *ngFor="let message of messages, 
           let i = index" messageText="{{message['message']}}" picture="{{message['picture']}}" timestamp="{{message['timestamp']}}"
-      threadData="{{threadAnwsersToJson(i)}}" counter="{{ this.threadMessages[i].length}}">
+      threadData="{{threadAnwsersToJson(i)}}" counter="{{ this.threadMessages[i].length}}" creatorId ="{{message['creatorId']}}">
     </app-message-card>
 
     <app-chatbox class="chatbox" [class.changeWidthChatboxB]="messageService.threadB"
