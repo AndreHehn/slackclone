@@ -5,6 +5,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { environment } from 'src/environments/environment';
 import { RouterModule } from '@angular/router';
 import { ChannelListComponent } from './channel-list.component';
+import { LeftSideComponent } from '../left-side/left-side.component';
 
 
 describe('ChannelListComponent', () => {
@@ -13,12 +14,14 @@ describe('ChannelListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AngularFireModule.initializeApp(environment.firebase),
+      imports: [
+        AngularFireModule.initializeApp(environment.firebase),
         AngularFireStorageModule,
         MatDialogModule,
-      RouterModule.forRoot([]),
+        RouterModule.forRoot([]),
       ],
-      declarations: [ChannelListComponent]
+      declarations: [ChannelListComponent],
+      providers: [LeftSideComponent]
     })
       .compileComponents();
 

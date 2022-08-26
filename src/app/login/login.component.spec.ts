@@ -1,4 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { AuthModule } from '@angular/fire/auth';
+import { RouterModule } from '@angular/router';
+import { AuthService } from '../service/auth.service';
 
 
 
@@ -11,7 +14,17 @@ describe('LoginComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ LoginComponent ],
-      imports: [],
+      imports: [AuthModule,
+        RouterModule.forRoot([])],
+        providers: [AuthService,
+          {
+            provide: AuthService,
+            useValue: {
+              email: 'guestuser@slackclone.de',
+              password: 'passwort'
+            },
+          },
+        ]
 
     })
     .compileComponents();

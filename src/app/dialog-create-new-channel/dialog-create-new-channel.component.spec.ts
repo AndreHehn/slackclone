@@ -5,6 +5,8 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { DialogCreateNewChannelComponent } from './dialog-create-new-channel.component';
 import { environment } from 'src/environments/environment';
 import { RouterModule } from '@angular/router';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+
 
 describe('DialogCreateNewChannelComponent', () => {
   let component: DialogCreateNewChannelComponent;
@@ -16,6 +18,7 @@ describe('DialogCreateNewChannelComponent', () => {
       imports: [
         MatDialogModule,
         AngularFireModule.initializeApp(environment.firebase),
+        AngularFireStorageModule,
         RouterModule.forRoot([])
       ],
       providers: [{

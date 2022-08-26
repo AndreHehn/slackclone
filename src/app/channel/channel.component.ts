@@ -2,13 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogChannelInfoComponent } from '../dialog-channel-info/dialog-channel-info.component';
+import { LeftSideComponent } from '../left-side/left-side.component';
 import { MessageDataService } from '../message-data-service/message-data.service';
 
 
 @Component({
   selector: 'app-channel',
   templateUrl: './channel.component.html',
-  styleUrls: ['./channel.component.scss']
+  styleUrls: ['./channel.component.scss'],
+  providers: [LeftSideComponent]
 })
 
 export class ChannelComponent implements OnInit {

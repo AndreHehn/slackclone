@@ -41,6 +41,7 @@ import { DialogAddMembersComponent } from './dialog-add-members/dialog-add-membe
 import { MessageCardComponent } from './message-card/message-card.component';
 import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.component';
 import { ThreadAnwserCardComponent } from './thread-anwser-card/thread-anwser-card.component';
+import { AuthService } from './service/auth.service';
 
 @NgModule({
   declarations: [
@@ -90,7 +91,7 @@ import { ThreadAnwserCardComponent } from './thread-anwser-card/thread-anwser-ca
     FormsModule
   ],
 
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 

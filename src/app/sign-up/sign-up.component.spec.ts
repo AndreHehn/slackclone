@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { MatDialogModule } from '@angular/material/dialog';
+import { AuthModule } from '@angular/fire/auth';
 import { RouterModule } from '@angular/router';
+import { AuthService } from '../service/auth.service';
 
 
 import { SignUpComponent } from './sign-up.component';
@@ -12,7 +12,17 @@ describe('SignUpComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterModule.forRoot([]), MatDialogModule],
+      imports: [AuthModule,
+        RouterModule.forRoot([])],
+        providers: [AuthService,
+          {
+            provide: AuthService,
+            useValue: {
+              email: 'guestuser@slackclone.de',
+              password: 'passwort'
+            },
+          },
+        ]
 
     })
       .compileComponents();
