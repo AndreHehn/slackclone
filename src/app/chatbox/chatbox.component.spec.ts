@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { environment } from 'src/environments/environment';
 
@@ -13,8 +13,29 @@ describe('ChatboxComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AngularFireModule.initializeApp(environment.firebase), AngularFireStorageModule, RouterModule, RouterTestingModule],
-      declarations: [ChatboxComponent]
+      imports: [
+        AngularFireModule.initializeApp(environment.firebase), 
+        AngularFireStorageModule, 
+        RouterModule, 
+        RouterTestingModule,
+      ],
+      declarations: [ChatboxComponent],
+      providers:
+      [
+        {
+          provide: Router,
+          useValue: {
+            snapshot: {params: {id: '24fkzrw3487943uf358lovd'}}
+          },
+        
+        },
+        {
+          provide: Router,
+          useValue: {
+            snapshot: {root: {id: '24fkzrw3487943uf358lovd'}}
+          },
+        },
+      ]
     })
       .compileComponents();
 

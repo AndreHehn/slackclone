@@ -34,13 +34,15 @@ export class MessageCardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    let threadDataToJson = JSON.parse(this.threadData);
-    this.currentAnwsers = threadDataToJson['anwsers'];
-    this.creatorId = threadDataToJson['creatorId'];
-    this.index = threadDataToJson['index']
-    this.messageId = threadDataToJson['messageId'];
-    this.creator = this.creatorId;
-    this.getUser();
+    if (this.threadData != null) {
+      let threadDataToJson = JSON.parse(this.threadData);
+      this.currentAnwsers = threadDataToJson['anwsers'];
+      this.creatorId = threadDataToJson['creatorId'];
+      this.index = threadDataToJson['index']
+      this.messageId = threadDataToJson['messageId'];
+      this.creator = this.creatorId;
+      this.getUser();
+    }
   }
 
 
