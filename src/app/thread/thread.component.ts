@@ -58,25 +58,27 @@ export class ThreadComponent implements OnInit {
   }
 
   getData() {
-   if(this.route.firstChild) this.route.firstChild.paramMap.subscribe(paramMap => { this.currentId = paramMap['params']['id1']; });
-    this.firestore
-      .collection('channel')
-      .doc(this.currentId)
-      .valueChanges()
-      .subscribe((channel) => {
-        this.anwsers = [];
-        let threadData = channel['messages'][this.index]
-        this.messageService.updateThread(JSON.parse(threadData), this.index)
-        this.threadData = this.messageService.currentThread['source']['_value']
-        this.creatorId = this.messageService.currentThread['source']['_value']['creatorId']
-        let threadAnwsers = this.threadData['answers']
-        if (threadAnwsers) {
-          threadAnwsers.forEach(answer => {
-            this.anwsers.push(answer);
-            this.messageService.anwsers = this.anwsers;
-          });
-        }
-      })
+    if (this.route.firstChild) this.route.firstChild.paramMap.subscribe(paramMap => { this.currentId = paramMap['params']['id1']; });
+    if (this.currentId) {
+      this.firestore
+        .collection('channel')
+        .doc(this.currentId)
+        .valueChanges()
+        .subscribe((channel) => {
+          this.anwsers = [];
+          let threadData = channel['messages'][this.index]
+          this.messageService.updateThread(JSON.parse(threadData), this.index)
+          this.threadData = this.messageService.currentThread['source']['_value']
+          this.creatorId = this.messageService.currentThread['source']['_value']['creatorId']
+          let threadAnwsers = this.threadData['answers']
+          if (threadAnwsers) {
+            threadAnwsers.forEach(answer => {
+              this.anwsers.push(answer);
+              this.messageService.anwsers = this.anwsers;
+            });
+          }
+        })
+    }
   }
 
   getUser() {
