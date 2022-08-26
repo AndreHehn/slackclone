@@ -3,6 +3,8 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { AuthModule } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire/compat';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatMenuModule } from '@angular/material/menu';
 import { RouterTestingModule } from '@angular/router/testing';
 import { environment } from 'src/environments/environment';
 import { AuthService } from '../service/auth.service';
@@ -21,10 +23,16 @@ describe('ToolbarComponent', () => {
         AuthModule,
         provideFirestore(() => getFirestore()),
         provideFirebaseApp(() => initializeApp(environment.firebase)),
+        MatDialogModule,
+        MatMenuModule,
       ],
       declarations: [ToolbarComponent],
       providers:
         [
+          {
+            provide: MatDialog, 
+            useValue: {}
+          },
           AuthService,
           {
             provide: AuthService,
