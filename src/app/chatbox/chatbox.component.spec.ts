@@ -19,23 +19,7 @@ describe('ChatboxComponent', () => {
         RouterModule, 
         RouterTestingModule,
       ],
-      declarations: [ChatboxComponent],
-      providers:
-      [
-        {
-          provide: Router,
-          useValue: {
-            snapshot: {params: {id: '24fkzrw3487943uf358lovd'}}
-          },
-        
-        },
-        {
-          provide: Router,
-          useValue: {
-            snapshot: {root: {id: '24fkzrw3487943uf358lovd'}}
-          },
-        },
-      ]
+      declarations: [ChatboxComponent]
     })
       .compileComponents();
 

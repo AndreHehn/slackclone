@@ -58,7 +58,7 @@ export class ThreadComponent implements OnInit {
   }
 
   getData() {
-    this.route.firstChild.paramMap.subscribe(paramMap => { this.currentId = paramMap['params']['id1']; });
+   if(this.route.firstChild) this.route.firstChild.paramMap.subscribe(paramMap => { this.currentId = paramMap['params']['id1']; });
     this.firestore
       .collection('channel')
       .doc(this.currentId)

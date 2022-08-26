@@ -13,7 +13,6 @@ import { FormControl, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-chatbox',
   templateUrl: './chatbox.component.html',
-  template: '{{parentName.comp}}',
   styleUrls: ['./chatbox.component.scss']
 })
 
@@ -62,8 +61,8 @@ export class ChatboxComponent implements OnInit {
     this.form = new FormGroup({
       'text': new FormControl()
     });
-    this.route.firstChild.paramMap.subscribe(paramMap => { this.channelId = paramMap['params']['id1']; });
-    this.route.firstChild.paramMap.subscribe(paramMap => { if (paramMap['params']['id2']) this.idOfMessage = paramMap['params']['id2']; });
+    if (this.route.firstChild) this.route.firstChild.paramMap.subscribe(paramMap => { this.channelId = paramMap['params']['id1']; });
+    if (this.route.firstChild) this.route.firstChild.paramMap.subscribe(paramMap => { if (paramMap['params']['id2']) this.idOfMessage = paramMap['params']['id2']; });
     this.userId = JSON.parse(localStorage.getItem('slackCloneUser'));
     this.loadChannel();
   }
@@ -145,9 +144,9 @@ export class ChatboxComponent implements OnInit {
   }
 
   changedEditor(event: EditorChangeContent | EditorChangeSelection) {
-    this.messageValue = event['editor']['root']['innerHTML'];
-    this.route.firstChild.paramMap.subscribe(paramMap => { this.channelId = paramMap['params']['id1']; });
-    this.route.firstChild.paramMap.subscribe(paramMap => { this.idOfMessage = paramMap['params']['id2']; });
+    if (event) { this.messageValue = event['editor']['root']['innerHTML']; }
+    if (this.route.firstChild) this.route.firstChild.paramMap.subscribe(paramMap => { this.channelId = paramMap['params']['id1']; });
+    if (this.route.firstChild) this.route.firstChild.paramMap.subscribe(paramMap => { this.idOfMessage = paramMap['params']['id2']; });
     this.loadChannel();
   }
 
@@ -183,15 +182,17 @@ export class ChatboxComponent implements OnInit {
   loadChannel() { //d2
     this.sendable = false;
     this.channel = new Channel();
-    this.firestore.collection('channel').doc(this.channelId).valueChanges().subscribe((changes: any) => {
-      let dataFromChannel = changes;
-      if (dataFromChannel.messages.length > 0) this.channel.messages = dataFromChannel.messages;
-      if (dataFromChannel.users.length > 0) this.channel.users = dataFromChannel.users;
-      if (dataFromChannel.channelId) this.channel.channelId = dataFromChannel.channelId;
-      if (dataFromChannel.channelName) this.channel.channelName = dataFromChannel.channelName;
-      if (dataFromChannel.type) this.channel.type = dataFromChannel.type;
-      this.sendable = true;
-    });
+    if (this.channelId) {
+      this.firestore.collection('channel').doc(this.channelId).valueChanges().subscribe((changes: any) => {
+        let dataFromChannel = changes;
+        if (dataFromChannel.messages.length > 0) this.channel.messages = dataFromChannel.messages;
+        if (dataFromChannel.users.length > 0) this.channel.users = dataFromChannel.users;
+        if (dataFromChannel.channelId) this.channel.channelId = dataFromChannel.channelId;
+        if (dataFromChannel.channelName) this.channel.channelName = dataFromChannel.channelName;
+        if (dataFromChannel.type) this.channel.type = dataFromChannel.type;
+        this.sendable = true;
+      });
+    }
   }
 
   scrollChannel() {
